@@ -1,0 +1,2591 @@
+<html>
+
+<head>
+    <title>Whatsapp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/all.min.css" rel="stylesheet" type="text/css">
+
+    {{!-- moment --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment-with-locales.min.js"></script>
+
+    {{!-- emojin --}}
+    <script src="/js/emojione.js"></script>
+    <link rel="stylesheet" href="/css/emojione.css"/>
+
+
+   {{!-- file upload --}}
+
+   <link rel="stylesheet" href="/css/dropzone.css" />
+
+   {{!-- fancy box --}}
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+   
+    <style>
+
+    </style>
+ 
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-3">
+
+                <div class="row wa-navbar">
+                    <div class="col-8">
+                        <img src="/images/profile.png" class="rounded-circle" />
+                    </div>
+                    <div class="col-2">
+                        <i class="large material-icons wa-icon">chat</i>
+                    </div>
+                    <div class="col-2">
+                        <div class="dropdown">
+                            <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="large material-icons wa-icon">more_vert</i>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Novo grupo</a>
+                                <a class="dropdown-item" href="#">Perfil</a>
+                                <a class="dropdown-item" href="#">Arquivado</a>
+                                <a class="dropdown-item" href="#">Destacado</a>
+                                <a class="dropdown-item" href="#">Configuração</a>
+                                <a class="dropdown-item" href="/auth/logoutatendente?chat_id={{chat_id}}" >Fechar sessão</a>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    {{!-- {{atendente_user.id}}
+                    {{atendente_setor}} --}}
+                    <div class="col-12 wa-contatos">
+                        <i class="fas fa-search"></i>
+                        <input class="form-control wa-input wa-search" onkeyup="pesquisarContatos()"  placeholder="Procurar ou começar uma nova conversa" />
+                        <span class="clear-input" style="display: none;" data-clear-input>&times;</span>
+                    </div>
+                </div>
+                <div id="chat-list">
+                    {{!-- <div class="row wa-item-chat" onClick="abrirChat()">
+                        <div class="col-2">
+                            <img src="/images/profile.png" class="rounded-circle" />
+                        </div>
+                        <div class="col-8">
+                            <b>Lorem ipsum dolor</b><br />
+                            <p class="wa-preview-message">Sed malesuada sem sed</p>
+                        </div>
+                        <div class="col-2" style="text-align: right">
+                            <span>16:24</span>
+                            <span class="badge badge-pill wa-badge">54</span>
+                        </div>
+                    </div>
+                    <hr /> --}}
+
+
+                </div>
+
+            </div>
+            <div class="col-9">
+                <div class="wa-introducao">
+                    <div class="offset-3 wa-card-introducao">
+                        <div>
+                            <img src="/images/introducao.jpg" />
+                        </div>
+                        <br /><br />
+                        <h1>Mantenha seu telefone conectado</h1><br />
+                        <p>O WhatsApp Web conecta ao seu telefone para sincronizar suas mensagens. Para
+                            diminuir o uso do seu plano de internet, conecte seu telefone a uma rede WiFi.</p>
+                        <hr />
+                        <p><span style="font-size: 18px;" class="fa fa-laptop"></span> O WhatsApp está disponível para
+                            Windows. <a href="https://www.whatsapp.com/download" target="_blank">Obtenha-o aqui</a>.</p>
+                    </div>
+                </div>
+
+
+                <div class="wa-chat" style="display:none">
+                    <div class="wa-navbar">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-1">
+                                    <img id="wa-chat-imagem" src="/images/profile.png" class="rounded-circle">
+                                </div>
+                                <div class="col-8">
+                                    <div style="margin-top: 10px">
+                                        <span id="wa-chat-titulo"  style="font-size: 12px">Lorem ipsum dolor</span><br>
+                                        <span id="wa-chat-numero" style="font-size: 12px">+55 00 0000-0000</span>
+                                    </div>
+                                </div>
+                                <div class="col-2 text-right">
+                                    
+                                    <i class="large material-icons wa-icon" style="cursor: pointer;" onclick="openModalAtendentesOnline()" >connect_without_contact</i>
+                                    <i class="large material-icons wa-icon" >search</i>
+                                    <i class="large material-icons wa-icon" style="cursor: pointer;" onclick="openSendFile()" >attach_file</i>
+                                </div>
+                                <div class="col-1">
+                                    <div class="dropdown">
+                                        <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <i class="large material-icons wa-icon">more_vert</i>
+                                        </a>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" href="#">Informações do contato</a>
+                                            <a class="dropdown-item" href="#">Selecionar mensagens</a>
+                                            <a class="dropdown-item" href="#">Silenciar</a>
+                                            <a class="dropdown-item" href="#">Limpar mensagens</a>
+                                            <a class="dropdown-item" href="#">Eliminar chat</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wa-mensagens">
+                        
+                    </div>
+
+                    <div class="d-flex justify-content-center" style="margin-top:23%">
+                        <div id="loading_msg"  class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+               
+                    <div class="wa-file-input" style="width: 100%;position: absolute;bottom: 0;background: #fff;display:none;z-index:999">
+                        <div style="width:100%;background: #50c0a6;height: 45px;">
+                           <i class="fas fa-times btn-close" onclick="fechaFileUpload()"></i>
+                           <span class="text-white">Pré visualizar</span>
+<form id="formEnviaArquivos" enctype="multipart/form-data" method="POST">
+   <div class="dropzone dz-clickable" id="myDrop">
+   <div class="dz-default dz-message" data-dz-message="">
+      <h3 style="color: #7d6363">Mova seus arquivos aqui...</h3>
+
+   </div>
+         <div style="margin-top: 30px;margin-left:10px;border: 1px solid #ccc;" class="btn btn-light fileinput-button dz-clickable">
+               
+               <span>
+                  <i style="color:black" class="fas fa-plus"></i> 
+                  <br>
+                  Adicionar 
+                  <br> 
+                  Arquivos
+               </span>
+         </div>
+
+   </div>
+   <div class="container">
+      <div class="d-table-cell w-100">
+         <input type="text" name="legenda" class="form-control input-materialize" id="legenda" placeholder="Adicione uma legenda" >
+      </div>
+
+      <div class="d-table-cell align-middle">
+         <button type="submit" id="btnSend" style="background:#6be960" class="btn btn-circle"><i style="margin-top: -3px;color: white;" class="send large material-icons wa-icon">send</i></button>
+      </div>
+   </div>
+</form>                     
+                           
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="panel-down" id="panel-emojis" style="display: none;">
+                        <div
+                            style="transform: translateZ(0); 
+                                    transform-origin: bottom; height: 200px; overflow: auto; background-color: #f0f0f0;
+                                    position: relative;  
+                                    bottom: 53px;     
+                                    opacity: 1;    
+                                    overflow-y: scroll;    
+                                    width: 100%;    
+                                    box-sizing: border-box; 
+                                    z-index:0">
+                            <div>
+                                <div class="_1qUCC">
+                                    <div class="_1-N6t">Emojis &amp; Pessoas</div>
+                                    <div tabindex="-1" id="emoticons">
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😀" data-emoji-index="0"
+                                            style="background-position: 0px -35px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😃" data-emoji-index="1"
+                                            style="background-position: -105px -35px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😄" data-emoji-index="2"
+                                            style="background-position: -140px -35px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😁" data-emoji-index="3"
+                                            style="background-position: -35px -35px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😆" data-emoji-index="4"
+                                            style="background-position: -35px -70px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😅" data-emoji-index="5"
+                                            style="background-position: 0px -70px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😂" data-emoji-index="6"
+                                            style="background-position: -70px -35px;"></span>
+                                        <span class="b73 emojik wa" tabindex="-1" data-unicode="🤣" data-emoji-index="7"
+                                            style="background-position: -70px -35px;"></span>
+                                        <span class="b90 emojik wa" tabindex="-1" data-unicode="☺" data-emoji-index="8"
+                                            style="background-position: -140px -70px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😊" data-emoji-index="9"
+                                            style="background-position: 0px -105px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😇"
+                                            data-emoji-index="10" style="background-position: -70px -70px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="🙂"
+                                            data-emoji-index="11" style="background-position: 0px -140px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="🙃"
+                                            data-emoji-index="12" style="background-position: -35px -140px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😉"
+                                            data-emoji-index="13" style="background-position: -140px -70px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😌"
+                                            data-emoji-index="14" style="background-position: -70px -105px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😍"
+                                            data-emoji-index="15" style="background-position: -105px -105px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😘"
+                                            data-emoji-index="16" style="background-position: -140px 0px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😗"
+                                            data-emoji-index="17" style="background-position: -105px 0px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😙"
+                                            data-emoji-index="18" style="background-position: 0px -35px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😚"
+                                            data-emoji-index="19" style="background-position: -35px -35px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😋"
+                                            data-emoji-index="20" style="background-position: -35px -105px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😛"
+                                            data-emoji-index="21" style="background-position: -70px -35px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😝"
+                                            data-emoji-index="22" style="background-position: -140px -35px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😜"
+                                            data-emoji-index="23" style="background-position: -105px -35px;"></span>
+                                        <span class="b74 emojik wa" tabindex="-1" data-unicode="🤪"
+                                            data-emoji-index="24" style="background-position: 0px 0px;"></span>
+                                        <span class="b73 emojik wa" tabindex="-1" data-unicode="🤨"
+                                            data-emoji-index="25" style="background-position: -105px -140px;"></span>
+                                        <span class="b81 emojik wa" tabindex="-1" data-unicode="🧐"
+                                            data-emoji-index="26" style="background-position: 0px 0px;"></span>
+                                        <span class="b71 emojik wa" tabindex="-1" data-unicode="🤓"
+                                            data-emoji-index="27" style="background-position: -70px 0px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😎"
+                                            data-emoji-index="28" style="background-position: -140px -105px;"></span>
+                                        <span class="b73 emojik wa" tabindex="-1" data-unicode="🤩"
+                                            data-emoji-index="29" style="background-position: -140px -140px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😏"
+                                            data-emoji-index="30" style="background-position: 0px -140px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😒"
+                                            data-emoji-index="31" style="background-position: -105px -140px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😞"
+                                            data-emoji-index="32" style="background-position: 0px -70px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😔"
+                                            data-emoji-index="33" style="background-position: 0px 0px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😟"
+                                            data-emoji-index="34" style="background-position: -35px -70px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😕"
+                                            data-emoji-index="35" style="background-position: -35px 0px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="🙁"
+                                            data-emoji-index="36" style="background-position: -140px -105px;"></span>
+                                        <span class="b90 emojik wa" tabindex="-1" data-unicode="☹" data-emoji-index="37"
+                                            style="background-position: -105px -70px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😣"
+                                            data-emoji-index="38" style="background-position: 0px -105px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😖"
+                                            data-emoji-index="39" style="background-position: -70px 0px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😫"
+                                            data-emoji-index="40" style="background-position: -70px -140px;"></span>
+                                        <span class="b87 emojik wa" tabindex="-1" data-unicode="😩"
+                                            data-emoji-index="41" style="background-position: -35px -35px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😢"
+                                            data-emoji-index="42" style="background-position: -140px -70px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😭"
+                                            data-emoji-index="43" style="background-position: -140px -140px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😤"
+                                            data-emoji-index="44" style="background-position: -35px -105px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😠"
+                                            data-emoji-index="45" style="background-position: -70px -70px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😡"
+                                            data-emoji-index="46" style="background-position: -105px -70px;"></span>
+                                        <span class="b74 emojik wa" tabindex="-1" data-unicode="🤬"
+                                            data-emoji-index="47" style="background-position: -70px 0px;"></span>
+                                        <span class="b74 emojik wa" tabindex="-1" data-unicode="🤯"
+                                            data-emoji-index="48" style="background-position: 0px -35px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😳"
+                                            data-emoji-index="49" style="background-position: 0px -35px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😱"
+                                            data-emoji-index="50" style="background-position: -105px 0px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😨"
+                                            data-emoji-index="51" style="background-position: 0px -140px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😰"
+                                            data-emoji-index="52" style="background-position: -70px 0px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😥"
+                                            data-emoji-index="53" style="background-position: -70px -105px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😓"
+                                            data-emoji-index="54" style="background-position: -140px -140px;"></span>
+                                        <span class="b71 emojik wa" tabindex="-1" data-unicode="🤗"
+                                            data-emoji-index="55" style="background-position: -35px -35px;"></span>
+                                        <span class="b71 emojik wa" tabindex="-1" data-unicode="🤔"
+                                            data-emoji-index="56" style="background-position: -105px 0px;"></span>
+                                        <span class="b74 emojik wa" tabindex="-1" data-unicode="🤭"
+                                            data-emoji-index="57" style="background-position: -105px 0px;"></span>
+                                        <span class="b74 emojik wa" tabindex="-1" data-unicode="🤫"
+                                            data-emoji-index="58" style="background-position: -35px 0px;"></span>
+                                        <span class="b73 emojik wa" tabindex="-1" data-unicode="🤥"
+                                            data-emoji-index="59" style="background-position: -140px -35px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😶"
+                                            data-emoji-index="60" style="background-position: -105px -35px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😐"
+                                            data-emoji-index="61" style="background-position: -35px -140px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😑"
+                                            data-emoji-index="62" style="background-position: -70px -140px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😬"
+                                            data-emoji-index="63" style="background-position: -105px -140px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="🙄"
+                                            data-emoji-index="64" style="background-position: -70px -140px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😯"
+                                            data-emoji-index="65" style="background-position: -35px 0px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😦"
+                                            data-emoji-index="66" style="background-position: -105px -105px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😧"
+                                            data-emoji-index="67" style="background-position: -140px -105px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😮"
+                                            data-emoji-index="68" style="background-position: 0px 0px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😲"
+                                            data-emoji-index="69" style="background-position: -140px 0px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😴"
+                                            data-emoji-index="70" style="background-position: -35px -35px;"></span>
+                                        <span class="b73 emojik wa" tabindex="-1" data-unicode="🤤"
+                                            data-emoji-index="71" style="background-position: -105px -35px;"></span>
+                                        <span class="b60 emojik wa" tabindex="-1" data-unicode="😪"
+                                            data-emoji-index="72" style="background-position: -35px -140px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😵"
+                                            data-emoji-index="73" style="background-position: -70px -35px;"></span>
+                                        <span class="b71 emojik wa" tabindex="-1" data-unicode="🤐"
+                                            data-emoji-index="74" style="background-position: 0px 0px;"></span>
+                                        <span class="b73 emojik wa" tabindex="-1" data-unicode="🤢"
+                                            data-emoji-index="75" style="background-position: -35px -35px;"></span>
+                                        <span class="b74 emojik wa" tabindex="-1" data-unicode="🤮"
+                                            data-emoji-index="76" style="background-position: -140px 0px;"></span>
+                                        <span class="b73 emojik wa" tabindex="-1" data-unicode="🤧"
+                                            data-emoji-index="77" style="background-position: -70px -140px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😷"
+                                            data-emoji-index="78" style="background-position: -140px -35px;"></span>
+                                        <span class="b87 emojik wa" tabindex="-1" data-unicode="🤒"
+                                            data-emoji-index="79" style="background-position: 0px -105px;"></span>
+                                        <span class="b71 emojik wa" tabindex="-1" data-unicode="🤕"
+                                            data-emoji-index="80" style="background-position: -140px 0px;"></span>
+                                        <span class="b71 emojik wa" tabindex="-1" data-unicode="🤑"
+                                            data-emoji-index="81" style="background-position: -35px 0px;"></span>
+                                        <span class="b73 emojik wa" tabindex="-1" data-unicode="🤠"
+                                            data-emoji-index="82" style="background-position: -140px 0px;"></span>
+                                        <span class="b59 emojik wa" tabindex="-1" data-unicode="😈"
+                                            data-emoji-index="83" style="background-position: -105px -70px;"></span>
+                                        <span class="b45 emojik wa" tabindex="-1" data-unicode="👿"
+                                            data-emoji-index="84" style="background-position: 0px -35px;"></span>
+                                        <span class="b44 emojik wa" tabindex="-1" data-unicode="👹"
+                                            data-emoji-index="85" style="background-position: -140px -105px;"></span>
+                                        <span class="b44 emojik wa" tabindex="-1" data-unicode="👺"
+                                            data-emoji-index="86" style="background-position: 0px -140px;"></span>
+                                        <span class="b73 emojik wa" tabindex="-1" data-unicode="🤡"
+                                            data-emoji-index="87" style="background-position: 0px -35px;"></span>
+                                        <span class="b48 emojik wa" tabindex="-1" data-unicode="💩"
+                                            data-emoji-index="88" style="background-position: -70px -140px;"></span>
+                                        <span class="b44 emojik wa" tabindex="-1" data-unicode="👻"
+                                            data-emoji-index="89" style="background-position: -35px -140px;"></span>
+                                        <span class="b45 emojik wa" tabindex="-1" data-unicode="💀"
+                                            data-emoji-index="90" style="background-position: -35px -35px;"></span>
+                                        <span class="b90 emojik wa" tabindex="-1" data-unicode="☠" data-emoji-index="91"
+                                            style="background-position: 0px -35px;"></span>
+                                        <span class="b45 emojik wa" tabindex="-1" data-unicode="👽"
+                                            data-emoji-index="92" style="background-position: -105px 0px;"></span>
+                                        <span class="b45 emojik wa" tabindex="-1" data-unicode="👾"
+                                            data-emoji-index="93" style="background-position: -140px 0px;"></span>
+                                        <span class="b71 emojik wa" tabindex="-1" data-unicode="🤖"
+                                            data-emoji-index="94" style="background-position: 0px -35px;"></span>
+                                        <span class="b17 emojik wa" tabindex="-1" data-unicode="🎃"
+                                            data-emoji-index="95" style="background-position: -105px 0px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😺"
+                                            data-emoji-index="96" style="background-position: -70px -70px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😸"
+                                            data-emoji-index="97" style="background-position: 0px -70px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😹"
+                                            data-emoji-index="98" style="background-position: -35px -70px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😻"
+                                            data-emoji-index="99" style="background-position: -105px -70px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😼"
+                                            data-emoji-index="100" style="background-position: -140px -70px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😽"
+                                            data-emoji-index="101" style="background-position: 0px -105px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="🙀"
+                                            data-emoji-index="102" style="background-position: -105px -105px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😿"
+                                            data-emoji-index="103" style="background-position: -70px -105px;"></span>
+                                        <span class="b61 emojik wa" tabindex="-1" data-unicode="😾"
+                                            data-emoji-index="104" style="background-position: -35px -105px;"></span>
+                                        <span class="b74 emojik wa" tabindex="-1" data-unicode="🤲"
+                                            data-emoji-index="105" style="background-position: -105px -140px;"></span>
+                                        <span class="b30 emojik wa" tabindex="-1" data-unicode="👐"
+                                            data-emoji-index="106" style="background-position: -35px -35px;"></span>
+                                        <span class="b64 emojik wa" tabindex="-1" data-unicode="🙌"
+                                            data-emoji-index="107" style="background-position: -140px 0px;"></span>
+                                        <span class="b30 emojik wa" tabindex="-1" data-unicode="👏"
+                                            data-emoji-index="108" style="background-position: 0px 0px;"></span>
+                                        <span class="b72 emojik wa" tabindex="-1" data-unicode="🤝"
+                                            data-emoji-index="109" style="background-position: -35px -105px;"></span>
+                                        <span class="b29 emojik wa" tabindex="-1" data-unicode="👍"
+                                            data-emoji-index="110" style="background-position: -105px -70px;"></span>
+                                        <span class="b29 emojik wa" tabindex="-1" data-unicode="👎"
+                                            data-emoji-index="111" style="background-position: -140px -105px;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wa-panel-texto container">
+                        <div style="text-align: center">
+                            <div class="row">
+                                <div style="cursor: pointer;" class="col-1 open-emoji">
+                                    <i class="large material-icons wa-icon">mood</i>
+                                </div>
+                                <div class="col-10">
+                                    <input class="form-control wa-input wa-send emoji_font" onkeyup="waInputChange()" placeholder="Digite uma mensagem">
+                                </div>
+                                <div class="col-1" style="cursor: pointer;">
+                                    <i style="display: none; " class="send large material-icons wa-icon" onclick="sendMsg()">send</i>
+                                    <i class="mic large material-icons wa-icon">mic</i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+{{!-- modal imagem --}}
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+      </div>
+      <div class="modal-body">
+        <img src="" id="imagepreview" style="width: 400px; height: 264px;" >
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Modal atendentes online --}}
+<div id="atendentesOnline" class="modal fade">
+	<div class="modal-dialog " style="overflow-y: initial !important">
+		<div class="modal-content">
+			<div class="modal-header ">
+				Atendentes Online
+					<i style="color:white" class="fas fa-info-circle"></i>
+				
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body " style="height: 60vh;overflow-y: auto;">
+            <sup style="color: #bfb1b1;">Atendentes online apareceram aqui</sup>
+				<div id="listaAtendentes">
+              
+				</div>
+			</div>
+		</div>
+	</div>
+</div> 
+
+{{!-- Modal envio chat --}}
+<div id="info" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header ">
+				
+					<i style="color:white" class="fas fa-info-circle"></i>
+				
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body text-center">
+				<h4 id="nome-atendente">Ooops!</h4>	
+				<p>Deseja transferir um contato para atendimento</p>
+				<button id="aceitar-chat" class="btn btn-success" data-dismiss="modal">Aceitar</button>
+			</div>
+		</div>
+	</div>
+</div> 
+
+
+</body>
+
+<div id="not">
+
+
+</div>
+
+<script src="/js/jquery/jquery.min.js"></script>
+
+<script src="/js/dropzone.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script>
+    var chat_id = "{{chat_id}}";
+    //var id_atendente = "{{chat_id}}";
+
+    var id_setor = "{{atendente_setor}}";
+
+    var chat;
+
+
+
+    moment.locale('pt-br');
+
+    var data = moment.unix(1604896394).format();
+    var data2 = moment.unix(1604812325).format();
+    var data3 = moment.unix(1570935526).format();
+    
+
+    var today = moment();
+    var yesterday = moment().subtract(1, 'day');
+
+    function formatBytes(bytes, decimals = 2) {
+        if (bytes === 0) return '0 Bytes';
+
+        const k = 1024;
+        const dm = decimals < 0 ? 0 : decimals;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    }
+
+
+    function retornaData(date){
+        if (moment(date).isSame(today, 'day')){
+            return moment(date).format('LT');
+        }else if (moment(date).isSame(yesterday, 'day')){
+            return "Ontem"
+        }else{
+            return moment(date).format('L')
+        }
+    }
+
+    function retornaData2(date1){
+        if (moment(date1).isSame(today, 'day')){
+            return "Hoje"
+        }else if (moment(date1).isSame(yesterday, 'day')){
+            return "Ontem"
+        }else{
+            return moment(date1).format('L')
+        }
+    }
+
+ 
+
+    
+    function mostrarEmoji(){
+        var time = 1000;
+        $(".emoji").each(function() {
+            time = time + 1000;
+            setTimeout(() => {
+               $(this).html(emojione.toImage($(this).html()));
+               console.log("oi")
+               
+            }, time);
+        });
+    }
+
+   function atualizarLista() {
+      'use strict';
+      $.ajax({
+         type: "get",
+         url: "/auth/listarchats?chat_id=" + chat_id,
+         dataType: "json",
+         success: function (response) {
+               console.log(response)
+               chat = response;
+            },
+               error: function (err) {
+                     console.log(err)
+               }
+            });
+   }
+
+
+
+
+    function pegarLista(chat_id) {
+        'use strict';
+        $.ajax({
+            type: "get",
+            url: "/auth/listarchats?chat_id=" + chat_id,
+            dataType: "json",
+            success: function (response) {
+                console.log(response)
+                chat = response;
+                jsonListaChat(response)
+                mostrarEmoji();
+                
+                $(".wa-mensagens").fadeIn()
+                $('.wa-item-chat').on('click', function () {
+                    $(".wa-item-chat").removeClass("wa-item-active"); 
+                    $(this).addClass("wa-item-active");
+                    
+                });
+               
+               preencheFotoContato()
+               
+                
+               if (id_setor > 0){
+                  
+                  $(".wa-item-chat").addClass("d-none")  
+                  checarPermissao()   
+               }
+               
+               
+               
+              
+               
+                
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        });
+    }
+    
+   pegarLista(chat_id);
+ 
+
+   
+
+    function preencheFotoContato(){
+        var time = 1000;
+        $(".foto-perfil").each(async function() {
+           setTimeout(()=>{
+            var imagem =  $(this).attr("src")
+            var id = $(this).attr("id")
+            var contato = $(this).attr("contato").replace("foto-perfil", "")
+            if (imagem == "/images/profile.png"){
+                var imagem_local = localStorage.getItem(id)
+                if (imagem_local){
+                    $("#"+id).attr("src", imagem_local)
+                }else{
+                    
+                        $.ajax({
+                            type: "post",
+                            url: "/auth/getfotocontato?",
+                            data: "chat_id=" + chat_id+"&contato="+contato,
+                            dataType: "json",
+                            success: function (response) {
+                                //console.log($(this).attr("foto"))
+                                //console.log(response)
+                                if (response.url){
+                                    $("#"+id).attr("src", response.url)
+                                    localStorage.setItem(id, response.url)
+                                }else{
+                                    $("#"+id).attr("src", "/images/profile.png")
+                                    localStorage.setItem(id, "/images/profile.png")
+                                }
+
+                            },
+                            error: function (err) {
+                            console.log(err)
+                            }
+                        });
+                    
+                }
+                
+                
+            }
+            }, time);
+        })
+    }
+
+    function atualizaFotosPerfis(){
+        
+        $(".foto-perfil").each(async function() {
+          
+            var id = $(this).attr("id")
+            var contato = $(this).attr("contato").replace("foto-perfil", "")
+            var imagem_local = localStorage.getItem(id)
+            if (imagem_local){
+                localStorage.removeItem(id)
+            }
+        })
+    }
+
+    function getProfilePic(contato){
+        $.ajax({
+            type: "post",
+            url: "/auth/getfotocontato?",
+            data: "chat_id=" + chat_id+"&contato="+contato,
+            dataType: "json",
+            success: function (response) {
+                return response
+
+            },
+            error: function (err) {
+                return "erro";
+            }
+        });
+    }
+    
+
+    function jsonListaChat(json) {
+        var data1 = json.chat1;
+        var data2 = json.chat2;
+        for (let index = 0; index < data1.length; index++) {
+            var grupo = data1[index].isGroup;
+            var user_id = data2[index].id;
+            var name = "";
+            if (data1[index].name){
+                name = data1[index].name;
+            }else if (data1[index].contact.name){
+                name = data1[index].contact.name;
+            }else{
+                name = data1[index].contact.id.user
+            }
+            //name = index + name;
+            var imagem = data1[index].contact.profilePicThumbObj.eurl;
+            if (!name) {
+                name = data1[index].id;
+            }
+            if (!imagem) {
+                imagem = "/images/profile.png";
+            }
+            
+            var ultima_msg = data2[index].msgs.length - 1;
+            var texto = "...";
+
+            var unreadCount = data2[index].unreadCount;
+
+            
+            
+            if (typeof data2[index].msgs !== 'undefined' && data2[index].msgs.length > 0) {
+                var date = moment.unix(data2[index].msgs[ultima_msg].t).format();
+
+                date = retornaData(date);
+
+                if (!data2[index].msgs[ultima_msg].mimetype){
+                    if (data2[index].msgs[ultima_msg].type == "chat"){
+                        texto = data2[index].msgs[ultima_msg].body;
+                    }
+                    if (data2[index].msgs[ultima_msg].type == "call_log"){
+                        texto = "Chamda de voz perdida";
+                    }
+
+                    if (data2[index].msgs[ultima_msg].type == "gp2"){
+                        texto = "Ação do grupo"
+                    }
+                    
+                }else{
+                    texto = "Mídia enviada";
+                }
+            }
+
+            apendChat(user_id, name, imagem, texto, unreadCount,date, grupo)
+        }
+        
+    }
+
+    function apendChat(id, nome, imagem, texto, unreadCount, date, grupo) {
+        var data = [];
+ 
+        data["id"] = id;
+        data["nome"] = nome;
+        data["imagem"] = imagem;
+        data["texto"] = texto;        
+        data["unread"] = unreadCount;
+        data["date"] = date;
+        data["grupo"] = grupo;
+        
+        var html = chatHtml(data);
+        $("#chat-list").append(html);
+    }
+
+
+    function prependChat(id, nome, imagem, texto, unreadCount, date, grupo) {
+        var data = [];
+        var id_contato = id.replace("@c.us", "").replace("@g.us", "");
+
+
+        data["id"] = id;
+        data["nome"] = nome;
+        data["imagem"] = imagem;
+        data["texto"] = texto;       
+        var count = $("#badge-"+id_contato).text() 
+        count = +count + +unreadCount;
+        data["unread"] = count;
+        data["date"] = date;
+        data["grupo"] = grupo;
+        
+        var html = chatHtml(data);
+       
+        $("#chat-"+id_contato).remove();
+        $("#chat-list").prepend(html);
+        if (id_setor > 0){
+                  
+            $(".wa-item-chat").addClass("d-none")  
+            checarPermissao();
+         }
+
+    }
+
+    function chatHtml(data) {
+        var id_contato = data["id"].replace("@c.us", "").replace("@g.us", "");
+        var html = '<div id="chat-'+id_contato+'"  contato-id="'+data["id"]+'" class="row wa-item-chat" onClick="abrirChat(\'' + data["id"] + '\', ' + data["grupo"] + ')">';
+        html += '<div class="col-2">';
+        html += '<img src="' + data["imagem"] + '" id="'+id_contato+'" contato="' + data["id"] + '" onerror="imgError(this);"  class="rounded-circle foto-perfil" />';
+        html += '</div>';
+        html += '<div class="col-7 wa-contato">';
+        html += '<b id="nome-'+id_contato+'" class="wa-titulo emoji">' + data["nome"] + '</b><br />';
+        html += '<p class="wa-preview-message emoji">' + data["texto"] + '</p>';
+        html += '</div>';
+        html += '<div class="col-3" style="text-align: right">';
+        html += '<div><span style="font-size: 13px;">' + data["date"] + '</span></div>';
+        if (data["unread"] > 0){
+            html += '<div id="badge-'+id_contato+'"><span  style="font-size: 11px;" class="badge badge-pill wa-badge">' + data["unread"] + '</span></div>';
+        }
+        
+        html += '</div>';
+        html += '<div id="hr"> </div>';
+        html += '</div>';
+        
+        return html;
+    }
+
+    
+
+    function pegarListaMsgs(contato){
+        $.ajax({
+            type: "post",
+            url: "/auth/chatscontato",
+            data: 'chat_id='+chat_id+'&contato='+contato,
+                dataType: 'json',
+            success: function (response) {
+                console.log(response)
+            },
+            error: function (err){
+                console.log(err)
+            }
+        });
+    }
+
+    $(".open-emoji").on("click", function () {
+
+        if (document.getElementById('panel-emojis').style.display == "none") {
+            document.getElementById('panel-emojis').style.display = "block";
+            $(".open-emoji > i").text("close")
+            $('.wa-mensagens').css('height', '50vh')
+            $(".wa-mensagens").scrollTop($(".wa-mensagens")[0].scrollHeight);
+            
+        } else {
+            document.getElementById('panel-emojis').style.display = "none";
+            $(".open-emoji > i").text("mood")
+            $('.wa-mensagens').css('height', '80vh')
+            $(".wa-mensagens").scrollTop($(".wa-mensagens")[0].scrollHeight);
+        }
+    })
+
+    $( '.emojik' ).on('click', function(){
+        var cursorPos = $('.wa-send').prop('selectionStart');
+        var v = $('.wa-send').val();
+        var textBefore = v.substring(0,  cursorPos );
+        var textAfter  = v.substring( cursorPos, v.length );
+        var emoji = $(this).attr('data-unicode');
+        
+        $('.wa-send').val( textBefore+ emoji +textAfter );
+        $('.wa-send').focus();   
+
+        $('.wa-send').prop('selectionEnd', cursorPos + 2);
+        waInputChange();
+        
+    });
+    function isEmoji(str) {
+        var ranges = [
+            '(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|[\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|[\ud83c[\ude32-\ude3a]|[\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])' // U+1F680 to U+1F6FF
+        ];
+        if (str.match(ranges.join('|'))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function waInputChange(){
+
+        if ($('.wa-send').val().length > 0){
+            $('.send').show();
+            $('.mic').hide();
+        }else{
+            $('.mic').show();
+            $('.send').hide();
+        }
+    }
+
+    function downloadMidia(obj2,id,id_msg){
+        
+        var obj = chat.chat2;
+        var chats;
+        var $this = obj2;
+        var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> carregando...';
+        if (obj2.html() !== loadingText) {
+            $this.data('original-text', obj2.html());
+            //$this.css("left", "45px")
+            $this.html(loadingText);
+        }
+        for (var i = 0; i < obj.length; i++){
+        // look for the entry with a matching `code` value
+            if (obj[i].id == id){
+                // we found it
+                    chats = obj[i];
+                   
+            }
+        }
+        console.log(chats.msgs)
+
+        var mensagem;
+        for (var i = 0; i < chats.msgs.length; i++){
+        // look for the entry with a matching `code` value
+            if (chats.msgs[i].id.id == id_msg){
+                // we found it
+                    mensagem = chats.msgs[i];
+                    
+                    
+            }
+        }
+
+        if (!mensagem){
+           for (var i = 0; i < chats.msgs.length; i++){
+            // look for the entry with a matching `code` value
+                  if (chats.msgs[i].id == id_msg){
+                     // we found it
+                        mensagem = chats.msgs[i];
+                        
+                        
+                  }
+                  if (chats.msgs[i].id._serialized == id_msg){
+                     // we found it
+                        mensagem = chats.msgs[i];
+                        
+                        
+                  }
+            }
+        }
+
+
+        mensagem = JSON.parse(JSON.stringify(mensagem))
+        mensagem.chat_id = chat_id;
+        if (id_msg.includes("_")){
+         id_msg = id_msg.split('_')[2];
+        }
+        mensagem.contato = id.replace("@c.us", "").replace("@g.us", "");
+        $.ajax({
+            type: "post",
+            url: "/auth/downloadfile",
+            data: mensagem,
+            success: function (response) {
+                console.log(response)
+                if (response.includes("erro")){
+                    $(".img-"+id_msg).next().next().removeAttr("onclick")
+                    $(".img-"+id_msg).next().next().html('<i class="fas fa-exclamation-circle"></i> Erro')
+                    $(".img-"+id_msg).next().next().css("background", "red")
+                    $(".img-"+id_msg).next().next().css("width", "100px")
+                    $(".img-"+id_msg).next().next().css("text-align", "center")  
+                    $(".img-"+id_msg).next().next().next().removeAttr("onclick")
+                    $(".img-"+id_msg).next().next().next().html('<i class="fas fa-exclamation-circle"></i> Erro')
+                    $(".img-"+id_msg).next().next().next().css("background", "red")
+                    $(".img-"+id_msg).next().next().next().css("width", "100px")
+                    $(".img-"+id_msg).next().next().next().css("text-align", "center")
+                    
+                    return true;
+                }
+                var origin = window.location.origin;
+                var arquivo = origin+response.replace(/"/g, '');
+                if (mensagem.type == "image"){
+                    obj2.hide();
+                    
+                    $(".img-"+id_msg).attr("style", "filter: opacity(1)");
+                    const img = new Image();
+                    img.src = arquivo;
+                    img.onload = function() {
+                        resizeImage(img, $(".img-"+id_msg))
+                    }
+                    $(".img-"+id_msg).next().next().remove()
+                    $(".img-"+id_msg).attr("src", arquivo)
+                     
+                }
+                if (mensagem.type == "sticker"){
+                    obj2.hide();
+                    
+                    $(".img-"+id_msg).attr("style", "filter: opacity(1)");
+                    const img = new Image();
+                    img.src = arquivo;
+                    img.onload = function() {
+                        resizeSticker(img, $(".img-"+id_msg))
+                    }
+                    $(".img-"+id_msg).next().next().remove()
+                    $(".img-"+id_msg).attr("src", arquivo)
+                }
+                if (mensagem.type == "video"){
+                    obj2.hide();
+                    $(".img-"+id_msg).hide()
+                    $(".video-"+id_msg).attr("src", arquivo)
+                    $(".video-"+id_msg).closest(".wa-content").attr("style", "width: 232px; height: 149px;margin-bottom: 5px;")
+                    $(".video-"+id_msg).show()
+                    $(".video-"+id_msg).trigger('play');
+                }
+                if (mensagem.type == "ptt"){
+                    obj2.hide();
+                    $(".img-"+id_msg).hide()
+                    $(".video-"+id_msg).attr("src", arquivo)
+                    $(".video-"+id_msg).closest(".wa-content").attr("style", "width: 100%; height: 44px;margin-bottom: 33px;margin-left: 0px;line-height: 10px;")
+                    $(".video-"+id_msg).show()
+                    $(".video-"+id_msg).trigger('play');
+                }
+                if (mensagem.type == "audio"){
+                    obj2.hide();
+                    $(".img-"+id_msg).hide()
+                    $(".video-"+id_msg).attr("src", arquivo)
+                    $(".video-"+id_msg).closest(".wa-content").attr("style", "width: 100%; height: 44px;margin-bottom: 33px;margin-left: 0px;line-height: 10px;")
+                    $(".video-"+id_msg).show()
+                    $(".video-"+id_msg).trigger('play');
+                }
+                
+                
+                if (mensagem.type == "document"){
+                    $this.html($this.data('original-text'));
+                    $this.show();
+                    //window.location.href = arquivo;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", arquivo);
+                    xhr.responseType = "blob";
+                    
+                    xhr.onload = function () {
+                        saveData(this.response, mensagem.filename);
+                    };
+                    xhr.send();
+                }
+                
+            },
+            error: function (err){
+                console.log(err)
+            }
+        });
+    }
+
+    function saveData(blob, fileName) // does the same as FileSaver.js
+    {
+        var a = document.createElement("a");
+        document.body.appendChild(a);
+        a.style = "display: none";
+
+        var url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(url);
+    }
+
+    function verMais(obj2, contato, grupo){
+        var $this = obj2;
+        var onclick = $this.attr("onclick");
+        
+        var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> carregando...';
+        if (obj2.html() !== loadingText) {
+            $this.data('original-text', obj2.html());
+            //$this.css("left", "45px")
+            $this.html(loadingText);
+            $this.removeAttr("onclick")
+        }
+        
+        $.ajax({
+            type: "post",
+            url: "/auth/chatscontato?",
+                data: "chat_id=" + chat_id+"&contato="+contato,
+            dataType: "json",
+            success: function (response) {
+                console.log(response)
+                $this.html($this.data('original-text'));
+                $this.attr("onclick", onclick)
+                var chats = response;
+                console.log(chats)
+                
+               atualizarLista();
+                if (chats.length > 0){
+                    
+                    var html = $(".wa-mensagens").html();
+                    //console.log(html)
+                    $(".wa-mensagens").html('');
+                    for (var i = 0; i < chats.length; i++){
+                        const date_moment = moment.unix(chats[i].t).format()
+                        
+                        const date = retornaData2(date_moment);
+                        
+                        const type = chats[i].type
+                        var obj = chats[i];
+                        obj.isGroup = grupo
+                        
+                        
+                        //console.log(chats[i])
+                        
+                        
+                        chatData(date);
+                        
+                        if (type == "chat" || type == 'image' || type == 'video' || type == 'document' || type == 'ptt' || type == 'sticker' || type == 'audio'){
+                           if (chats[i].id.fromMe){
+                     
+                                 chatMe(obj)
+                                 
+                           }else{
+                                 if('fromMe' in chats[i]){
+                                    if(chats[i].fromMe){
+                                       chatMe(obj)
+                                    }else{
+                                       chatHim(obj)
+                                    }
+                                 }else{
+                                    chatHim(obj)
+                                 }
+                           }
+                        }else if (type == 'call_log'){
+                            chatCenter('<i style="color:red"class="fas fa-phone-slash"></i> Ligação perdida');
+                        }
+
+                    }
+                    //$(".wa-mensagens").scrollTop($(".wa-mensagens")[0].scrollHeight);
+                    
+                    
+                    $(".wa-card-chat").each(function() {
+                        
+                        setTimeout(() => {
+                            $(this).html(emojione.toImage($(this).html()));
+                            
+                        },500);
+                        
+                        
+                    });
+                    //console.log(html)
+                    $(".wa-mensagens").append(html);
+                    chatPreLoadingMsg('<i class="fas fa-angle-double-up"></i> Ver mais', contato, grupo);
+                }else{
+                    var html2 = '<div  class="container wa-chat-load">'
+                    html2 += '<div class="row d-flex justify-content-center mb-4">'
+                    html2 += '<div style="text-align: center;margin: 20px 0px 20px 0px;">'
+                    html2 += '<div class="card wa-card-chat wa-card-yellow" style="display: inline-block;">'
+                    html2 += 'Não há mais mensagens'
+                    html2 += '</div>'
+                    html2 += '</div>'
+                    html2 += '</div>'
+                    html2 += '</div>'
+
+                    $('.wa-chat-load').html('');
+
+
+                    $(".wa-mensagens").prepend(html2);
+                }
+              
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        });
+    }
+
+
+    function abrirChat(id, grupo) {
+        console.log(grupo)
+        $('.wa-file-input').fadeOut();
+        clearDropZone()
+        $(".wa-introducao").hide()
+        $(".wa-chat").show()
+        $("#loading_msg").show();
+       
+       var contato = id.replace("@c.us", "").replace("@g.us", "");
+        var url_imagem = $("#"+contato).attr("src")
+        //var numero = $("#"+contato).attr("contato")
+        var nome =  $("#nome-"+contato).text();
+
+        $("#wa-chat-imagem").attr("src", url_imagem)
+        $("#wa-chat-titulo").text(nome)
+        if (grupo){
+            $("#wa-chat-numero").text("Grupo")
+        }else{
+            $("#wa-chat-numero").text(contato)
+        }
+        
+        
+        $(".wa-mensagens").html('');
+        var chats;
+        var obj = chat.chat2;
+        for (var i = 0; i < obj.length; i++){
+            // look for the entry with a matching `code` value
+            if (obj[i].id == id){
+                // we found it
+                    chats = obj[i];
+            }
+        }
+        
+
+        
+        if (chats.msgs.length > 0){
+            $(".wa-mensagens").hide();
+            chatLoadingMsg('<i class="fas fa-angle-double-up"></i> Ver mais', id, grupo);
+            
+            for (var i = 0; i < chats.msgs.length; i++){
+                const date_moment = moment.unix(chats.msgs[i].t).format()
+                
+                const date = retornaData2(date_moment);
+                
+                const type = chats.msgs[i].type
+                var obj = chats.msgs[i];
+                obj.isGroup = grupo
+                
+                
+                //console.log(chats.msgs[i])
+                
+               
+                chatData(date);
+                
+                if (type == "chat" || type == 'image' || type == 'video' || type == 'document' || type == 'ptt' || type == 'sticker' || type == 'audio'){
+                    if (chats.msgs[i].id.fromMe){
+                        
+                        chatMe(obj)
+                        
+                    }else{
+                        if('fromMe' in chats.msgs[i]){
+                           if(chats.msgs[i].fromMe){
+                              chatMe(obj)
+                           }else{
+                              chatHim(obj)
+                           }
+                        }else{
+                           chatHim(obj)
+                        }
+                    }
+                }else if (type == 'call_log'){
+                    chatCenter('<i style="color:red"class="fas fa-phone-slash"></i> Ligação perdida');
+                }
+
+            }
+           
+            $(".wa-card-chat").each(function() {
+                
+                setTimeout(() => {
+                    $(".wa-mensagens").hide();
+                    $(this).html(emojione.toImage($(this).html()));
+                    var $this = $(this);
+                    if($this[0] === $(".wa-card-chat").last()[0]) {
+                        $(".wa-mensagens").show();
+                        $(".wa-mensagens").scrollTop($(".wa-mensagens")[0].scrollHeight);
+                        $("#loading_msg").hide();
+                    }
+                },500);
+                
+                
+            });
+            var id_contato = id.replace("@c.us", "").replace("@g.us", "");
+            $("#badge-"+id_contato).html("")   
+            
+            mudaCorContatoGrupo()                   
+            
+            $.ajax({
+                type: "post",
+                url: "/auth/sendseen",
+                data: "chat_id=" + chat_id +"&contato="+id,
+                dataType: "json",
+                success: function (response) {
+                    console.log(response)
+                    
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            });
+
+
+        }
+       
+    }
+    function resizeImage(obj3, $this){
+        const maxWidth = 450; // Max width for the image
+        const maxHeight = 250;    // Max height for the image
+        var ratio = 0;  // Used for aspect ratio
+        var width = obj3.width;    // Current image width
+        var height = obj3.height;  // Current image height
+
+        // Check if the current width is larger than the max
+        if(width > maxWidth){
+            ratio = maxWidth / width;   // get ratio for scaling image
+            $this.css("width", maxWidth); // Set new width
+            $this.css("height", height * ratio);  // Scale height based on ratio
+            height = height * ratio;    // Reset height to match scaled image
+        }
+
+        width = obj3.width;    // Current image width
+        height = obj3.height;  // Current image height
+
+        // Check if current height is larger than max
+        if(height > maxHeight){
+            ratio = maxHeight / height; // get ratio for scaling image
+            $this.css("height", maxHeight);   // Set new height
+            $this.css("width", width * ratio);    // Scale width based on ratio
+            width = width * ratio;    // Reset width to match scaled image
+        }
+    }
+    function resizeSticker(obj3, $this){
+        const maxWidth = 150; // Max width for the image
+        const maxHeight = 150;    // Max height for the image
+        var ratio = 0;  // Used for aspect ratio
+        var width = obj3.width;    // Current image width
+        var height = obj3.width;  // Current image height
+
+        // Check if the current width is larger than the max
+        if(width > maxWidth){
+            ratio = maxWidth / width;   // get ratio for scaling image
+            $this.css("width", maxWidth); // Set new width
+            $this.css("height", height * ratio);  // Scale height based on ratio
+            height = height * ratio;    // Reset height to match scaled image
+        }
+
+        var width = obj3.width;    // Current image width
+        var height = obj3.height;  // Current image height
+
+        // Check if current height is larger than max
+        if(height > maxHeight){
+            ratio = maxHeight / height; // get ratio for scaling image
+            $this.css("height", maxHeight);   // Set new height
+            $this.css("width", width * ratio);    // Scale width based on ratio
+            width = width * ratio;    // Reset width to match scaled image
+        }
+    }
+
+    function imagemExiste(url,time) {
+        $.get(url)
+        .done(function() { 
+            $(".img-"+time).attr("src", url);
+            $(".img-"+time).attr("style", "filter: opacity(1)");
+            $(".img-"+time).addClass("teste-img")
+            
+            const img = new Image();
+            console.log(url)
+            img.src = url;
+            img.onload = function() {
+                resizeImage(img, $(".img-"+time))
+            }
+            $(".img-"+time).next().next().remove()
+            return true
+        }).fail(function() { 
+           
+            console.log("erro")
+            return false
+        })
+    }
+    function stickerExiste(url,time) {
+        $.get(url)
+        .done(function() { 
+            $(".img-"+time).attr("src", url);
+            $(".img-"+time).attr("style", "filter: opacity(1)");
+            
+            const img = new Image();
+            console.log(url)
+            img.src = url;
+            img.onload = function() {
+                resizeSticker(img, $(".img-"+time))
+            }
+            $(".img-"+time).next().next().remove()
+            return true
+        }).fail(function() { 
+            $(".img-"+time).attr("src", "/img/none.png");
+            console.log("erro")
+            return false
+        })
+    }
+
+    function videoExiste(url,time) {
+        $.get(url)
+        .done(function() { 
+            $(".video-"+time).next().remove()
+            $(".img-"+time).hide();
+            $(".video-"+time).attr("src", url)
+            $(".video-"+time).closest(".wa-content").attr("style", "width: 232px; height: 149px;")
+            $(".video-"+time).show()
+            return true
+        }).fail(function() { 
+            console.log("erro")
+            return false
+        })
+    }
+
+    function audioExiste(url,time) {
+        $.get(url)
+        .done(function() { 
+            $(".video-"+time).next().remove()
+            $(".img-"+time).hide();
+            $(".video-"+time).attr("src", url)
+            $(".video-"+time).closest(".wa-content").attr("style", "width: 100%;")
+            $(".video-"+time).show()
+            return true
+        }).fail(function() { 
+            console.log("erro")
+            return false
+        })
+    }
+
+    function chatMe(obj){
+        const text = obj.body
+        const type = obj.type
+        const mimetype = obj.mimetype
+        const caption = obj.caption
+        const size = obj.size
+        const from = obj.to.trim()
+        const id_msg = obj.id.id
+        var time = obj.t
+
+        time = moment.unix(time).format("HH:mm") 
+
+        
+        const origin = window.location.origin
+        const contato = obj.to.replace("@c.us", "").replace("@g.us", "");
+        
+
+        
+        var html = '<div class="container wa-chat-me">'       
+            html += '<div style="margin-right: 10px;" class="d-flex justify-content-end mb-4">'
+        html += '<div class="card wa-card-chat wa-card-green" style="max-width: 553px;border-radius: 10px;" >'
+       
+       
+        
+       
+        if (type == "image"){
+            html += '<div class="wa-content">'
+            
+
+            var ext =  mimetype.replace("image/", "")
+            var img = origin+"/"+chat_id+"/"+contato+"/"+id_msg+"."+ext
+            setTimeout(() => {
+               imagemExiste(img,id_msg)
+            }, 2000)
+            
+
+            html += '<img  class="img-'+id_msg+'" src="data:'+mimetype+';base64,'+text+'"/><br>'
+            if (size){
+                
+                html +=  '<a class="load" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg+'\')" ><i style="margin: 2px;" class="fas fa-download"></i>'
+                html += '<span style="font-size: 11px;">'+formatBytes(size)+'</span>'
+                html += '</a>'
+            }
+            html += '</div>'
+            if (caption)
+                html += caption
+        }else if (type == "sticker"){
+            html += '<div class="wa-content">'
+            
+
+            var ext =  mimetype.replace("image/", "")
+            var img = origin+"/"+chat_id+"/"+contato+"/"+id_msg+"."+ext
+            setTimeout(() => {
+               imagemExiste(img,id_msg)
+            }, 2000)
+            
+
+            html += '<img class="img-'+id_msg+'" src="data:'+mimetype+';base64,'+text+'"/><br>'
+            
+               
+               html +=  '<a class="load" href="#" onclick="downloadMidia($(this),\''+from+'\','+id_msg+')" ><i style="margin: 2px;" class="fas fa-download"></i>'
+               html += '<span style="font-size: 11px;">figurinha</span>'
+               html += '</a>'
+            
+            html += '</div>'
+            if (caption)
+                html += caption
+
+        }else if (type == "chat"){
+            html += '<div >' + text + '</div>'
+        }else if (type == "video"){
+            html += '<div class="wa-content">'
+            var ext =  mimetype.replace("video/", "")
+            var video = origin+"/"+chat_id+"/"+contato+"/"+id_msg+"."+ext
+            console.log(video);
+            videoExiste(video,id_msg)
+            
+            
+            html += '<video class="video-'+id_msg+'" style="display:none"  controls src=""></video> '
+            html += '<img class="img-'+id_msg+'" src="data:'+mimetype+';base64,'+text+'"/><br>'
+            if (size){
+                
+                html +=  '<a class="load" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg+'\')" ><i style="margin: 2px;" class="fas fa-play-circle"></i>'
+                html += '<span style="font-size: 11px;">'+formatBytes(size)+'</span>'
+                html += '</a>'
+            }
+            html += '</div>'
+        }else if (type == "ptt"){
+            html += '<div class="wa-content" style="margin-bottom: -20px;margin-bottom: 33px;line-height: 17px;height: 44px;">'
+
+            if (mimetype){
+               var ext =  mimetype.replace("audio/", "").replace("; codecs=opus", "");
+            }
+            var ext = "oga"
+            var video = origin+"/"+chat_id+"/"+contato+"/"+id_msg+"."+ext
+            console.log(video);
+            audioExiste(video,id_msg)
+
+            html += '<img style="width: 100%;height: 44px;margin-right: -133px;margin-top: 21px;" class="img-'+id_msg+'" src="/img/player.png"/><br>'
+            html += '<audio class="video-'+id_msg+'" controls style="display:none"  src=""></audio> '
+            
+            if (size){
+                
+                html +=  '<a class="load load_ptt text-center" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg+'\')" ><i style="margin: 2px;" class="far fa-file-audio"></i>'
+                html += '<span style="font-size: 11px;">'+formatBytes(size)+'</span>'
+                html += '</a>'
+            }
+
+            html += '</div>'
+            
+         }else if (type == "audio"){
+            html += '<div class="wa-content" style="margin-bottom: -20px;margin-bottom: 33px;line-height: 17px;height: 44px;">'
+
+            
+            var ext =  mimetype.replace("audio/", "").replace("; codecs=opus", "");
+            var ext = "oga"
+            var video = origin+"/"+chat_id+"/"+contato+"/"+id_msg+"."+ext
+            console.log(video);
+            audioExiste(video,id_msg)
+
+            html += '<img style="width: 100%;height: 44px;margin-right: -133px;margin-top: 21px;" class="img-'+id_msg+'" src="/img/player.png"/><br>'
+            html += '<audio class="video-'+id_msg+'" controls style="display:none"  src=""></audio> '
+            
+            if (size){
+                
+                html +=  '<a class="load load_ptt text-center" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg+'\')" ><i style="margin: 2px;" class="far fa-file-audio"></i>'
+                html += '<span style="font-size: 11px;">'+formatBytes(size)+'</span>'
+                html += '</a>'
+            }
+
+            html += '</div>'
+            
+         }else if (type == "document"){
+            html += '<div class="wa-content-documentos">'
+            var ext =  mimetype.replace("application/", "")
+            console.log(ext)
+            if (size){
+                var icon = "/img/file.png";
+                if (ext == "pdf"){
+                    icon = "/img/pdf.png";
+                }else if (ext == "msword"){
+                    icon = "/img/docs.png";
+                }else if (ext.includes("spreadsheetml")){
+                    icon = "/img/folhas-google.png";
+                }
+                html +=  '<span class="load wa-content-document" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg+'\')" >'
+                html += '<img src="'+icon+'" style="width: 32px;" /><span class="wa-document-title">'+ obj.filename + '</span><span style="font-size: 11px;"></span>'
+                html += '<svg style="float: right;color: #848484;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" width="34" height="34"><path fill="currentColor" d="M17 2c8.3 0 15 6.7 15 15s-6.7 15-15 15S2 25.3 2 17 8.7 2 17 2m0-1C8.2 1 1 8.2 1 17s7.2 16 16 16 16-7.2 16-16S25.8 1 17 1z"></path><path fill="currentColor" d="M22.4 17.5h-3.2v-6.8c0-.4-.3-.7-.7-.7h-3.2c-.4 0-.7.3-.7.7v6.8h-3.2c-.6 0-.8.4-.4.8l5 5.3c.5.7 1 .5 1.5 0l5-5.3c.7-.5.5-.8-.1-.8z"></path></svg>'
+                html += '</span>'
+                
+            }
+            html += '</div>'
+            html += '<div class="wa-doc-info">'+ formatBytes(size)+'</div>'
+        }
+        html += '<div class="wa-tempo">'
+         if (obj.ack == 0){
+            html += '<span>'+time+'</span> <span id-view="'+obj.id+'"> <i style="margin-top: -2px;" class="large material-icons wa-icon wa-chat-icon">cached</i> </span>'
+         }
+         
+         if (obj.ack == 1){
+            html += '<span>'+time+'</span> <span id-view="'+obj.id.id+'"> <i style="margin-top: -2px;" class="large material-icons wa-icon wa-chat-icon">done</i> </span>'
+         }
+         if (obj.ack == 2){
+            html += '<span>'+time+'</span> <span id-view="'+obj.id.id+'"> <i style="margin-top: -2px;" class="large material-icons wa-icon wa-chat-icon">done_all</i> </span>'
+         }
+         if (obj.ack == 3){
+            html += '<span>'+time+'</span> <span id-view="'+obj.id.id+'"> <i style="margin-top: -2px; color:blue" class="large material-icons wa-icon wa-chat-icon">done_all</i> </span>'
+         }
+         
+         html += '</div>'        
+         html += '</div>'
+         html += '</div>'
+         html += '</div>'
+        $(".wa-mensagens").append(html);
+    }
+    function chatHim(obj){
+        const text = obj.body
+        const type = obj.type
+        const mimetype = obj.mimetype
+        const caption = obj.caption
+        const size = obj.size
+        const from = obj.from.trim()
+        var id_msg = obj.id.id
+        const grupo = obj.isGroup
+         var time = obj.t
+
+        time = moment.unix(time).format("HH:mm") 
+
+
+         var id_msg2;
+        if (!id_msg){
+           id_msg2 = obj.id
+           id_msg = obj.id.split('_')[2]
+           
+        }else{
+           id_msg2 = id_msg
+        }
+        
+        
+        const origin = window.location.origin
+        const contato = obj.from.replace("@c.us", "").replace("@g.us", "");
+
+        var html = '<div class="container wa-chat-him">'
+        html += '<div class="d-flex justify-content-start mb-4">'
+        
+        html += '<div class="card wa-card-chat wa-card-default" style="max-width: 60%;min-width: 10%;border-radius: 10px;">'
+       
+        
+         if (type == "image"){
+            
+            html += '<div class="wa-content">'
+
+            if (grupo){
+                const autor =obj.author.replace("@c.us", "");
+                html += '<div class="wa-autor">'+ autor +'</div><br>';
+            }
+            var ext =  mimetype.replace("image/", "")
+            var img = origin+"/"+chat_id+"/"+contato+"/"+id_msg+"."+ext
+            setTimeout(() => {
+               imagemExiste(img,id_msg)
+            }, 2000)
+
+            html += '<img class="img-'+id_msg+'" src="data:'+mimetype+';base64,'+text+'"/><br>'
+            if (size){
+                html +=  '<a class="load" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg2+'\')" ><i style="margin: 2px;" class="fas fa-download"></i>'
+                html += '<span style="font-size: 11px;">'+formatBytes(size)+'</span>'
+                html += '</a>'
+            }
+            
+            if (caption)
+                html += caption
+            
+            html += '</div>'
+         }else if (type == "sticker"){
+            
+            html += '<div class="wa-content">'
+
+            if (grupo){
+                const autor =obj.author.replace("@c.us", "");
+                html += '<div class="wa-autor">'+ autor +'</div><br>';
+            }
+            var ext =  mimetype.replace("image/", "")
+            var img = origin+"/"+chat_id+"/"+contato+"/"+id_msg+"."+ext
+            setTimeout(() => {
+               stickerExiste(img,id_msg)
+            }, 2000)
+
+            html += '<img class="img-'+id_msg+'" src="data:'+mimetype+';base64,'+text+'"/><br>'
+            
+                html +=  '<a class="load" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg2+'\')" ><i style="margin: 2px;" class="fas fa-download"></i>'
+                html += '<span style="font-size: 11px;">figurinha</span>'
+                html += '</a>'
+            
+            
+            if (caption)
+                html += caption
+            
+            html += '</div>'
+         }else if (type == "chat"){
+            html += '<div class="wa-content">'
+
+            if (grupo){
+                const autor =obj.author.replace("@c.us", "");
+                html += '<div class="wa-autor">'+ autor +'</div><br>';
+            }
+            html += '<div >' + text + '</div>'
+            html += '</div>'
+         }else if (type == "video"){
+            html += '<div class="wa-content" style="margin-bottom: -20px;">'
+
+            if (grupo){
+                const autor =obj.author.replace("@c.us", "");
+                html += '<div class="wa-autor">'+ autor +'</div><br>';
+            }
+            var ext =  mimetype.replace("video/", "")
+            var video = origin+"/"+chat_id+"/"+contato+"/"+id_msg+"."+ext
+            console.log(video);
+            videoExiste(video,id_msg)
+
+            html += '<img class="img-'+id_msg+'" src="data:'+mimetype+';base64,'+text+'"/><br>'
+            html += '<video class="video-'+id_msg+'" controls style="display:none"  src=""></video> '
+            
+            if (size){
+                
+                html +=  '<a class="load" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg2+'\')" ><i style="margin: 2px;" class="fas fa-play-circle"></i>'
+                html += '<span style="font-size: 11px;">'+formatBytes(size)+'</span>'
+                html += '</a>'
+            }
+
+            html += '</div>'
+            
+         }else if (type == "ptt"){
+            html += '<div class="wa-content" style="margin-bottom: -20px;margin-right: -133px;margin-bottom: 33px;line-height: 17px;height: 44px;">'
+
+            if (grupo){
+                const autor =obj.author.replace("@c.us", "");
+                html += '<div class="wa-autor">'+ autor +'</div><br>';
+            }
+            var ext =  mimetype.replace("audio/", "").replace("; codecs=opus", "");
+            var ext = "oga"
+            var video = origin+"/"+chat_id+"/"+contato+"/"+id_msg+"."+ext
+            console.log(video);
+            audioExiste(video,id_msg)
+
+            html += '<img style="width: 100%;height: 44px;margin-top: 21px;" class="img-'+id_msg+'" src="/img/player.png"/><br>'
+            html += '<audio class="video-'+id_msg+'" controls style="display:none"  src=""></audio> '
+            
+            if (size){
+                
+                html +=  '<a class="load load_ptt text-center" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg2+'\')" ><i style="margin: 2px;" class="far fa-file-audio"></i>'
+                html += '<span style="font-size: 11px;">'+formatBytes(size)+'</span>'
+                html += '</a>'
+            }
+
+            html += '</div>'
+            
+         }else if (type == "audio"){
+            html += '<div class="wa-content" style="margin-bottom: -20px;margin-right: -133px;margin-bottom: 33px;line-height: 17px;height: 44px;">'
+
+            if (grupo){
+                const autor =obj.author.replace("@c.us", "");
+                html += '<div class="wa-autor">'+ autor +'</div><br>';
+            }
+            var ext =  mimetype.replace("audio/", "").replace("; codecs=opus", "");
+            var ext = "oga"
+            var video = origin+"/"+chat_id+"/"+contato+"/"+id_msg+"."+ext
+            console.log(video);
+            audioExiste(video,id_msg)
+
+            html += '<img style="width: 100%;height: 44px;margin-top: 21px;" class="img-'+id_msg+'" src="/img/player.png"/><br>'
+            html += '<audio class="video-'+id_msg+'" controls style="display:none"  src=""></audio> '
+            
+            if (size){
+                
+                html +=  '<a class="load load_ptt text-center" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg2+'\')" ><i style="margin: 2px;" class="far fa-file-audio"></i>'
+                html += '<span style="font-size: 11px;">'+formatBytes(size)+'</span>'
+                html += '</a>'
+            }
+
+            html += '</div>'
+            
+         }else if (type == "document"){
+            
+           
+           html += '<div class="wa-content-documentos">'
+
+            if (grupo){
+                const autor =obj.author.replace("@c.us", "");
+                html += '<div class="wa-autor">'+ autor +'</div><br>';
+
+            }
+            var ext =  mimetype.replace("application/", "")
+            console.log(ext)
+            if (size){
+                var icon = "/img/file.png";
+                if (ext == "pdf"){
+                    icon = "/img/pdf.png";
+                }else if (ext == "msword"){
+                    icon = "/img/docs.png";
+                }else if (ext.includes("spreadsheetml")){
+                    icon = "/img/folhas-google.png";
+                }
+                html +=  '<span class="load wa-content-document" href="#" onclick="downloadMidia($(this),\''+from+'\',\''+id_msg2+'\')" >'
+                html += '<img src="'+icon+'" style="width: 32px;" /><span class="wa-document-title">'+ obj.filename + '</span><span style="font-size: 11px;"></span>'
+                html += '<svg style="float: right;color: #848484;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" width="34" height="34"><path fill="currentColor" d="M17 2c8.3 0 15 6.7 15 15s-6.7 15-15 15S2 25.3 2 17 8.7 2 17 2m0-1C8.2 1 1 8.2 1 17s7.2 16 16 16 16-7.2 16-16S25.8 1 17 1z"></path><path fill="currentColor" d="M22.4 17.5h-3.2v-6.8c0-.4-.3-.7-.7-.7h-3.2c-.4 0-.7.3-.7.7v6.8h-3.2c-.6 0-.8.4-.4.8l5 5.3c.5.7 1 .5 1.5 0l5-5.3c.7-.5.5-.8-.1-.8z"></path></svg>'
+                html += '</span>'
+                
+            }
+            html += '</div>'
+            html += '<div class="wa-doc-info">'+ formatBytes(size)+'</div>'
+            
+            
+        }
+       
+        
+        html += '<div class="wa-tempo">'
+        html += '<span>'+time+'</span>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        $(".wa-mensagens").append(html);
+        if (grupo){
+            $(".wa-content-documentos").css("height", "65px")
+            $(".wa-content-document").attr("style", "margin-left: 10px;width: 106%;left: -15px;");
+        }
+    }
+
+    function chatData(time){
+        var html = '<div  class="container wa-chat-date">'
+        html += '<div class="row d-flex justify-content-center mb-4">'
+        html += '<div class="">'
+        html += '<div style="text-align: center;margin: 20px;">'
+        html += '<div class="card wa-card-chat wa-card-blue">'
+        html += time
+        html += '</div> '
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        if ($('.wa-chat-date:contains('+time+')').length < 1 ){
+            $(".wa-mensagens").append(html);
+        }
+        
+    }
+
+    function chatCenter(msg){
+        var html = '<div  class="container wa-chat-date">'
+        html += '<div class="row d-flex justify-content-center mb-4">'
+        html += '<div class="">'
+        html += '<div style="text-align: center;margin: 20px 0px 20px 0px;">'
+        html += '<div class="card wa-card-chat wa-card-blue" style="display: inline-block;">'
+        html += msg
+        html += '</div> '
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        if ($('.wa-chat-date:contains('+msg+')').length < 1 ){
+            $(".wa-mensagens").append(html);
+        }
+        
+    }
+
+    function chatLoadingMsg(msg, contato, grupo){
+        var html = '<div  class="container wa-chat-load">'
+        html += '<div class="row d-flex justify-content-center mb-4">'
+        html += '<div class="">'
+        html += '<div style="text-align: center;margin: 20px 0px 20px 0px;">'
+        html += '<div class="card wa-card-chat wa-card-yellow" style="display: inline-block;">'
+        html += '<a href="#" onclick="verMais($(this),\''+contato+'\', '+ grupo+')">'+msg+'</a>'
+        html += '</div> '
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        if ($('.wa-chat-load:contains('+msg+')').length < 1 ){
+            $(".wa-mensagens").append(html);
+        }
+        
+    }
+
+    function chatPreLoadingMsg(msg, contato, grupo){
+        var html = '<div  class="container wa-chat-load">'
+        html += '<div class="row d-flex justify-content-center mb-4">'
+        html += '<div class="">'
+        html += '<div style="text-align: center;margin: 20px 0px 20px 0px;">'
+        html += '<div class="card wa-card-chat wa-card-yellow" style="display: inline-block;">'
+        html += '<a href="#" onclick="verMais($(this),\''+contato+'\', '+ grupo+')">'+msg+'</a>'
+        html += '</div> '
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+       
+        $('.wa-chat-load').html('');
+           
+       
+        $(".wa-mensagens").prepend(html);
+        
+    }
+
+
+
+    function pesquisarContatos(){
+        
+        var query = $('.wa-search').val().toLowerCase();
+        if (query.length > 0)
+            $(".clear-input").show()
+        else    
+            $(".clear-input").hide()
+        $('.wa-item-chat').each(function(){
+            
+            var $this = $(this);
+            if($this.text().toLowerCase().indexOf(query) === -1)
+                $this.fadeOut();
+            else $this.fadeIn();
+        });
+    }
+
+    $(".clear-input").on('click', function () {
+        $( ".wa-search" ).val("")
+        pesquisarContatos();
+    });
+    var origin = window.location.origin;
+    console.log(origin)
+    if(origin.includes(":5000")){
+      origin = origin.replace(":5000", "")
+    }
+    console.log(origin)
+    var socket = io(origin+':3000');
+    socket.emit("enviar mensagem", {user_id: {{user.id}}, atendente_id: {{atendente_user.id}}, atendente_nome: "{{atendente_user.nome}}", chat_id: "{{chat_id}}", setor: "{{nome_setor}}" }, function(){
+            "teste"
+    });
+    socket.on("atualizar "+chat_id, function(mensagem){
+      {{!-- console.log(mensagem)
+      console.log(mensagem.sender)
+      console.log(mensagem.sender.name + ' -> ' + mensagem.body) --}}
+
+      var chats;
+      var obj = chat.chat2;
+      for (var i = 0; i < obj.length; i++){
+         // look for the entry with a matching `code` value
+         if (obj[i].id == mensagem.from){
+               // we found it
+                  chats = obj[i];
+         }
+      }
+
+      chats.msgs.push(mensagem)
+      var id_contato = mensagem.from.replace("@c.us", "").replace("@g.us", "");
+      var nome;
+      var imagem;
+      if (mensagem.sender.name){
+         nome = mensagem.chat.contact.name;
+      }else{
+         nome = id_contato;
+      }
+      if (mensagem.chat.contact.profilePicThumbObj.eurl){
+         imagem = mensagem.chat.contact.profilePicThumbObj.eurl
+      }else{
+         imagem = "/images/profile.png"
+      }
+      
+      var date = moment.unix( mensagem.t).format();
+
+      date = retornaData(date);
+
+      var active = $(".wa-item-active").attr("id")
+      
+      var texto = "";
+      
+         
+
+      if (!mensagem.mimetype){
+         if (mensagem.type == "chat"){
+            texto = mensagem.body;
+         }
+         if (mensagem.type == "call_log"){
+            texto = "Chamda de voz perdida";
+         }
+
+         if (mensagem.type == "gp2"){
+            texto = "Ação do grupo"
+         }
+         if (mensagem.type == "ptt"){
+            texto = "Mídia enviada";
+         }
+         
+      }else{
+         texto = "Mídia enviada";
+      }
+      
+
+      prependChat(mensagem.from, nome,imagem, texto, 1, date, mensagem.isGroupMsg)
+
+      $('.wa-item-chat').on('click', function () {
+         $(".wa-item-chat").removeClass("wa-item-active"); 
+         $(this).addClass("wa-item-active");
+                  
+      });
+
+        
+      if (mensagem.chat.muteExpiration == 0){
+
+         $('<embed id="background-audio"  src="../sounds/notificacao.mp3" autostart="1"></embed>').appendTo('#not')
+         
+         setTimeout(() => {
+               $("#background-audio").remove()
+         },5000)
+      }
+
+      $("#chat-"+id_contato+" > div > p").html(emojione.toImage($("#chat-"+id_contato+" > div > p").html()));
+      
+      if (!active){
+         return true;
+      }
+      contato = active.replace("chat-", "")
+      console.log("active", active)
+      if (contato == id_contato){
+         chatHim(mensagem)
+         $("#chat-"+id_contato).addClass("wa-item-active");
+         $(".wa-mensagens").scrollTop($(".wa-mensagens")[0].scrollHeight);
+         $("#badge-"+id_contato).html("")   
+         $(".wa-card-chat:last").html(emojione.toImage($(".wa-card-chat:last").html()));
+         $.ajax({
+               type: "post",
+               url: "/auth/sendseen",
+               data: "chat_id=" + chat_id +"&contato="+mensagem.from,
+               dataType: "json",
+               success: function (response) {
+                  console.log(response)
+                  
+               },
+               error: function (err) {
+                  console.log(err)
+               }
+         });
+      }
+      checarPermissao()
+        
+    }); 
+
+   
+
+   socket.on("ackiton "+chat_id, function(mensagem){
+      console.log(mensagem)
+
+
+      var chats;
+      var chat1;
+      var obj = chat.chat2;
+      for (var i = 0; i < obj.length; i++){
+         // look for the entry with a matching `code` value
+         if (obj[i].id == mensagem.to){
+            // we found it
+            chats = obj[i];
+            chat1 = chat.chat1[i]
+         
+         }
+      }
+
+      console.log("chats",chat1)
+
+      var mensagem_enviada;
+      for (var i = 0; i < chats.msgs.length; i++){
+      // look for the entry with a matching `code` value
+         if (chats.msgs[i].id.id == mensagem.id.id){
+               // we found it
+                  mensagem_enviada = chats.msgs[i];
+                  console.log("veio aui", mensagem_enviada)
+                  
+         }
+         if (chats.msgs[i].id == mensagem.id._serialized){
+            // we found it
+               mensagem_enviada = chats.msgs[i];
+               console.log("veio aui", mensagem_enviada)
+         }
+      }
+      
+
+
+      if (mensagem_enviada){
+         if (mensagem.ack == 0){
+            $("span[id-view='"+mensagem_enviada.id+"'] > i").text('done')
+            $("span[id-view='"+mensagem_enviada.id.id+"'] > i").text('done')
+         }
+         if (mensagem.ack == 1){
+            $("span[id-view='"+mensagem_enviada.id+"'] > i").text('done_all')
+            $("span[id-view='"+mensagem_enviada.id.id+"'] > i").text('done_all')
+         }
+         if (mensagem.ack == 2){
+            $("span[id-view='"+mensagem_enviada.id+"'] > i").text('done_all')
+            $("span[id-view='"+mensagem_enviada.id.id+"'] > i").text('done_all')
+         }
+         if (mensagem.ack > 2){
+            $("span[id-view='"+mensagem_enviada.id+"'] > i").css('color', 'blue')
+            $("span[id-view='"+mensagem_enviada.id.id+"'] > i").css('color', 'blue')
+         }
+         return true;
+      }else{
+         chats.msgs.push(mensagem)
+      }
+
+      var id_contato = mensagem.to.replace("@c.us", "").replace("@g.us", "");
+      var nome;
+      var imagem;
+      if (chat1.name){
+         nome = chat1.name;
+      }else{
+         nome = id_contato;
+      }
+      if (chat1.contact.profilePicThumbObj.eurl){
+         imagem = chat1.contact.profilePicThumbObj.eurl
+      }else{
+         imagem = "/images/profile.png"
+      }
+
+      var date = moment.unix( mensagem.t).format();
+
+      date = retornaData(date);
+
+      var active = $(".wa-item-active").attr("id")
+
+        
+      var texto = "";
+      
+         
+
+      if (!mensagem.mimetype){
+         if (mensagem.type == "chat"){
+            texto = mensagem.body;
+         }
+         if (mensagem.type == "call_log"){
+            texto = "Chamda de voz perdida";
+         }
+
+         if (mensagem.type == "gp2"){
+            texto = "Ação do grupo"
+         }
+
+         if (mensagem.type == "ptt"){
+            texto = "Mídia enviada";
+         }
+
+         
+         
+      }else{
+         texto = "Mídia enviada";
+      }
+
+
+      prependChat(mensagem.to, nome,imagem, texto, 0, date, chat1.isGroup)
+
+      $('.wa-item-chat').on('click', function () {
+         $(".wa-item-chat").removeClass("wa-item-active"); 
+         $(this).addClass("wa-item-active");
+                  
+      });
+
+      $("#chat-"+id_contato+" > div > p").html(emojione.toImage($("#chat-"+id_contato+" > div > p").html()));
+      if (!active){
+         return true;
+      }
+
+      contato = active.replace("chat-", "")
+      console.log("active", active)
+      if (contato == id_contato){
+         chatMe(mensagem)
+         $("#chat-"+id_contato).addClass("wa-item-active");
+         $(".wa-mensagens").scrollTop($(".wa-mensagens")[0].scrollHeight);
+         $("#badge-"+id_contato).html("") 
+         $(".wa-card-chat:last").html(emojione.toImage($(".wa-card-chat:last").html()));
+      }
+      checarPermissao()
+        
+   })
+
+
+   function sendMsg(){
+        var msg = $(".wa-send").val();
+        console.log(msg)
+        if (msg.length < 1){
+           return true
+        }
+         $(".wa-send").val('');
+         waInputChange()
+
+        var active = $(".wa-item-active").attr("contato-id")
+
+        if (!active){
+            return true;
+        }
+        contato = active.replace("chat-", "")
+        $.ajax({
+            type: "post",
+            url: "/auth/enviartexto",
+            data: "chat_id=" + chat_id +"&contato="+contato+"&msg="+msg,
+            //dataType: "json",
+            success: function (response) {
+               console.log(response)
+               chatMe(response)
+               
+               for (var i = 0; i < chat.chat2.length; i++){
+                  // look for the entry with a matching `code` value
+                  if (chat.chat2[i].id == active){
+                     // we found it
+                        chat.chat2[i].msgs.push(response)
+                  }
+                  
+                  
+               }
+
+
+               var date = moment.unix( response.t).format();
+
+               date = retornaData(date);
+
+               contato = contato.replace("@c.us", "").replace("@g.us", "")
+
+               var nome = $("#nome-"+contato).text();
+               var imagem;
+               if (response.chat.contact.profilePicThumbObj.eurl){
+                  imagem = response.chat.contact.profilePicThumbObj.eurl
+               }else{
+                  imagem = "/images/profile.png"
+               }
+               prependChat(response.to, nome,imagem, response.body, 0, date, response.isGroupMsg)
+               $(".wa-mensagens").scrollTop($(".wa-mensagens")[0].scrollHeight);
+               $(".wa-card-chat:last").html(emojione.toImage($(".wa-card-chat:last").html()));
+               $("#chat-"+contato).addClass("wa-item-active");
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        });
+    }
+
+
+   $('.wa-send').keyup(function(e){
+      if(e.keyCode == 13)
+      {
+         console.log("enter")
+         sendMsg()
+      }
+   });
+
+   function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+         color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+   }
+
+   function mudaCorContatoGrupo(){
+      $(".wa-autor").each(function() {
+           var contato = $(this).html()
+           if ($(".wa-autor:contains('"+contato+"')").length > 1){
+              var color = $(".wa-autor:contains('"+contato+"'):first").css("color")
+           }else{
+              $(".wa-autor:contains('"+contato+"')").css("color", getRandomColor())
+           }
+      });
+   }
+
+   
+   socket.on("atendente_online "+chat_id, function(mensagem){
+      if ($("#online-"+mensagem.atendente_id).length > 0){
+         $("#online-"+mensagem.atendente_id).remove()
+      }
+      console.log(mensagem)
+      html = htmlAtendenteOnline(mensagem)
+      $("#listaAtendentes").append(html);
+     
+   })
+
+   socket.on("atendente_offline "+chat_id, function(mensagem){
+      console.log(mensagem)
+
+      $("#online-"+mensagem.atendente_id).remove();
+   })
+
+
+
+
+
+
+
+
+   function htmlAtendenteOnline(obj){
+      if (obj.atendente_id){
+         var html = '<div id="online-'+obj.atendente_id+'" class="row container mt-1">'
+      }else{
+         var html = '<div id="online-'+obj.id_atendente+'" class="row container mt-1">'
+      }
+      html += '<div class="col-10 text-left">'
+      html += '<span>'
+      html += obj.atendente_nome
+      html += '</span>'
+      if (obj.setor.indexOf('Geral')){
+         html += '<span class="badge badge-secondary ml-md-1">'+obj.setor+'</span>'
+         
+      }else{
+         html += '<span class="badge badge-primary ml-md-1">'+obj.setor+'</span>'
+      }
+      html += '</div>'
+      html += '<div class="col-2">'
+      if (obj.atendente_id){
+         html += '<button class="btn btn-success btn-sm" onclick="transfereChat('+obj.atendente_id+')">Transferir</button>'
+      }else{
+         html += '<button class="btn btn-success btn-sm" onclick="transfereChat('+obj.id_atendente+')">Transferir</button>'
+      }
+      html += '</div>'
+      html += '</div>'
+
+      return html;
+   }
+
+   function transfereChat(id_atendente){
+      var active = $(".wa-item-active").attr("contato-id")
+      transferirChat(id_atendente,active)
+      $("#atendentesOnline").modal("hide")
+   }
+
+   function openModalAtendentesOnline(){
+      var id_usuario = {{user.id}};
+      var id_atendente = {{atendente_user.id}}
+      $.ajax({
+         type: "post",
+         url: "/auth/atendentesonline",
+         data: "id_usuario="+id_usuario,
+         dataType: 'json',
+         success: function (response) {
+            console.log(response)
+            if (response){
+               var html = '';
+               $("#listaAtendentes").html(html)
+               response.forEach(element => {
+                  html += htmlAtendenteOnline(element)
+               });
+               $("#listaAtendentes").html(html)
+               if ($("#online-"+id_atendente).length > 0){
+                  $("#online-"+id_atendente).remove()
+               }
+               $("#atendentesOnline").modal("show")
+            }else{
+               $("#atendentesOnline").modal("show")
+            }
+            
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+   }
+
+   function openModalAceitaChat(obj){
+      $("#info").modal("show")
+      $("#nome-atendente").text(obj.atendente_nome)
+      $("#aceitar-chat").attr("onclick", "aceitarChat('"+obj.contato+"')")
+   }
+
+   function checarPermissao(){
+      var id_usuario = {{user.id}};
+      var id_atendente = {{atendente_user.id}}
+      if (id_setor > 0){
+         $(".wa-item-chat").each(function() {
+//            setTimeout(() => {
+               $(".wa-item-chat").addClass("d-none")
+            //}, 500)
+         })
+      }
+
+      
+      var data = "id_usuario=" + id_usuario +"&id_atendente="+id_atendente+"&id_setor="+id_setor;
+
+       $.ajax({
+            type: "post",
+            url: "/auth/permissoes",
+            data:  data,
+            dataType: "json",
+            success: function (response) {
+               console.log(response) 
+               response.forEach(element => {
+                  //setTimeout(() => {
+                     $( "div[contato-id='"+element.contato+"']").removeClass("d-none")
+                  //}, 500)
+               });
+
+               if ($("#chat-list > .d-none").length == chat.chat2.length){
+                  $(".wa-chat").hide();
+                  $(".wa-introducao").show();
+               }
+               
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        });
+   }
+
+   function aceitarChat(contato){
+      
+      var id_usuario = {{user.id}};
+      var id_atendente = {{atendente_user.id}}
+
+      var data = "id_usuario=" + id_usuario +"&contato="+contato+"&id_atendente="+id_atendente+"&id_setor="+id_setor;
+
+       $.ajax({
+            type: "post",
+            url: "/auth/aceitarchat",
+            data:  data,
+            dataType: "json",
+            success: function (response) {
+               console.log(response)
+               checarPermissao()
+                
+            },
+            error: function (err) {
+                console.log(err)
+                checarPermissao()
+            }
+        });
+      
+   }
+   var timesRun = 0;
+   function transferirChat(id_transferencia, contato){
+      socket.emit("aceitar_chat", {user_id: {{user.id}},id_transferencia: id_transferencia, contato: contato, atendente_id: {{atendente_user.id}}, atendente_nome: "{{atendente_user.nome}}", chat_id: "{{chat_id}}", setor: "{{nome_setor}}" }, function(){
+            "teste"
+      });
+
+      
+      var interval = setInterval(function(){
+         timesRun += 1;
+         checarPermissao()
+         console.log(timesRun)
+         if(timesRun === 3){
+            clearInterval(interval);
+         }
+         //do whatever here..
+      }, 10000); 
+   }
+
+   socket.on("transferencia_chat "+chat_id, function(mensagem){
+      console.log(mensagem)
+      var id_atendente = {{atendente_user.id}}
+      if (mensagem.id_transferencia == id_atendente){
+         openModalAceitaChat(mensagem)
+      }
+   })
+
+   jQuery(document).on('dragover', '.wa-mensagens', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var dt = e.originalEvent.dataTransfer;
+      if (dt.types && (dt.types.indexOf ? dt.types.indexOf('Files') != -1 : dt.types.contains('Files'))) {
+         $('.wa-file-input').css("height", "93%");
+         $('.wa-file-input').fadeIn();
+      }
+   });
+
+   function fechaFileUpload(){
+      $('.wa-file-input').fadeOut();
+      clearDropZone()
+   }
+
+Dropzone.autoDiscover = false;
+
+
+$(document).ready(function(){
+  // Manual dropzone init
+  $("div#myDrop").dropzone({
+     url:"/auth/sendarquivos",
+     autoProcessQueue: false,
+     addRemoveLinks: true,
+     clickable: ".fileinput-button",
+     dictRemoveFile: "Remover",
+     init: function() {
+
+         this.on('addedfile', function(file){
+            
+            $("#myDrop").css("height", "400px")
+            $(".fileinput-button").show();
+          
+         });
+         this.on("processing", function() {
+            this.options.autoProcessQueue = true;
+         });
+         this.on("removedfile", function(file) { 
+               if (this.files.length > 0){
+                  $(".fileinput-button").show();
+               }else{
+                  $("#myDrop").css("height", "500px")
+               
+               }         
+         });
+         this.on('resetFiles', function() {
+         if(this.files.length != 0){
+               for(i=0; i<this.files.length; i++){
+                  this.files[i].previewElement.remove();
+               }
+               this.files.length = 0;
+         }
+         });
+         var myDropzone = this;
+         $("#btnSend").click(function (e) {
+            e.preventDefault();
+            myDropzone.processQueue();
+         });
+
+         this.on('sending', function(file, xhr, formData) {
+            // Append all form inputs to the formData Dropzone will POST
+            var data = $('#formEnviaArquivos').serializeArray();
+            var active = $(".wa-item-active").attr("contato-id")
+            
+            $.each(data, function(key, el) {
+                  formData.append("chat_id", chat_id)
+                  formData.append("contato", active)
+                  formData.append(el.name, el.value);
+            });
+         });
+         this.on("complete", function (file) {
+            if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+               $('.wa-file-input').fadeOut();
+               clearDropZone()
+            }
+         });
+    }
+   });
+});
+
+function clearDropZone() {
+    //DropZone Object Get
+    var objDZ = Dropzone.forElement("div#myDrop");
+    //"resetFiles" Event Call
+    objDZ.emit("resetFiles");
+}
+
+
+
+function imgError(image) {
+    image.onerror = "";
+    image.src = "/img/none.png";
+    return true;
+}
+
+$(".teste-img").on("click", function() {
+   var src = $(this).attr("src")
+   $('#imagepreview').attr('src', $('#imageresource').attr('src')); // here asign the image to the modal when the user click the enlarge link
+   $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+});
+
+function openSendFile(){
+    document.getElementsByClassName("fileinput-button")[0].click();
+    $('.wa-file-input').css("height", "93%");
+    $('.wa-file-input').fadeIn();
+}
+
+document.addEventListener('play', function(e){
+    var audios = document.getElementsByTagName('audio');
+    for(var i = 0, len = audios.length; i < len;i++){
+        if(audios[i] != e.target){
+            audios[i].pause();
+        }
+    }
+}, true);
+   
+
+</script>
+
+
+</html>

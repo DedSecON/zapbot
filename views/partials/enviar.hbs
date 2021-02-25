@@ -1,0 +1,279 @@
+<style>
+   .cut-text { 
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  width: 400px; 
+  height: 1.2em; 
+  white-space: nowrap;
+}
+</style>
+<div class="container-fluid">
+
+    <div class="d-sm-flex   mb-4">
+       
+        <h1 class="h3 mb-0 text-gray-800">Enviar Campanha</h1>
+        <!--<a href="#" class="ml-3  btn btn-sm btn-success shadow-sm" onclick="openModalGrupo()">
+          <i class="fas fa-plus fa-sm text-white-50"></i> Add Grupo</a> -->
+
+    </div>
+    {{#if message }}
+    <div class="alert alert-danger">
+        <strong>Aviso!</strong> {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    <div class="card mt-3 pl-2 tab-card">
+  
+
+       
+  
+        {{#ifeq data "nao"}}
+            <p style="margin-top: 15px;text-align:center">
+                <span >Você precisa autenticar seu número para enviar as campanhas</span>
+                <br>
+                
+                <a href="/whats"><i class="fas fa-link"></i> Autentique aqui</a>
+            </p>
+        {{/ifeq}}
+        {{#ifeq data "ok"}}
+
+         
+            
+                <p>
+                    <h4> Adicione a Campanha:</h4>
+                    <select class="select1" style="display: none;" name="state">
+                        
+                        
+                        
+                    </select>
+                    <h4> Selecione os grupos:</h4>
+                    <select class="select12" style="display: none;" name="state">
+                        
+                        {{#each grupos}}
+                            <option value="{{this.id}}">{{this.nome_grupo}}</option>
+                        {{else}}
+                            <option value="{{this.id}}">{{this.nome_grupo}}</option>
+                        {{/each}}
+                        
+                    </select>
+                </p>
+        
+            
+        <div class="row">
+            <div class="col-6" style="background: #ece4e4;padding: 20px;">
+                <h3>Números a enviar</h3>
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th width="50%">Nome</th>
+                            <th width="23%">Número</th>                        
+                            <th width="25%">Status</th>                        
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="tempo">Tempo de espera <sup>(em segundos)</sup></label>
+                    <input type="text" name="tempo" class="form-control" id="tempo"  value="20">
+                </div>
+                <a href="#" id="enviarBtn"onclick="enviarCampanha()" class="btn btn-success">Enviar</a>
+            </div>
+        </div>
+        
+        {{/ifeq}}
+
+    </div>
+    
+</div>
+
+<script>
+
+    setTimeout(() => {
+        $('.select12').fadeIn();
+       $('.select12').select2({
+            allowClear: true,
+            placeholder: "Selecione um grupo de contatos",
+            
+       });
+       
+
+       $('.select12').on('change', function (evt) {
+            
+                console.log($(".select12").val())
+                
+                var value = $(".select12").val();
+                jsonObj.find((o, i) => {
+                    if (o.id_grupo === parseInt($(".select12").val())) {
+                        //console.log(o)
+                     
+                        $('#table').append('<tr><td>'+o.nome+'</td><td id="'+o.id+'">'+o.celular+'</td><td id="status'+o.id+'">Pendente</td></tr>');
+                     
+                        
+                        
+                        
+                    }
+                });
+
+                if (value){
+                    $('.select12').val('').trigger("change")
+                    var time = setTimeout(() => {
+                        $(".select12 option[value='"+value+"']").remove();
+                         $('.select12').val('').trigger("change")
+                         clearTimeout(time)
+                    }, 1000);      
+                   
+                }
+          
+            
+              
+
+          
+        
+        });
+        $('.select12').val('').trigger("change")
+        var data = [];
+        var html = '';
+         {{#each campanhas}}
+            {{#ifeq this.tipo "imagem"}}
+            html = "<img style='width: 100px;' src='uploads/{{this.anexo}}' />"
+            {{/ifeq}} 
+            {{#ifeq this.tipo ""}}
+            html = "<img style='width: 80px;' src='img/none.png' />"
+            {{/ifeq}}
+            {{#ifeq this.tipo "video"}}
+            html = "<video style='width: 100px;' src='uploads/{{this.anexo}}'></video>"
+            {{/ifeq}}
+            {{#ifeq this.tipo "documento"}}
+            html = '<img style="width: 100px;height:60px" src="/img/documento.jpg" />'
+            {{/ifeq}}
+            mensagem = "{{breaklines this.mensagem~}}";
+            
+            data.push({
+                id: {{this.id}}, 
+                text: "{{this.campanha}}",  
+                html: '<div>'+html+'<div style="display: inline-block;margin-left:10px;">{{@index}} - {{this.campanha}}<br><div class="cut-text"><small>'+mensagem+'</small></div></div></div>', 
+                title: "{{this.campanha}}"
+            })
+         {{/each}}
+         console.log(data);
+
+        $('.select1').fadeIn();
+        $('.select1').select2({
+            allowClear: true,
+            placeholder: "Selecione uma Campanha",
+            data: data,
+            escapeMarkup: function(markup) {
+                return markup;
+            },
+            templateResult: function(data) {
+                return data.html;
+            },
+            templateSelection: function(data) {
+                return data.text;
+            }
+            
+        });
+        $(".select1").val('').trigger('change') ;
+    }, 1000);    
+    var decodedJson = decodeURIComponent("{{{encodedJson}}}");
+    var jsonObj = JSON.parse(decodedJson);
+    console.log(jsonObj)
+
+    
+
+
+
+    function enviarCampanha(){
+        var id_campanha =  $('.select1').val()
+        if (!id_campanha){
+            alert("Selecione uma campanha")
+            return true;
+        }
+        $("#enviarBtn").attr('disabled','disabled');
+        $("#enviarBtn").html("Aguarde...");
+        var tempo = $("#tempo").val();
+        console.log(id_campanha);
+        tempo = parseInt(tempo * 1000);
+
+
+        var time = 0;
+        var counter = 0; 
+         window.onbeforeunload = function() {
+            return "Por favor, fique na pagina ate terminar o envio!";
+         }
+        $("#table").find('td:nth-child(2)').each (function() {
+            
+            
+            var id = $(this).attr("id");
+            var contato = $(this).html();
+            setTimeout(function() {
+                $.ajax({
+                    type: "post",
+                    url: "/auth/enviarwhats",
+                    data: "id="+id_campanha+"&contato="+contato,
+                    success: function (response) {
+                        console.log(response)
+                        if(response == "Não enviado")
+                        {
+                            $("#status"+id).html("<span class='text-danger'>"+response+"</span>");
+                             $.ajax({
+                                type: "post",
+                                url: "/auth/enviadas",
+                                data: "enviado=0&erro=1&id_usuario={{user.id}}",
+                                success: function (response) {
+
+                                },
+                                error: function (err) {  
+                                    console.log(err);
+                                }
+                             })
+                            
+                        }else{
+                            $("#status"+id).html("<span class='text-success'>"+response+"</span>");
+                             $.ajax({
+                                type: "post",
+                                url: "/auth/enviadas",
+                                data: "enviado=1&erro=0&id_usuario={{user.id}}",
+                                success: function (response) {
+
+                                },
+                                error: function (err) {  
+                                    console.log(err);
+                                }
+                             })
+                        }
+                        counter++; 
+                        if( counter == $("#table").find('td:nth-child(2)').length){
+                            setTimeout(function() {
+                                window.onbeforeunload = function() {
+                                    
+                                 }
+                                window.location = "/enviar"; 
+                               
+                            }, 5000);
+                        }
+                        
+                        //window.location = "/campanhas";
+                    },
+                    error: function (err) {  
+                        console.log(err);
+                    }
+                });
+            }, time);
+            time += tempo;
+           
+        })
+       
+        
+        return true;
+       
+    }
+</script>

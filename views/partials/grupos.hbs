@@ -1,0 +1,39 @@
+<div class="container-fluid">
+
+     <div class="d-sm-flex   mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Grupos</h1>
+      <a href="#" class="ml-3  btn btn-sm btn-success shadow-sm" onclick="openModalGrupo()">
+         <i class="fas fa-plus fa-sm text-white-50"></i> Add Grupo</a>
+      
+      </div>
+      {{#if message }}
+      <div class="alert alert-danger">
+         <strong>Aviso!</strong> {{message}}
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      {{/if}}
+    <table class="table  table-bordered table-responsive-sm" id="dataTable"  cellspacing="0">
+      <thead>
+         <tr>
+            <th>Nome</th>
+            <th>Tempo de Retorno</th>
+            <th width="8%">Ação</th>
+            
+         </tr>
+      </thead>
+      <tbody>
+         {{#each grupos}}
+               <tr>
+                  <td class="grupo{{this.id}}">{{this.nome_grupo}}</td>
+                  <td class="descricao{{this.id}}">{{this.descricao}}</td>
+                  <td>
+                     <a onclick="openEditGrupo({{this.id}})" ><i class="fas fa-user-edit" style="color:orange"></i> </a>
+                     <a onclick="excluirGrupo({{this.id}})" ><i class="fas text-danger fa-trash"></i>  </a>
+                  </td>
+               </tr>
+         {{/each}}
+      </tbody>
+</table>
+</div>

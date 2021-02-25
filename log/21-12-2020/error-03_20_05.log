@@ -1,0 +1,22 @@
+[21-12-2020 16:58:37] ERROR	 (3159 on ubuntu): ENOENT: no such file or directory, open '/root/whatsbot/public/uploads/1608569917775natal_valdeci.jpg'
+    Error: ENOENT: no such file or directory, open '/root/whatsbot/public/uploads/1608569917775natal_valdeci.jpg'
+[21-12-2020 17:00:37] ERROR	 (3159 on ubuntu): The first argument must be one of type string or Buffer. Received type object
+    TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be one of type string or Buffer. Received type object
+        at write_ (_http_outgoing.js:595:11)
+        at ServerResponse.write (_http_outgoing.js:567:10)
+        at Query.db.query (/root/whatsbot/controllers/auth.js:2049:17)
+        at Query.<anonymous> (/root/whatsbot/node_modules/mysql/lib/Connection.js:526:10)
+        at Query._callback (/root/whatsbot/node_modules/mysql/lib/Connection.js:488:16)
+        at Query.Sequence.end (/root/whatsbot/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+        at Query.ErrorPacket (/root/whatsbot/node_modules/mysql/lib/protocol/sequences/Query.js:92:8)
+        at Protocol._parsePacket (/root/whatsbot/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+        at Parser._parsePacket (/root/whatsbot/node_modules/mysql/lib/protocol/Parser.js:433:10)
+        at Parser.write (/root/whatsbot/node_modules/mysql/lib/protocol/Parser.js:43:10)
+[22-12-2020 11:38:34] ERROR	 (3159 on ubuntu): Connection lost: The server closed the connection.
+    Error: Connection lost: The server closed the connection.
+        at Protocol.end (/root/whatsbot/node_modules/mysql/lib/protocol/Protocol.js:112:13)
+        at Socket.<anonymous> (/root/whatsbot/node_modules/mysql/lib/Connection.js:94:28)
+        at Socket.<anonymous> (/root/whatsbot/node_modules/mysql/lib/Connection.js:526:10)
+        at Socket.emit (events.js:203:15)
+        at endReadableNT (_stream_readable.js:1145:12)
+        at process._tickCallback (internal/process/next_tick.js:63:19)

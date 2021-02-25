@@ -1,0 +1,60 @@
+<div class="container-fluid">
+
+     <div class="d-sm-flex   mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Campanhas</h1>
+      <a href="#" class="ml-3  btn btn-sm btn-success shadow-sm" onclick="openModalCampanha()">
+         <i class="fas fa-plus fa-sm text-white-50"></i> Add Campanha</a>
+      
+      </div>
+      {{#if message }}
+      <div class="alert alert-danger">
+         <strong>Aviso!</strong> {{message}}
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      {{/if}}
+      
+    <table class="table  table-bordered table-responsive-sm" id="dataTable"  cellspacing="0">
+      <thead>
+         <tr>
+            <th width="5%">id</th>
+            <th width="5%">Anexo</th>
+            <th width="20%">Campanha</th>
+            <th width="50%">Mensagem</th>
+            <th width="25%">Tipo</th>
+            <th width="8%">Ação</th>
+            
+         </tr>
+      </thead>
+      <tbody>
+         {{#each campanhas}}
+               <tr>
+                  <td >{{this.id}}</td>
+                  <td style="text-align:center" class="anexo{{this.id}}">
+                     {{#ifeq tipo "imagem"}}
+                        <img style="width: 100px;" src="uploads/{{this.anexo}}" />
+                     {{/ifeq}}
+                     {{#ifeq tipo "video"}}
+                        <video style="width: 100px;" src="uploads/{{this.anexo}}" />
+                     {{/ifeq}}
+                     {{#ifeq tipo "documento"}}
+                        <img style="width: 36px;" src="/img/documento.jpg" />
+                     {{/ifeq}}
+                  </td>
+                  <td class="campanha{{this.id}}">{{this.campanha}}</td>
+                  <td class="mensagem{{this.id}}">{{this.mensagem}}</td>
+                  <td class="tipo{{this.id}}">{{this.tipo}}</td>
+                  <td>
+                     <!-- a onclick="openEditCampanha({{this.id}})" ><i class="fas fa-user-edit" style="color:orange"></i> </a-->
+                     <a href="#" onclick="excluirCampanha({{this.id}})" ><i class="fas text-danger fa-trash"></i>  </a>
+                  </td>
+               </tr>
+         {{/each}}
+      </tbody>
+</table>
+</div>
+<script>
+
+  
+</script>

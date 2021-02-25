@@ -1,0 +1,6 @@
+[21-12-2020 13:16:10] ERROR	 (494557 on ubuntu): ENOENT: no such file or directory, open '/root/whatsbot/public/uploads/1608556570610'
+    Error: ENOENT: no such file or directory, open '/root/whatsbot/public/uploads/1608556570610'
+[21-12-2020 13:19:24] ERROR	 (494557 on ubuntu): ENOENT: no such file or directory, open '/root/whatsbot/public/uploads/1608556764990'
+    Error: ENOENT: no such file or directory, open '/root/whatsbot/public/uploads/1608556764990'
+[21-12-2020 14:00:37] ERROR	 (494557 on ubuntu): ENOENT: no such file or directory, open '/root/whatsbot/public/uploads/1608559237070'
+    Error: ENOENT: no such file or directory, open '/root/whatsbot/public/uploads/1608559237070'

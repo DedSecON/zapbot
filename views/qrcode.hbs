@@ -1,0 +1,108 @@
+<style>
+
+.img_perfil{
+  border-radius: 100px;
+  vertical-align: middle;
+  border-style: none;
+  width: 95px;
+}
+.load{
+   vertical-align: middle;
+   border-style: none;
+   width: 80px;
+   margin: auto;
+   display: none;
+}
+
+#qrcode{
+  font-family: 'Exo 2', sans-serif;
+  margin: auto;
+  position: relative;    
+  text-align: center;
+}
+
+</style>
+
+<img class="load" style="text-align: center;" src="../loading.gif" >
+            <div id="qrcode" style="">
+
+                <div class="tag">
+                    <i class="fas fa-redo-alt"></i>
+                    <div style="margin-bottom: -4px;">
+                        Gerar
+                    </div>
+                    <div>
+                        QrCode
+                    </div>
+                </div>
+                <img style="width: 150px; opacity:0.2" src="../qrcode.png" alt="">
+            </div>
+
+            <div style="text-align: center;" >
+                <span class="info">Se tiver algum problema ao autenticar, exclua o token</span><br>
+                <button onclick="deletarWhats()" class="btn btn-danger">Excluir token</button>
+            </div>
+
+<script src="../js/jquery/jquery.min.js"></script>
+<script>
+    function qrcode(){
+
+        var id = "{{user.id}}{{user.maskeid}}"
+        $(".load").show();
+        
+        $("#qrcode").fadeOut(400);
+        var timer;
+
+        
+        timer =   setTimeout(() => {
+            $("#qrcode").html("<img style='width: 250px;' src='/{{user.id}}{{user.maskeid}}.png' >")            
+            $("#qrcode").fadeIn(1000);
+            $(".load").hide();
+        }, 10000);
+      $.ajax({
+            type: "get",
+            url: "/getqr?id_usuario={{user.id}}",
+            success: function (response) {
+               clearTimeout(timer);
+               console.log(response)   
+               var result = JSON.parse(response)
+               result = result[0];
+               if (result.nome){
+                  $("#qrcode").html('<img class="img_perfil" src="'+result.image+'" > <div> id:'+result.id+' </div> <div> '+result.numero+' </div><div> '+result.nome +'<div>')
+                  $("#qrcode").fadeIn(1000);
+                  $(".load").hide();
+                  
+               }
+               
+            },
+            
+        });       
+    }
+
+    function deletarWhats(){
+       
+      var maskeid = "{{user.id}}{{user.maskeid}}";
+      
+      $.ajax({
+         type: "post",
+         url: "/auth/deletarwhats",
+         data: "maskeid="+maskeid,
+         success: function (response) {
+            console.log(response);
+            if (response != "Erro"){
+                alert("Token excluido, por favor autentique o whatsapp")
+                window.location = "/qrcode/{{user.id}}";
+            }else{
+                alert("Erro token nao encontrado!")
+                 window.location = "/qrcode/{{user.id}}";
+            }
+
+         },
+         error: function (err){
+            console.log(err)
+            alert("Erro token nao encontrado!")
+         }
+      });
+    }
+    qrcode()
+ </script>

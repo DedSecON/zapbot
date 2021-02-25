@@ -1,0 +1,93 @@
+[02-02-2021 17:54:02] INFO	 (2278674 on ubuntu): Startou porta 80
+[02-02-2021 17:54:02] ERROR	 (2278674 on ubuntu): connect ECONNREFUSED 127.0.0.1:3306
+    Error: connect ECONNREFUSED 127.0.0.1:3306
+        at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1107:14)
+        --------------------
+        at Protocol._enqueue (/root/whatsbot/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/root/whatsbot/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/root/whatsbot/node_modules/mysql/lib/Connection.js:116:18)
+        at Object.<anonymous> (/root/whatsbot/app.js:74:4)
+        at Module._compile (internal/modules/cjs/loader.js:778:30)
+        at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+        at Module.load (internal/modules/cjs/loader.js:653:32)
+        at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+        at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+        at Object.<anonymous> (/usr/local/lib/node_modules/pm2/lib/ProcessContainerFork.js:32:23)
+[02-02-2021 17:54:23] INFO	 (2278674 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 150
+      }
+    }
+    responseTime: 4
+    req: {
+      "id": 1,
+      "method": "GET",
+      "url": "/favicon.ico",
+      "headers": {
+        "host": "159.203.190.53",
+        "accept-encoding": "gzip, deflate",
+        "user-agent": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+        "connection": "keep-alive",
+        "accept": "*/*"
+      },
+      "remoteAddress": "::ffff:124.227.31.41",
+      "remotePort": 37504
+    }
+[02-02-2021 17:54:24] INFO	 (2278674 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 150
+      }
+    }
+    responseTime: 0
+    req: {
+      "id": 2,
+      "method": "GET",
+      "url": "/favicon.ico",
+      "headers": {
+        "host": "159.203.190.53",
+        "accept-encoding": "gzip, deflate",
+        "user-agent": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+        "connection": "keep-alive",
+        "accept": "*/*"
+      },
+      "remoteAddress": "::ffff:221.13.12.77",
+      "remotePort": 37700
+    }
+[02-02-2021 17:54:25] INFO	 (2278674 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 150
+      }
+    }
+    responseTime: 1
+    req: {
+      "id": 3,
+      "method": "GET",
+      "url": "/favicon.ico",
+      "headers": {
+        "host": "159.203.190.53",
+        "accept-encoding": "gzip, deflate",
+        "user-agent": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+        "connection": "keep-alive",
+        "accept": "*/*"
+      },
+      "remoteAddress": "::ffff:116.249.238.55",
+      "remotePort": 37916
+    }

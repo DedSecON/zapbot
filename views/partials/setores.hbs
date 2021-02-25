@@ -1,0 +1,192 @@
+<div class="container-fluid">
+
+    <div class="d-sm-flex   mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Setores</h1>
+        <a href="#" class="ml-3  btn btn-sm btn-success shadow-sm" onclick="openModalSetor()">
+            <i class="fas fa-plus fa-sm text-white-50"></i> Add Setor</a>
+        
+        
+
+    </div>
+
+
+    <span>Chat atendentes:</span> 
+      
+      
+    <a id="url_a" target="_blank"><span id="url" data-container="body" data-toggle="popover" data-placement="top" data-content="Copiado!" class="link_atendente copiar_link"></span></a> 
+    
+    <span  onclick="copiarLink()" style="margin-bottom: 5px;" class="btn btn-sm btn-dark">
+        <i class="far fa-copy"></i> Copiar link
+    </span>
+    <br>
+    <br>
+    {{#if message }}
+    <div class="alert alert-danger">
+        <strong>Aviso!</strong> {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    <table class="table  table-bordered table-responsive-sm" id="dataTable" cellspacing="0">
+        <thead>
+            <tr>
+                <th width="5%">id</th>
+                <th width="50%">Setor</th>
+                <th width="8%">Ação</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each setores}}
+            <tr>
+                <td>{{id}}</td>
+                <td class="setor{{id}}">{{setor}}</td>
+                <td>
+                    <a href="#"  onclick="openEditSetor({{this.id}})"><i class="fas fa-user-edit" style="color:orange"></i>
+                    </a>
+                    <a href="#" onclick="excluirSetor({{this.id}})"><i class="fas text-danger fa-trash"></i> </a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<!-- modal grupo -->
+<div class="modal fade" id="modalSetor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Setor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formAddSetor">
+
+                    <input type="hidden" name="id_usuario" value="{{user.id}}">
+                    <input type="hidden" name="id_setor" id="id_setor">
+                    <div class="form-group">
+                        <label for="nome">Setor</label>
+                        <input type="text" name="setor" class="form-control" id="setor" placeholder="Informe o nome">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="salvar_setor" onclick="addSetor()" class="btn btn-success">Salvar</button>
+                <button type="button" id="editar_setor" onclick="editSetor()" class="btn btn-success">Editar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById("url").innerHTML =  window.origin + "/chat/{{user.id}}{{user.maskeid}}";
+    var a = document.getElementById('url_a'); //or grab it by tagname etc
+    a.setAttribute("href", window.origin + "/chat/{{user.id}}{{user.maskeid}}");
+
+
+    function openModalSetor(){
+      $('#formAddSetor')[0].reset();
+      $("#modalSetor").modal("show")
+      $("#salvar_setor").show();
+      $("#editar_setor").hide();
+   }
+
+   function openEditSetor(id){
+      $("#id_setor").val(id);
+      var setor = $(".setor"+id).text();
+      $("#setor").val(setor);
+      
+       $("#salvar_setor").hide();
+      $("#editar_setor").show();
+      $("#modalSetor").modal("show");
+   }
+
+    function addSetor(){
+      
+      var data = $("#formAddSetor").serialize();
+     
+
+      if (  !validateInput("setor"))
+         return true;
+      
+
+      $.ajax({
+         type: "post",
+         url: "/auth/addsetor",
+         data: data,
+         success: function (response) {
+            console.log(response)
+            window.location = "/setores";
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+      {{!-- $("#modalGrupo").modal("hide") --}}
+   }
+
+
+   function editSetor(){
+     
+      var data = $("#formAddSetor").serialize();
+
+      if (  !validateInput("setor"))
+         return true;
+      
+
+      $.ajax({
+         type: "post",
+         url: "/auth/editsetor",
+         data: data,
+         success: function (response) {
+            console.log(response)
+            if (response == "ok"){
+                window.location = "/setores";
+            }else{
+                alert(response)
+            }
+           
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+   }
+
+    function excluirSetor(id_setor){
+       
+      if (confirm("Tem certeza que deseja excluir?")){
+         $.ajax({
+            type: "post",
+            url: "/auth/deletarsetor",
+            data: "id_setor="+id_setor,
+            success: function (response) {
+                console.log(response)
+                if (response == "ok"){
+                window.location = "/setores";
+                }else{
+                    alert(response)
+                }
+
+            },
+            error: function (err){
+               console.log(err)
+            }
+         });
+      }
+   }
+
+
+
+
+</script>

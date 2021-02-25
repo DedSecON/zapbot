@@ -1,0 +1,47 @@
+[29-12-2020 15:14:43] INFO	 (356313 on ubuntu): Startou porta 80
+[29-12-2020 15:14:43] INFO	 (356313 on ubuntu): MySQL connected!
+[29-12-2020 15:14:55] INFO	 (356313 on ubuntu):
+    jwt_usuario: {
+      "id": 15,
+      "iat": 1609254099,
+      "exp": 1617030099
+    }
+[29-12-2020 15:14:55] INFO	 (356313 on ubuntu):
+    login_usuario: {
+      "id": 15,
+      "created_at": "2020-10-28T19:22:59.000Z",
+      "updated_at": null,
+      "nome": "prime",
+      "senha": "$2a$08$Mhi4jhUYfzzlt2goipCd.eLVvVXS3hVZYi.3vvoq4lF5lUzF9oQy6",
+      "email": "prime@prime.com",
+      "maskeid": "SfuqMV",
+      "admin": 0
+    }
+[29-12-2020 15:14:56] INFO	 (356313 on ubuntu): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"c3cf-7P2/foxybXllBVTPoAfS1Dn760Y\""
+      }
+    }
+    responseTime: 626
+    req: {
+      "id": 1,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/whats",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7,es;q=0.6",
+        "cookie": "_ga=GA1.3.199040947.1591923695; jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImlhdCI6MTYwOTI1NDA5OSwiZXhwIjoxNjE3MDMwMDk5fQ.Mfh5oMGx7Rw6Np0gHjBd4YLfi9iTrpQKumR8IMKy2y0",
+        "if-none-match": "W/\"c3cf-7P2/foxybXllBVTPoAfS1Dn760Y\""
+      },
+      "remoteAddress": "::ffff:201.17.159.122",
+      "remotePort": 26622
+    }

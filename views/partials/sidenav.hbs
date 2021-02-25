@@ -1,0 +1,205 @@
+   <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a style="color:#57c98b" class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <img src="/img/logo_eps.png" style="width: 100px;">
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="/">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Operação
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      {{#ifeq user.admin "1"}}
+        {{#ifeq active "admins"}}
+        <li class="nav-item active">
+        {{/ifeq}}
+        {{#ifnoteq active "admins"}}
+        <li class="nav-item">
+        {{/ifnoteq}}
+          <a class="nav-link" href="/admins">
+            <i class="fas fa-users-cog"></i>
+            <span>Admin's</span></a>
+        </li>
+      {{/ifeq}}
+      <li class="nav-item">
+    
+      {{#ifeq active "grupos"}}
+         <a class="nav-link " href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      {{/ifeq}}     
+      {{#ifnoteq active "grupos"}} 
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+      {{/ifnoteq}}
+          <i class="fas fa-users"></i>
+          <span>Grupos e Contatos</span>
+        </a>
+      {{#ifeq active "grupos"}}
+         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      {{/ifeq}}
+      {{#ifnoteq active "grupos"}} 
+         <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      {{/ifnoteq}}
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Selecione:</h6>
+            {{#ifeq sub "grupos"}}
+               <a class="collapse-item active" href="/grupos">Grupos</a>
+            {{/ifeq}}     
+            {{#ifnoteq sub "grupos"}} 
+               <a class="collapse-item" href="/grupos">Grupos</a>
+            {{/ifnoteq}}
+            {{#ifeq sub "contatos"}}
+               <a class="collapse-item active" href="/contatos">Contatos</a>
+            {{/ifeq}}     
+            {{#ifnoteq sub "contatos"}} 
+               <a class="collapse-item" href="/contatos">Contatos</a>
+            {{/ifnoteq}}
+            
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="far fa-comment-alt"></i>
+          <span>Campanhas</span>
+        </a>
+        {{#ifeq active "campanhas"}}
+          <div id="collapseUtilities" class="collapse show" aria-expanded="true" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        {{/ifeq}}
+        {{#ifnoteq active "campanhas"}} 
+          <div id="collapseUtilities" class="collapse " aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        {{/ifnoteq}}
+        
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Selecione:</h6>
+             {{#ifeq sub "criar"}}
+               <a class="collapse-item active" href="/campanhas">Criar / Listar / Editar  </a>
+            {{/ifeq}}     
+            {{#ifnoteq sub "criar"}} 
+               <a class="collapse-item" href="/campanhas">Criar / Listar / Editar  </a>
+            {{/ifnoteq}}
+
+            {{#ifeq sub "enviar"}}
+                <a class="collapse-item active" href="/enviar">Enviar</a>
+            {{/ifeq}}     
+            {{#ifnoteq sub "enviar"}} 
+                <a class="collapse-item" href="/enviar">Enviar</a>
+            {{/ifnoteq}}
+            
+           
+            
+          </div>
+        </div>
+      </li>
+
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAtendimento" aria-expanded="true" aria-controls="collapseAtendimento">
+          <i class="fas fa-comments"></i>
+          <span>Atendimento</span>
+        </a>
+        {{#ifeq active "atendimento"}}
+          <div id="collapseAtendimento" class="collapse show" aria-expanded="true" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        {{/ifeq}}
+        {{#ifnoteq active "atendimento"}} 
+          <div id="collapseAtendimento" class="collapse " aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        {{/ifnoteq}}
+        
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Selecione:</h6>
+             {{#ifeq sub "setores"}}
+               <a class="collapse-item active" href="/setores">Setores  </a>
+            {{/ifeq}}     
+            {{#ifnoteq sub "setores"}} 
+               <a class="collapse-item" href="/setores">Setores  </a>
+            {{/ifnoteq}}
+
+            {{#ifeq sub "atendentes"}}
+                <a class="collapse-item active" href="/atendentes">Atendentes</a>
+            {{/ifeq}}     
+            {{#ifnoteq sub "atendentes"}} 
+                <a class="collapse-item" href="/atendentes">Atendentes</a>
+            {{/ifnoteq}}
+            
+           
+            
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Configurações
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fab fa-whatsapp"></i>
+          <span>Whatsapp</span>
+        </a>
+        {{#ifeq active "whats"}}
+          <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        {{/ifeq}}
+        {{#ifnoteq active "whats"}} 
+          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        {{/ifnoteq}}
+        
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Funções:</h6>
+            {{#ifeq sub "configurar"}}
+              <a class="collapse-item active" href="/whats">Autenticar número</a>
+            {{/ifeq}}    
+            {{#ifnoteq sub "configurar"}}
+              <a class="collapse-item " href="/whats">Autenticar número</a>
+            {{/ifnoteq}}    
+
+             {{#ifeq sub "bot"}}
+              <a class="collapse-item active" href="/bot">Bot Whatsapp</a>
+            {{/ifeq}}    
+            {{#ifnoteq sub "bot"}}
+              <a class="collapse-item " href="/bot">Bot Whatsapp</a>
+            {{/ifnoteq}}  
+              
+              
+              {{!-- <a class="collapse-item" href="#">Geral</a> --}}
+              {{!-- <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Outros:</h6>
+              <a class="collapse-item" href="#">..</a> --}}
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="http://www.zapatendimento.com.br">
+          <i class="fas fa-question"></i>
+          <span>Ajuda</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>

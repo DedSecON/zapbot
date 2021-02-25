@@ -1,0 +1,261 @@
+{{#ifnoteq user.admin "1"}}
+<div class="container-fluid">
+
+   
+    <div class="card">
+        <h1>Somente administrativo</h1>
+   
+   </div>
+</div>
+
+{{/ifnoteq}}
+
+{{#ifeq user.admin "1" }}
+
+
+
+<div class="container-fluid">
+
+   <div class="d-sm-flex   mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Usuários</h1>
+      <a href="#" class="ml-3  btn btn-sm btn-success shadow-sm" onclick="openModalUsuario()">
+         <i class="fas fa-plus fa-sm text-white-50"></i> Add Usuarios</a>
+      
+   </div>
+   {{#if message }}
+      <div class="alert alert-danger">
+         <strong>Aviso!</strong> {{message}}
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+   {{/if}}
+
+    
+    <table class="table  table-bordered table-responsive-sm" id="dataTable"  cellspacing="0">
+      <thead>
+         <tr>
+            <th>id</th>
+            <th>Nome</th>
+            
+            <th>Email</th>
+            <th width="10%">Admin?</th>
+            <th width="10%">Ação</th>
+            
+         </tr>
+      </thead>
+      <tbody>
+         {{#each admins}}
+               <tr>
+                  <td >{{this.id}}</td>
+                  <td class="user_nome{{this.id}}">{{this.nome}}</td>
+                  <td class="user_email{{this.id}}">{{this.email}}</td>
+                  <td>
+                      {{#ifeq admin "1" }}
+                            
+                        <a href="#" data-toggle="tooltip" title="Tornar Usuário"  onclick="mudarAdmin({{this.id}},{{this.admin}})" ><i  class="fas fa-check"></i> </a>
+                      {{/ifeq}}
+                      {{#ifeq admin "0" }}
+                        <a href="#" data-toggle="tooltip" title="Tornar Admin"  onclick="mudarAdmin({{this.id}},{{this.admin}})" ><i  class="far fa-square"></i>  </a>
+                        {{/ifeq}}
+                  </td>
+                  <td>
+                     
+                     <a style="cursor:pointer" onclick="openEditUsuario({{this.id}})" ><i class="fas fa-user-edit" style="color:orange"></i> </a>
+                     <a style="cursor:pointer" onclick="excluirUsuario({{this.id}})" ><i class="fas text-danger fa-trash"></i>  </a>
+                  </td>
+               </tr>
+         {{/each}}
+      </tbody>
+</table>
+
+</div>
+
+{{/ifeq}}
+
+<!-- modal usuario -->
+ <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Usuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form id="formAddUsuario">
+         
+         
+         <div class="form-group">
+            <label for="user_nome">Nome</label>
+            <input type="text" class="form-control" id="user_nome" name="user_nome" placeholder="Informe um nome">
+         </div>
+         <div class="form-group">
+            <label for="user_email">Email</label>
+            <input type="email" class="form-control" id="user_email" name="user_email" placeholder="Informe um email">
+         </div>
+         <div class="form-group">
+            <label for="user_senha">Senha</label>
+            <input type="password" class="form-control" id="user_senha" name="user_senha" placeholder="Informe uma senha">
+         </div>
+         <div class="form-group">
+            <label for="user_confirma_senha">Confirmar Senha</label>
+            <input type="password" class="form-control" id="user_confirma_senha" name="user_confirma_senha"
+               placeholder="Informe uma senha">
+         </div>
+       
+         
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="salvar_usuario" onclick="addUsuario()" class="btn btn-success">Salvar</button>
+        <button type="button" id="editar_usuario" onclick="editUsuario()" class="btn btn-success">Editar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+   var edit_usuario = 0;
+    function openModalUsuario(){
+      $('#formAddUsuario')[0].reset();
+      $("#modalUsuario").modal("show")
+      $("#salvar_usuario").show();
+      $("#editar_usuario").hide();
+   }
+
+    function openEditUsuario(id){
+       edit_usuario = id
+      $('#formAddUsuario')[0].reset();
+      var email = $(".user_email"+id).text();
+      var nome = $(".user_nome"+id).text();
+      
+      $("input[name='user_email']").val(email);
+      $("input[name='user_nome']").val(nome);
+      
+      $("#salvar_usuario").hide();
+      $("#editar_usuario").show();
+      $("#modalUsuario").modal("show");
+   }
+
+   function addUsuario(){
+      
+      var data = $("#formAddUsuario").serialize();
+     
+
+      if (  !validateInput("user_nome"))
+         return true;
+      if (  !validateInput("user_email"))
+         return true;
+      if (  !validateInput("user_senha"))
+         return true;
+      if (  !validateInput("user_confirma_senha"))
+         return true;
+      
+
+      $.ajax({
+         type: "post",
+         url: "/auth/addusuario",
+         data: data,
+         success: function (response) {
+            console.log(response)
+            if (response == "ok"){
+               window.location = "/admins";
+            }else{
+               alert(response)
+            }
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+      $("#modalUsuario").modal("hide")
+   }
+   function editUsuario(){
+      
+      var data = $("#formAddUsuario").serialize();
+     
+
+      if (  !validateInput("user_nome"))
+         return true;
+      if (  !validateInput("user_email"))
+         return true;
+     
+      console.log(data)
+
+      $.ajax({
+         type: "post",
+         url: "/auth/editusuario",
+         data: data+"&id_usuario="+edit_usuario,
+         success: function (response) {
+            console.log(response)
+            if (response == "ok"){
+                //$("#modalUsuario").modal("hide")
+               window.location = "/admins";
+            }else{
+               alert(response)
+            }
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+     
+   }
+
+   function excluirUsuario(id_usuario){
+       
+      if (confirm("Tem certeza que deseja excluir?")){
+         $.ajax({
+            type: "post",
+            url: "/auth/deletarusuario",
+            data: "id_usuario="+id_usuario,
+            success: function (response) {
+               console.log(response)
+               if (response == "ok"){
+                  window.location = "/admins";
+               }else{
+                  alert(response)
+               }
+
+            },
+            error: function (err){
+               console.log(err)
+            }
+         });
+      }
+   }
+
+   function mudarAdmin(id,admin){
+      if (admin == 0){
+         admin = 1
+      }else{
+         admin = 0;
+      }
+       if (confirm("Tem certeza que deseja mudar?")){
+         $.ajax({
+            type: "post",
+            url: "/auth/mudarusuario",
+            data: "id_usuario="+id+"&admin="+admin,
+            success: function (response) {
+               console.log(response)
+               if (response == "ok"){
+                  window.location = "/admins";
+               }else{
+                  alert(response)
+               }
+
+            },
+            error: function (err){
+               console.log(err)
+            }
+         });
+      }
+   }
+</script>

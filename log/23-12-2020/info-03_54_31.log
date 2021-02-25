@@ -1,0 +1,64 @@
+[23-12-2020 15:54:32] INFO	 (60034 on ubuntu): Startou porta 80
+[23-12-2020 15:54:32] INFO	 (60034 on ubuntu): MySQL connected!
+[23-12-2020 15:54:45] INFO	 (60034 on ubuntu): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"1156c-yrFN1eQfMA0iLWuBsQkHqZcNfEQ\""
+      }
+    }
+    responseTime: 109
+    req: {
+      "id": 1,
+      "method": "GET",
+      "url": "/contatos",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "cache-control": "max-age=0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/enviar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7,es;q=0.6",
+        "cookie": "_ga=GA1.3.199040947.1591923695; jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsImlkX3NldG9yIjoiMCIsImlhdCI6MTYwODMxMzIwNCwiZXhwIjoxNjE2MDg5MjA0fQ.g8wbHfcvtrRdpocAN9PKmpAa39GdPpgQVwyU70VhxP0; jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImlhdCI6MTYwODcyMzIyOSwiZXhwIjoxNjE2NDk5MjI5fQ.kJE-aiQsSSNjbMDBSRGeI-CEBKkkRslEzZKC8sp1kNg",
+        "if-none-match": "W/\"1156c-yrFN1eQfMA0iLWuBsQkHqZcNfEQ\""
+      },
+      "remoteAddress": "::ffff:186.206.254.45",
+      "remotePort": 19228
+    }
+[23-12-2020 15:54:58] INFO	 (60034 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 155
+      }
+    }
+    responseTime: 16
+    req: {
+      "id": 2,
+      "method": "POST",
+      "url": "/auth/addcontato",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "content-length": "63",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "http://bot.zapatendimento.com.br",
+        "referer": "http://bot.zapatendimento.com.br/contatos",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7,es;q=0.6",
+        "cookie": "_ga=GA1.3.199040947.1591923695; jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsImlkX3NldG9yIjoiMCIsImlhdCI6MTYwODMxMzIwNCwiZXhwIjoxNjE2MDg5MjA0fQ.g8wbHfcvtrRdpocAN9PKmpAa39GdPpgQVwyU70VhxP0; jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImlhdCI6MTYwODcyMzIyOSwiZXhwIjoxNjE2NDk5MjI5fQ.kJE-aiQsSSNjbMDBSRGeI-CEBKkkRslEzZKC8sp1kNg"
+      },
+      "remoteAddress": "::ffff:186.206.254.45",
+      "remotePort": 19240
+    }

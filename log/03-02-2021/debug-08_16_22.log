@@ -1,0 +1,25 @@
+[03-02-2021 20:16:23] ERROR	 (2333817 on ubuntu): listen EADDRINUSE: address already in use :::3000
+    Error: listen EADDRINUSE: address already in use :::3000
+        at Server.setupListenHandle [as _listen2] (net.js:1280:14)
+        at listenInCluster (net.js:1328:12)
+        at Server.listen (net.js:1415:7)
+        at Object.<anonymous> (/root/whatsbot/controllers/auth.js:159:9)
+        at Module._compile (internal/modules/cjs/loader.js:778:30)
+        at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+        at Module.load (internal/modules/cjs/loader.js:653:32)
+        at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+        at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+        at Module.require (internal/modules/cjs/loader.js:692:17)
+[03-02-2021 20:16:23] ERROR	 (2333817 on ubuntu): listen EADDRINUSE: address already in use :::80
+    Error: listen EADDRINUSE: address already in use :::80
+        at Server.setupListenHandle [as _listen2] (net.js:1280:14)
+        at listenInCluster (net.js:1328:12)
+        at Server.listen (net.js:1415:7)
+        at Function.listen (/root/whatsbot/node_modules/express/lib/application.js:618:24)
+        at Object.<anonymous> (/root/whatsbot/app.js:134:5)
+        at Module._compile (internal/modules/cjs/loader.js:778:30)
+        at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+        at Module.load (internal/modules/cjs/loader.js:653:32)
+        at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+        at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+[03-02-2021 20:16:23] INFO	 (2333817 on ubuntu): MySQL connected!

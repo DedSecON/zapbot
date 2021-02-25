@@ -1,0 +1,584 @@
+[02-02-2021 15:24:13] INFO	 (2270274 on ubuntu): Startou porta 80
+[02-02-2021 15:24:13] ERROR	 (2270274 on ubuntu): connect ECONNREFUSED 127.0.0.1:3306
+    Error: connect ECONNREFUSED 127.0.0.1:3306
+        at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1107:14)
+        --------------------
+        at Protocol._enqueue (/root/whatsbot/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/root/whatsbot/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/root/whatsbot/node_modules/mysql/lib/Connection.js:116:18)
+        at Object.<anonymous> (/root/whatsbot/app.js:74:4)
+        at Module._compile (internal/modules/cjs/loader.js:778:30)
+        at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+        at Module.load (internal/modules/cjs/loader.js:653:32)
+        at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+        at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+        at Object.<anonymous> (/usr/local/lib/node_modules/pm2/lib/ProcessContainerFork.js:32:23)
+[02-02-2021 15:24:16] INFO	 (2270274 on ubuntu):
+    jwt_usuario: {
+      "id": 17,
+      "iat": 1606144004,
+      "exp": 1613920004
+    }
+[02-02-2021 15:24:16] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": "55084",
+        "etag": "W/\"d72c-YNiWTYAKTjBDpCWlVFZQUq45ctQ\""
+      }
+    }
+    responseTime: 63
+    req: {
+      "id": 1,
+      "method": "GET",
+      "url": "/",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/whats",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImlhdCI6MTYwNjE0NDAwNCwiZXhwIjoxNjEzOTIwMDA0fQ.ljxxG_zATCogPXakBrsR7Z1ppVWzZ--cTStWh2xSSiA; jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODMsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMjE4OTUwMywiZXhwIjoxNjE5OTY1NTAzfQ.ljKx62j8cySWlMpcQVM390QWbEafZh7weJ5TzHclasc; io=9w4smfrw83xaUhw-AAAA",
+        "if-none-match": "W/\"d759-ND/GBqeOse2Yi7claZzWP5i+/gQ\""
+      },
+      "remoteAddress": "::ffff:191.193.230.98",
+      "remotePort": 54679
+    }
+[02-02-2021 15:24:21] INFO	 (2270274 on ubuntu):
+    jwt_usuario: {
+      "id": 17,
+      "iat": 1606144004,
+      "exp": 1613920004
+    }
+[02-02-2021 15:24:21] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"c434-9xSEmFYTncA1h7QFIJjfulqv/F0\""
+      }
+    }
+    responseTime: 19
+    req: {
+      "id": 2,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImlhdCI6MTYwNjE0NDAwNCwiZXhwIjoxNjEzOTIwMDA0fQ.ljxxG_zATCogPXakBrsR7Z1ppVWzZ--cTStWh2xSSiA; jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODMsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMjE4OTUwMywiZXhwIjoxNjE5OTY1NTAzfQ.ljKx62j8cySWlMpcQVM390QWbEafZh7weJ5TzHclasc; io=iRjOe4ZtJL9AiijmAAAA",
+        "if-none-match": "W/\"c434-9xSEmFYTncA1h7QFIJjfulqv/F0\""
+      },
+      "remoteAddress": "::ffff:191.193.230.98",
+      "remotePort": 54696
+    }
+[02-02-2021 15:24:29] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 156
+      }
+    }
+    responseTime: 5
+    req: {
+      "id": 4,
+      "method": "POST",
+      "url": "/auth/enviarwhats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "http://bot.zapatendimento.com.br",
+        "referer": "http://bot.zapatendimento.com.br/enviar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImlhdCI6MTYxMjIxMjM2NCwiZXhwIjoxNjE5OTg4MzY0fQ.G345Zd96cPtMx9bOsdEoOXzbB3uOT6RHmNiujV9Kluo"
+      },
+      "remoteAddress": "::ffff:186.214.55.214",
+      "remotePort": 59764
+    }
+[02-02-2021 15:24:33] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 143
+      }
+    }
+    responseTime: 2
+    req: {
+      "id": 5,
+      "method": "GET",
+      "url": "/.png",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "referer": "http://bot.zapatendimento.com.br/whats",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImlhdCI6MTYwNjE0NDAwNCwiZXhwIjoxNjEzOTIwMDA0fQ.ljxxG_zATCogPXakBrsR7Z1ppVWzZ--cTStWh2xSSiA; jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODMsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMjE4OTUwMywiZXhwIjoxNjE5OTY1NTAzfQ.ljKx62j8cySWlMpcQVM390QWbEafZh7weJ5TzHclasc; io=iRjOe4ZtJL9AiijmAAAA"
+      },
+      "remoteAddress": "::ffff:191.193.230.98",
+      "remotePort": 54709
+    }
+[02-02-2021 15:24:39] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 302,
+      "headers": {
+        "x-powered-by": "Express",
+        "set-cookie": "jwt=loggedout; Path=/; Expires=Tue, 02 Feb 2021 15:24:49 GMT; HttpOnly",
+        "location": "/",
+        "vary": "Accept",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": "46"
+      }
+    }
+    responseTime: 24
+    req: {
+      "id": 6,
+      "method": "GET",
+      "url": "/auth/logout",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/whats",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImlhdCI6MTYwNjE0NDAwNCwiZXhwIjoxNjEzOTIwMDA0fQ.ljxxG_zATCogPXakBrsR7Z1ppVWzZ--cTStWh2xSSiA; jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODMsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMjE4OTUwMywiZXhwIjoxNjE5OTY1NTAzfQ.ljKx62j8cySWlMpcQVM390QWbEafZh7weJ5TzHclasc; io=iRjOe4ZtJL9AiijmAAAA"
+      },
+      "remoteAddress": "::ffff:191.193.230.98",
+      "remotePort": 54712
+    }
+[02-02-2021 15:24:40] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 302,
+      "headers": {
+        "x-powered-by": "Express",
+        "location": "/entrar",
+        "vary": "Accept",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": "58"
+      }
+    }
+    responseTime: 1
+    req: {
+      "id": 7,
+      "method": "GET",
+      "url": "/",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/whats",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODMsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMjE4OTUwMywiZXhwIjoxNjE5OTY1NTAzfQ.ljKx62j8cySWlMpcQVM390QWbEafZh7weJ5TzHclasc; io=iRjOe4ZtJL9AiijmAAAA; jwt=loggedout",
+        "if-none-match": "W/\"d72c-YNiWTYAKTjBDpCWlVFZQUq45ctQ\""
+      },
+      "remoteAddress": "::ffff:191.193.230.98",
+      "remotePort": 54712
+    }
+[02-02-2021 15:24:40] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": "3018",
+        "etag": "W/\"bca-84PQKdxIX7GqgjoD6JMGxRQgDWU\""
+      }
+    }
+    responseTime: 16
+    req: {
+      "id": 8,
+      "method": "GET",
+      "url": "/entrar",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/whats",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODMsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMjE4OTUwMywiZXhwIjoxNjE5OTY1NTAzfQ.ljKx62j8cySWlMpcQVM390QWbEafZh7weJ5TzHclasc; io=iRjOe4ZtJL9AiijmAAAA; jwt=loggedout"
+      },
+      "remoteAddress": "::ffff:191.193.230.98",
+      "remotePort": 54712
+    }
+[02-02-2021 15:24:40] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 166
+      }
+    }
+    responseTime: 0
+    req: {
+      "id": 9,
+      "method": "GET",
+      "url": "/vendor/jquery/jquery.min.js",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "*/*",
+        "referer": "http://bot.zapatendimento.com.br/entrar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODMsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMjE4OTUwMywiZXhwIjoxNjE5OTY1NTAzfQ.ljKx62j8cySWlMpcQVM390QWbEafZh7weJ5TzHclasc; io=iRjOe4ZtJL9AiijmAAAA; jwt=loggedout"
+      },
+      "remoteAddress": "::ffff:191.193.230.98",
+      "remotePort": 54717
+    }
+[02-02-2021 15:24:40] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 182
+      }
+    }
+    responseTime: 0
+    req: {
+      "id": 10,
+      "method": "GET",
+      "url": "/vendor/bootstrap/js/bootstrap.bundle.min.js",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "*/*",
+        "referer": "http://bot.zapatendimento.com.br/entrar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODMsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMjE4OTUwMywiZXhwIjoxNjE5OTY1NTAzfQ.ljKx62j8cySWlMpcQVM390QWbEafZh7weJ5TzHclasc; io=iRjOe4ZtJL9AiijmAAAA; jwt=loggedout"
+      },
+      "remoteAddress": "::ffff:191.193.230.98",
+      "remotePort": 54712
+    }
+[02-02-2021 15:24:40] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 180
+      }
+    }
+    responseTime: 0
+    req: {
+      "id": 11,
+      "method": "GET",
+      "url": "/vendor/jquery-easing/jquery.easing.min.js",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "*/*",
+        "referer": "http://bot.zapatendimento.com.br/entrar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODMsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMjE4OTUwMywiZXhwIjoxNjE5OTY1NTAzfQ.ljKx62j8cySWlMpcQVM390QWbEafZh7weJ5TzHclasc; io=iRjOe4ZtJL9AiijmAAAA; jwt=loggedout"
+      },
+      "remoteAddress": "::ffff:191.193.230.98",
+      "remotePort": 54720
+    }
+[02-02-2021 15:24:40] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 159
+      }
+    }
+    responseTime: 0
+    req: {
+      "id": 12,
+      "method": "GET",
+      "url": "/js/sb-admin-2.min.js",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "*/*",
+        "referer": "http://bot.zapatendimento.com.br/entrar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODMsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMjE4OTUwMywiZXhwIjoxNjE5OTY1NTAzfQ.ljKx62j8cySWlMpcQVM390QWbEafZh7weJ5TzHclasc; io=iRjOe4ZtJL9AiijmAAAA; jwt=loggedout"
+      },
+      "remoteAddress": "::ffff:191.193.230.98",
+      "remotePort": 54718
+    }
+[02-02-2021 15:24:49] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 156
+      }
+    }
+    responseTime: 2
+    req: {
+      "id": 13,
+      "method": "POST",
+      "url": "/auth/enviarwhats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "http://bot.zapatendimento.com.br",
+        "referer": "http://bot.zapatendimento.com.br/enviar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImlhdCI6MTYxMjIxMjM2NCwiZXhwIjoxNjE5OTg4MzY0fQ.G345Zd96cPtMx9bOsdEoOXzbB3uOT6RHmNiujV9Kluo"
+      },
+      "remoteAddress": "::ffff:186.214.55.214",
+      "remotePort": 59765
+    }
+[02-02-2021 15:24:55] INFO	 (2270274 on ubuntu):
+    jwt_usuario: {
+      "id": 13,
+      "iat": 1612271851,
+      "exp": 1620047851
+    }
+[02-02-2021 15:24:55] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": "50228",
+        "etag": "W/\"c434-9xSEmFYTncA1h7QFIJjfulqv/F0\""
+      }
+    }
+    responseTime: 13
+    req: {
+      "id": 15,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7,es;q=0.6",
+        "cookie": "_ga=GA1.3.199040947.1591923695; jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMDk3NzM4OCwiZXhwIjoxNjE4NzUzMzg4fQ.5W4C2ANDzgWHQrW2xksi1g6C2255f6UQf9IM9e82RRA; jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTYxMjI3MTg1MSwiZXhwIjoxNjIwMDQ3ODUxfQ.uDP2FcedSRsHKXoVawz9lrMiAWx31PqvGPUEL32FVK4",
+        "if-none-match": "W/\"c45b-adSACiWARaDpHswAPuNe1Vurjbo\""
+      },
+      "remoteAddress": "::ffff:201.17.159.106",
+      "remotePort": 20114
+    }
+[02-02-2021 15:25:09] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 156
+      }
+    }
+    responseTime: 2
+    req: {
+      "id": 17,
+      "method": "POST",
+      "url": "/auth/enviarwhats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "http://bot.zapatendimento.com.br",
+        "referer": "http://bot.zapatendimento.com.br/enviar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImlhdCI6MTYxMjIxMjM2NCwiZXhwIjoxNjE5OTg4MzY0fQ.G345Zd96cPtMx9bOsdEoOXzbB3uOT6RHmNiujV9Kluo"
+      },
+      "remoteAddress": "::ffff:186.214.55.214",
+      "remotePort": 59766
+    }
+[02-02-2021 15:25:10] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 143
+      }
+    }
+    responseTime: 1
+    req: {
+      "id": 18,
+      "method": "GET",
+      "url": "/.png",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "referer": "http://bot.zapatendimento.com.br/whats",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7,es;q=0.6",
+        "cookie": "_ga=GA1.3.199040947.1591923695; jwtatendente=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcsImlkX3NldG9yIjoiMCIsImlhdCI6MTYxMDk3NzM4OCwiZXhwIjoxNjE4NzUzMzg4fQ.5W4C2ANDzgWHQrW2xksi1g6C2255f6UQf9IM9e82RRA; jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTYxMjI3MTg1MSwiZXhwIjoxNjIwMDQ3ODUxfQ.uDP2FcedSRsHKXoVawz9lrMiAWx31PqvGPUEL32FVK4"
+      },
+      "remoteAddress": "::ffff:201.17.159.106",
+      "remotePort": 20147
+    }
+[02-02-2021 15:25:29] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 156
+      }
+    }
+    responseTime: 1
+    req: {
+      "id": 20,
+      "method": "POST",
+      "url": "/auth/enviarwhats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "http://bot.zapatendimento.com.br",
+        "referer": "http://bot.zapatendimento.com.br/enviar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImlhdCI6MTYxMjIxMjM2NCwiZXhwIjoxNjE5OTg4MzY0fQ.G345Zd96cPtMx9bOsdEoOXzbB3uOT6RHmNiujV9Kluo"
+      },
+      "remoteAddress": "::ffff:186.214.55.214",
+      "remotePort": 59767
+    }
+[02-02-2021 15:25:49] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 156
+      }
+    }
+    responseTime: 1
+    req: {
+      "id": 23,
+      "method": "POST",
+      "url": "/auth/enviarwhats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "http://bot.zapatendimento.com.br",
+        "referer": "http://bot.zapatendimento.com.br/enviar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImlhdCI6MTYxMjIxMjM2NCwiZXhwIjoxNjE5OTg4MzY0fQ.G345Zd96cPtMx9bOsdEoOXzbB3uOT6RHmNiujV9Kluo"
+      },
+      "remoteAddress": "::ffff:186.214.55.214",
+      "remotePort": 59768
+    }
+[02-02-2021 15:26:09] INFO	 (2270274 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 156
+      }
+    }
+    responseTime: 1
+    req: {
+      "id": 25,
+      "method": "POST",
+      "url": "/auth/enviarwhats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "http://bot.zapatendimento.com.br",
+        "referer": "http://bot.zapatendimento.com.br/enviar",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImlhdCI6MTYxMjIxMjM2NCwiZXhwIjoxNjE5OTg4MzY0fQ.G345Zd96cPtMx9bOsdEoOXzbB3uOT6RHmNiujV9Kluo"
+      },
+      "remoteAddress": "::ffff:186.214.55.214",
+      "remotePort": 59772
+    }

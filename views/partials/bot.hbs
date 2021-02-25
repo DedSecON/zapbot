@@ -1,0 +1,162 @@
+<div class="container-fluid">
+
+    <div class="d-sm-flex   mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Bot Whatsapp 2</h1>
+        <!--<a href="#" class="ml-3  btn btn-sm btn-success shadow-sm" onclick="openModalGrupo()">
+          <i class="fas fa-plus fa-sm text-white-50"></i> Add Grupo</a> -->
+
+    </div>
+    {{#if message }}
+    <div class="alert alert-danger">
+        <strong>Aviso!</strong> {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    <div class="card mt-3 pl-2 tab-card align-items-center">
+        {{#ifeq data "nao"}}
+        <p style="margin-top: 15px;text-align:center">
+            <span>Você precisa autenticar seu número para configurar o Bot <sup>Whatapp</sup></span>
+            <br>
+
+            <a href="/whats"><i class="fas fa-link"></i> Autentique aqui</a>
+        </p>
+        {{/ifeq}}
+
+        {{#ifeq data "ok"}}
+        <p>
+            <div class="container">
+                <div class="row">
+                   
+                    <div class="col-12">
+                        <form id="formAddBot" class="row">
+                            
+                                
+                                <div class="col-3" >
+                                    <input type="text" style="margin-top: 10px;display:none" class="form-control stage" name="stage1"  readonly value="1">
+                                    <input type="text" style="margin-top: 20px;" class="form-control" name="inicio_atendimento" id="inicio_atendimento" readonly value="inicio_atendimento">
+                                </div>
+                                <div class="col-9">
+                                    <textarea class="form-control" name="inicio_atendimento_area" id="inicio_atendimento_area" rows="3"></textarea>
+                                </div>
+
+                                
+                                <div class="col-3" >    
+                                    <input type="text" style="margin-top: 10px;display:none" class="form-control stage" name="stage2"  readonly value="2">
+                                    <input type="text" style="margin-top: 20px;" class="form-control" name="menu_principal" id="menu_principal" readonly value="menu_principal">
+                                </div>
+                                <div class="col-9" style="margin-top: 10px;">
+                                    <textarea class="form-control" name="menu_principal_area" id="menu_principal_area" rows="3"></textarea>
+                                </div>
+                                    
+                                
+                                <div class="col-3">    
+                                    <input type="text" style="margin-top: 10px;display:none" class="form-control stage" name="stage3"  readonly value="3">
+                                    <input type="text" style="margin-top: 20px;" class="form-control" name="menu_invalido" id="menu_invalido" readonly value="menu_invalido">
+                                </div>
+                                <div class="col-9" style="margin-top: 10px;">
+                                    <textarea class="form-control" name="menu_invalido_area" id="menu_invalido_area" rows="3"></textarea>
+                                </div>
+
+                                 <div class="col-3">    
+                                    <input type="text" style="margin-top: 10px;display:none" class="form-control stage" name="stage5"  readonly value="5">
+                                    <input type="text" style="margin-top: 20px;" class="form-control" name="fim_atendimento" id="fim_atendimento" readonly value="fim_atendimento">
+                                </div>
+                                <div class="col-9" style="margin-top: 10px;">
+                                    <textarea class="form-control" name="fim_atendimento_area" id="fim_atendimento_area" rows="3"></textarea>
+                                </div>
+
+
+                                
+                            <div class="col-12">
+                           
+                            </div>
+                           
+                            
+                        </form>
+
+                        <p id="respostas" class="row">
+                        </p>
+
+                         <div id="buttons" style="margin-top: 10px;">
+                                <button type="button" onclick="iniciarBot()" class="btn btn-info">Iniciar Bot</button>
+                                {{#if bot}}
+                                <button type="button" style="margin-left: 10px;" onclick="addResposta('','','','')" class="btn btn-secondary">Nova Resposta</button>
+                                {{/if}}
+                                <button type="button" onclick="addBot()" style="margin-left: 10px;" class="btn btn-success">Salvar</button>
+                                
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </p>
+    </div>
+
+    <script>
+        function preencheInputs(){
+            var i = 1;
+            var j = 1;
+            {{#each bot}}
+                var stage = "{{this.stage}}"
+                var gatilho = "{{this.gatilho}}"
+                var mensagem = "{{breaklines this.mensagem~}}"
+                var img = "{{this.anexo}}"
+                var tipo = "{{this.tipo}}"
+
+
+                
+
+                
+               
+
+                console.log(i)
+                if (i<5){
+                    $("[name=stage"+stage+"]").val(stage);
+                    $("[name="+gatilho+"]").val(gatilho);
+                    $("[name="+gatilho+"_area]").val(mensagem.replace(/<br>/gi,"\n"));
+                }else{
+                    addResposta(gatilho,img,tipo,mensagem.replace(/<br>/gi,"\n"))
+                }
+                i++;
+            {{/each}}
+
+            
+
+            console.log(i)
+        }
+
+        setTimeout(() => {
+            preencheInputs();
+            var bot_status = "{{status}}";
+            if (bot_status == "parado"){
+                $(".btn-info").html('<i class="fas fa-play"></i> Iniciar Bot')
+            }else{
+                 $(".btn-info").html('<i class="far fa-stop-circle"></i> parar bot')
+            }
+        }, 500);
+
+        function iniciarBot(){
+            $.post( "/auth/iniciarbot", function( data ) {
+                console.log(data);
+                if (data == 'iniciado'){
+                    alert("bot Iniciado");
+                    $(".btn-info").html('<i class="far fa-stop-circle"></i> parar bot')
+
+                }else{
+                     alert("bot Parado");
+                    $(".btn-info").html('<i class="fas fa-play"></i> Iniciar Bot')
+                }
+
+            });
+        }
+
+        //$(".stage").length
+
+       
+
+    </script>
+
+    {{/ifeq}}
+</div>

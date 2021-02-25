@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <script src="https://kit.fontawesome.com/43f18a28b9.js" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+   <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=B612:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@200;300;400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fjalla+One&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rakkas&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Varela&family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Yatra+One&family=Oswald:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="/style.css">
+   
+   <title>Chat - Login</title>
+</head>
+
+<body class="bg-light">
+
+
+   <div id="login" class="container mt-5 d-flex justify-content-center ">
+
+{{#if data}}
+ 
+
+      <div class="card w-50">
+         <div class="card-header text-center bg-dark text-white">
+            <img style="width: 75px;border-radius: 100px;" src="{{data.image}}" />
+            <h4> {{data.nome}}</h4>
+            <span>{{data.numero}}</span>
+
+
+         </div>
+         <div class="card-body">
+
+            {{#if message }}
+            <div class="alert alert-danger">
+               <strong>Aviso!</strong> {{message}}
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            {{/if}}
+            {{#if success }}
+            <div class="alert alert-success">
+               <strong>Parabéns!</strong> {{success}}
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            {{/if}}
+            <form id="formLoginAtendente">
+
+               <div class="form-group">
+                  <label for="login">Login</label>
+                  <input type="login" class="form-control" id="login" name="login" placeholder="Informe um email">
+               </div>
+               <div class="form-group">
+                  <label for="senha">Senha</label>
+                  <input type="password" class="form-control" id="senha" name="senha" placeholder="Informe uma senha">
+               </div>
+               <div class="form-group">
+                  <label for="senha">Setor</label>
+                  <select class="form-control" name="id_setor" id="select2">
+                     <option value="0">Geral (todos)</option>
+                     {{#each setores}}
+                     <option value="{{id}}">{{setor}}</option>
+                     {{/each}}
+                  </select>
+               </div>
+               <button type="button" id="entrar" class="btn btn-success">Entrar</button>
+            </form>
+         </div>
+      </div>
+   
+{{/if}}
+</div>
+
+{{#if erro}}
+      
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align:center">
+        <h5 class="text-center">{{erro}}</h5>
+        <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        {{!-- <button type="button" class="btn btn-primary"></button> --}}
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+{{/if}}
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous">
+   </script>
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+   </script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+
+<script>
+      
+      $("#entrar").on("click", function () {
+         var data = $("#formLoginAtendente").serialize();
+         $.ajax({
+            type: "post",
+            url: "/auth/loginatendente",
+            data: data,  
+            success: function (response) {
+               console.log(response)
+               if (response == "ok"){
+                  window.location.reload();
+               }else{
+                  if (response == "login"){
+                     alert("Login ou senha inválidos")
+                  }
+                  if (response == "setor"){
+                     alert("Atendente não tem acesso a este setor")
+                  }
+                  
+                  
+               }
+               //window.location = "/atendentes";
+
+            },
+            error: function (err){
+                console.log(err)
+            }
+        });
+      });
+
+     
+{{#if erro}}
+   $("#exampleModalCenter").modal("show");
+{{/if}}
+</script>
+</body>
+
+</html>

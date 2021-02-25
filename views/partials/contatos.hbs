@@ -1,0 +1,49 @@
+<div class="container-fluid">
+
+   <div class="d-sm-flex   mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Contatos</h1>
+      <a href="#" class="ml-3  btn btn-sm btn-success shadow-sm" onclick="openModalContato()">
+         <i class="fas fa-plus fa-sm text-white-50"></i> Add Contato</a>
+      <a href="#" class="ml-3  btn btn-sm btn-dark shadow-sm" onclick="openModalExcel()">
+         <i class="fas fa-file-excel"></i> Importar do Excel</a>
+   </div>
+   {{#if message }}
+      <div class="alert alert-danger">
+         <strong>Aviso!</strong> {{message}}
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+   {{/if}}
+
+    
+    <table class="table  table-bordered table-responsive-sm" id="dataTable"  cellspacing="0">
+      <thead>
+         <tr>
+            <th>id</th>
+            <th>Nome</th>
+            <th>Número</th>
+            <th>Email</th>
+            <th>Grupo</th>
+            <th width="8%">Ação</th>
+            
+         </tr>
+      </thead>
+      <tbody>
+         {{#each contatos}}
+               <tr>
+                  <td >{{this.id}}</td>
+                  <td class="nome{{this.id}}">{{this.nome}}</td>
+                  <td class="celular{{this.id}}">{{this.celular}}</td>
+                  <td class="email{{this.id}}">{{this.email}}</td>
+                  <td class="grupo{{this.id}}">{{this.nome_grupo}}</td>
+                  <td>
+                     <a onclick="openEditContato({{this.id}})" ><i class="fas fa-user-edit" style="color:orange"></i> </a>
+                     <a onclick="excluirContato({{this.id}})" ><i class="fas text-danger fa-trash"></i>  </a>
+                  </td>
+               </tr>
+         {{/each}}
+      </tbody>
+</table>
+
+</div>

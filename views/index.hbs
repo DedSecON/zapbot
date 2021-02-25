@@ -1,0 +1,1154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+  
+
+  <!-- Custom styles for this page -->
+  <link href="js/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+<link href="/css/select2-bootstrap.css" rel="stylesheet">
+
+
+   
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+   {{> sidenav}}
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+   <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+      <!-- Topbar -->
+         {{> header}}
+      <!-- End of Topbar -->
+
+      <!-- Begin Page Content -->
+         {{> (whichPartial) }}
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      {{> footer}}
+      <!-- End of Footer -->
+
+    </div>
+      <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tem certeza?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Selecione "Sair" para sair do sistema.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-danger" href="/auth/logout">Sair</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="modalExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Importar do Excel</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           <div class="text-center">
+            <img style="-webkit-filter: brightness(90%);" src="img/excel.png"/>
+            <span>Exemplo do Excel</span>
+           </div>
+           
+            <form id="formAddExcel">
+               <label >Selcione o grupo</label>
+               <select id="id_grupo" class="custom-select">
+                  {{#each grupos}}
+                     <option value="{{this.id}}">{{this.nome_grupo}}</option>
+                  {{/each}}
+               </select>
+               <br>
+               <br>
+               <input type="file" id="my_file_input" onchange="checkfile(this);" />
+               <div id='my_file_output'></div>
+            </form>
+         </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a id="importar" class="btn btn-success" onclick="filePicked()" href="#">Importar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- modal contato -->
+ <div class="modal fade" id="modalContato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Contato</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form id="formAddContato">
+         
+         <input type="hidden" name="usuario_id" value="{{user.id}}">
+         <input type="hidden" name="id_contato" id="id_contato" >
+         <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" class="form-control" id="nome"  placeholder="Informe o nome">
+         </div>
+         <div class="form-group">
+            <label for="numero">Número</label>
+            <input type="number" name="celular" class="form-control" aria-describedby="numeroDesc" id="numero" placeholder="Informe o número">
+            <small id="numeroDesc"  class="form-text text-muted">Somente números, Ex: 551193345199</small>
+         </div>
+         <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" id="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Informe o email">
+         </div>
+
+         <label >Grupo</label>
+         <select name="id_grupo" class="custom-select">
+            {{#each grupos}}
+               <option value="{{this.id}}">{{this.nome_grupo}}</option>
+            {{/each}}
+         </select>
+ 
+         
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="salvar_contato" onclick="addContato()" class="btn btn-success">Salvar</button>
+        <button type="button" id="editar_contato" onclick="editContato()" class="btn btn-success">Editar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+   <!-- modal grupo -->
+ <div class="modal fade" id="modalGrupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Grupo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form id="formAddGrupo">
+         
+         <input type="hidden" name="usuario_id" value="{{user.id}}">
+         <input type="hidden"  id="id_grupo" />
+         
+         <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome_grupo" class="form-control" id="nome_grupo"  placeholder="Informe o nome">
+         </div>
+         <div class="form-group">
+            <label for="exampleFormControlTextarea1">Tempo de Retorno</label>
+            <input type="text" name="descricao" class="form-control" id="descricao"  placeholder="Informe o tempo">        
+         </div>
+         
+ 
+         
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="salvar_grupo" onclick="addGrupo()" class="btn btn-success">Salvar</button>
+        <button type="button" id="editar_grupo" onclick="editGrupo()" class="btn btn-success">Editar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal campanha -->
+
+<div class="modal fade" id="modalCampanhas" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+         
+         <div class="modal-body">
+         <form id="formAddCampanha"  encType="multipart/form-data">
+         <div class="form-group">
+            <label for="nome">Selecione o Grupo</label>
+             <input type="hidden"  id="id_grupo" />
+            <p>
+                    <select class="select12" style="display: none;" name="state">
+                        
+                        {{#each grupos}}
+                            <option value="{{this.id}}">{{this.nome_grupo}}</option>
+                        {{else}}
+                            <option value="{{this.id}}">{{this.nome_grupo}}</option>
+                        {{/each}}
+                        
+                    </select>
+            </p>
+         </div>
+            <div class="form-group">
+               <label for="nome">Nome da campanha</label>
+               <input type="hidden" name="id_usuario" value="{{user.id}}">
+               <input type="text" name="campanha" class="form-control" id="campanha"  placeholder="Informe o nome">
+            </div>
+            <div class="row col-12">
+               <div class="col-md-6">
+                  <div class="custom-file-container" data-upload-id="file_upload">
+                     <label>Enviar Arquivo <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"><i class="text-danger fas fa-trash"></i></a></label>
+
+                     <label class="custom-file-container__custom-file" >
+                        <input type="file" id="camapnha_media" name="sampleFile" class="custom-file-container__custom-file__custom-file-input" accept="*" onchange="getFileNameWithExt(event)" aria-label="Choose File">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                     </label>
+                     <div class="custom-file-container__image-preview"></div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label for="mensagem_campanha">Mensagem</label>
+                     <textarea name="mensagem_campanha" class="form-control" id="mensagem_campanha" rows="3"></textarea>
+                     <span style="font-size: 14px;">
+                        Para substituir os dados do Contato Cadastrado
+                        <br>
+                        Use 
+                        <span class="badge badge-dark" style="background-color:#343a40">{nome}</span> 
+                        ou 
+                        <span class="badge badge-dark" style="background-color:#343a40">{email}</span>
+                        
+                     </span>
+                  </div>
+                  <div class="form-group">
+                     <label for="tipo">Tipo</label>
+                     <input type="text" name="tipo" class="form-control" id="tipo" readonly="readonly" >
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" id="salvar_campanha" onclick="addCampanha()" class="btn btn-success">Salvar</button>
+            <button type="button" id="editar_campanha"  class="btn btn-success">Editar</button>
+         </div>
+         </form>
+      
+      </div>
+   </div>
+</div>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="js/jquery/jquery.min.js"></script>
+  <script src="js/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="js/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.js"></script>
+{{#ifeq title "index"}}
+  <!-- Page level plugins -->
+  <script src="js/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+
+{{/ifeq}}
+
+    <!-- Page level plugins -->
+  <script src="js/datatables/jquery.dataTables.min.js"></script>
+  <script src="js/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
+  <script src="js/file-upload-with-preview.min.js"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+<script>
+
+ $(document).ready(function() {
+   {{#ifnoteq title "contatos"}}
+      var table =  $('#dataTable').DataTable(
+            {
+
+            "order": [[ 0, "desc" ]],
+            "language": {
+                  "url": "js/datatables.portugues.json"
+               }
+            }
+      );
+   {{/ifnoteq}}
+    {{#ifeq title "contatos"}}
+     var table =  $('#dataTable').DataTable(
+         {
+
+        dom: 'Bfrtip',
+        select: true,
+        lengthMenu: [
+            [ 25, 50, -1 ],
+            
+        ],
+        "order": [[ 0, "desc" ]],
+        buttons: [
+        
+            {
+                text: 'Remover selecionados',
+                action: function () {
+                    var select = table.rows( { selected: true } ).data().pluck(0).toArray()
+                    removeContatos(select)
+                }
+            }
+        ],
+         "language": {
+                "url": "js/datatables.portugues.json"
+            }
+         }
+      );
+
+      {{/ifeq}}
+
+      {{#ifeq title "index"}}
+         getMeses();
+
+      {{/ifeq}}
+   });
+
+   
+
+
+
+
+   function getMeses(){
+
+      var id_usuario = {{user.id}};
+      console.log(id_usuario);
+      $.ajax({
+         type: "post",
+         url: "/auth/getmeses",
+         data: "id_usuarios="+id_usuario,
+         success: function (response) {
+            console.log(response);
+            gerarGraficos(JSON.parse(response))
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+   }
+
+
+
+   function removeContatos(obj){
+
+      if (obj.length < 1){
+         alert("Selecione um ou mais contatos")
+         return true;
+      }
+      if (confirm("Tem certeza que deseja excluir todos os selecionados?")){
+         i = 0;
+         obj.forEach(element => {
+            
+            $.ajax({
+               type: "post",
+               url: "/auth/deletarcontato",
+               data: "id_contato="+element,
+               success: function (response) {
+                  console.log(response)
+                  i++;
+                  if (i == obj.length){
+                     window.location = "/contatos";
+                  }
+
+               },
+               error: function (err){
+                  console.log(err)
+               }
+            });
+         });
+      }
+   }
+
+   function openModalContato(){
+      $('#formAddContato')[0].reset();
+      $("#modalContato").modal("show")
+      $("#salvar_contato").show();
+      $("#editar_contato").hide();
+   }
+
+   function openModalGrupo(){
+      $('#formAddGrupo')[0].reset();
+      $("#modalGrupo").modal("show")
+      $("#salvar_grupo").show();
+      $("#editar_grupo").hide();
+   }
+   
+   function openModalCampanha(){
+      $('#formAddCampanha')[0].reset();
+      $('.custom-file-container__image-clear')[0].click()      
+      $("#modalCampanhas").modal("show")
+      $("#salvar_campanha").show();
+      $("#editar_campanha").hide();
+   }
+
+   function openModalExcel(){
+   
+      $("#modalExcel").modal("show")
+
+   }
+
+
+
+   function validateInput(id) {
+         var element = $("#"+id);
+         var success = false;
+         if (element.val() == null || element.val().trim() == "") {
+            element.closest("div").addClass("text-danger");
+            element.closest("div").append("<span>* Campo Obrigatório</span>");
+         } else {
+            var div = element .closest("div");
+            div.removeClass("text-danger");
+            
+            $('span', element.closest("div")).empty().remove();
+            div.addClass("text-success");
+            success = true;
+         }     
+         return success;
+      }
+
+
+   function excluirContato(id_contato){
+       
+      if (confirm("Tem certeza que deseja excluir?")){
+         $.ajax({
+            type: "post",
+            url: "/auth/deletarcontato",
+            data: "id_contato="+id_contato,
+            success: function (response) {
+               console.log(response)
+               window.location = "/contatos";
+
+            },
+            error: function (err){
+               console.log(err)
+            }
+         });
+      }
+   }
+
+   function excluirCampanha(id_campanha){
+       
+      if (confirm("Tem certeza que deseja excluir?")){
+         $.ajax({
+            type: "post",
+            url: "/auth/deletarcampanha",
+            data: "id_campanha="+id_campanha,
+            success: function (response) {
+               console.log(response)
+               window.location = "/campanhas";
+
+            },
+            error: function (err){
+               console.log(err)
+            }
+         });
+      }
+   }
+
+   function excluirGrupo(id_grupo){
+       
+      if (confirm("Tem certeza que deseja excluir?")){
+         $.ajax({
+            type: "post",
+            url: "/auth/deletargrupo",
+            data: "id_grupo="+id_grupo,
+            success: function (response) {
+               console.log(response)
+               window.location = "/grupos";
+
+            },
+            error: function (err){
+               console.log(err)
+            }
+         });
+      }
+   }
+   function addContato(){
+      
+      var data = $("#formAddContato").serialize();
+     
+
+      if (  !validateInput("nome"))
+         return true;
+      if (  !validateInput("numero"))
+         return true;
+
+      $.ajax({
+         type: "post",
+         url: "/auth/addcontato",
+         data: data,
+         success: function (response) {
+            console.log(response)
+            window.location = "/contatos";
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+      $("#modalContato").modal("hide")
+   }
+
+   function addBot(){
+      var data = $("#formAddBot").serialize();
+      
+      $.ajax({
+         type: "post",
+         url: "/auth/addbot",
+         data: data,
+         success: function (response) {
+            console.log(response)
+            alert("Salvo com sucesso!")
+            window.location = "/bot";
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+   }
+
+   function postResposta(id){
+      
+      if (  !validateInput("msg"+id)){
+         alert("preencha o gatilho")
+         return true;
+      }
+         
+       if (  !validateInput("menu_area"+id)){
+          alert("preencha o texto")
+         return true;
+       }
+      var formData = new FormData(document.getElementById("formAddResposta"+id));
+      $.ajax({
+         type: "post",
+         url: "/auth/addresposta",
+         data: formData,
+         processData: false,
+         contentType: false,
+         success: function (response) {
+            console.log(response)
+            alert("Resposta salva")
+            //window.location = "/campanhas";
+         },
+         error: function (err) {  
+            console.log(err);
+         }
+      });
+   } 
+   function excluirResposta(gatilho){
+      
+      
+      if (confirm("Tem certeza?")){
+         $.ajax({
+            type: "post",
+            url: "/auth/excluirresposta",
+            data: "gatilho="+gatilho,
+            success: function (response) {
+               console.log(response)
+               
+               window.location = "/bot";
+            },
+            error: function (err) {  
+               console.log(err);
+            }
+         });
+      }
+   }
+   
+
+   function addResposta(gatilho,img,tipo,msg){
+      var stage = $('.stage').length+2;
+      var number = stage - 4;
+
+      html = '<div><form id="formAddResposta'+number+'" style="background: #f3f1f1;padding: 10px;margin: 10px;"  encType="multipart/form-data"><div class="row"><div class="col-3"><input type="text" style="margin-top: 10px;display:none;" class="form-control stage" name="stage" readonly  value="4"><input type="text" style="margin-top: 20px;" class="form-control" name="gatilho" id="msg'+number+'"  value="'+gatilho+'"></div><div class="col-9" style="margin-top: 10px;"><textarea class="form-control" name="mensagem" id="menu_area'+number+'" rows="3">'+msg+'</textarea></div>'
+      html += '<div class="col-3">Imagem/Video (Opcional):</div><div class="col-9"> <div class="custom-file-container" data-upload-id="file_upload'+number+'">'
+      
+      html +='<label class="custom-file-container__custom-file">';
+      html +='<input type="file" id="camapnha_media" name="sampleFile" accept="image/*,video/*" class="custom-file-container__custom-file__custom-file-input" accept="*" onchange="getFileNameWithExt2(event,'+number+')" aria-label="Choose File">'
+      html +='<input type="hidden" name="MAX_FILE_SIZE" value="10485760" />';
+      html +='<span class="custom-file-container__custom-file__custom-file-control"></span>'
+      html +='</label>'
+      html +='<div class="custom-file-container__image-preview" ></div>'
+      html += '<label>( <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Excluir arquivo">Excluir arquivo <i class="text-danger fas fa-trash"></i></a> )</label>'
+      html += '<input type="hidden" name="tipo" class="form-control" id="tipo'+number+'" value="'+tipo+'" readonly="readonly" >'
+      html += '<div style="margin-top:10px"><button onclick="excluirResposta(\''+gatilho+'\')" type="button" class="btn btn-danger">Excluir Resposta</button>'
+      html += '<button style="margin-left:10px" type="button" onclick="postResposta('+number+')" class="btn btn-success">Salvar Resposta</button></div>'
+      html +='</div></div></form></div>';
+      $("#respostas").append(html);
+      setTimeout(() => {
+         var upload = new FileUploadWithPreview('file_upload'+number, {
+            showDeleteButtonOnImages: true,
+            text: {
+               chooseFile: 'Selecionar...',
+               browse: 'Arquivo...',
+               selectedCount: 'Custom Files Selected Copy',
+            },
+            presetFiles: [
+               img
+            ]
+            
+            
+         })
+      }, 1000);
+   }
+
+   function addCampanha(){
+       var data = $("#formAddCampanha")
+
+      if (  !validateInput("campanha"))
+         return true;
+      
+       var formData = new FormData(document.getElementById("formAddCampanha"));
+      $.ajax({
+         type: "post",
+         url: "/auth/addcampanha",
+         data: formData,
+         processData: false,
+         contentType: false,
+         success: function (response) {
+            console.log(response)
+            window.location = "/campanhas";
+         },
+         error: function (err) {  
+            console.log(err);
+         }
+      });
+   }
+
+   function addGrupo(){
+      
+      var data = $("#formAddGrupo").serialize();
+     
+
+      if (  !validateInput("nome_grupo"))
+         return true;
+      
+
+      $.ajax({
+         type: "post",
+         url: "/auth/addgrupo",
+         data: data,
+         success: function (response) {
+            console.log(response)
+            window.location = "/grupos";
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+      $("#modalGrupo").modal("hide")
+   }
+
+   function openEditContato(id){
+      $("#id_contato").val(id);
+      var email = $(".email"+id).text();
+      var nome = $(".nome"+id).text();
+      var celular = $(".celular"+id).text();
+      $("input[name='email']").val(email);
+      $("input[name='nome']").val(nome);
+      $("input[name='celular']").val(celular);
+       $("#salvar_contato").hide();
+      $("#editar_contato").show();
+      $("#modalContato").modal("show");
+   }
+   
+   function openEditGrupo(id){
+      $("#id_grupo").val(id);
+      var grupo = $(".grupo"+id).text();
+      var descricao = $(".descricao"+id).text();
+      var celular = $(".celular"+id).text();
+      $("#nome_grupo").val(grupo);
+      $("#descricao").val(descricao);
+       $("#salvar_grupo").hide();
+      $("#editar_grupo").show();
+      $("#modalGrupo").modal("show");
+   }
+
+   function editContato(){
+     
+      var data = $("#formAddContato").serialize();
+
+      if (  !validateInput("nome"))
+         return true;
+      if (  !validateInput("numero"))
+         return true;
+
+      $.ajax({
+         type: "post",
+         url: "/auth/editcontato",
+         data: data,
+         success: function (response) {
+            console.log(response)
+            window.location = "/contatos";
+           
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+   }
+
+   function editGrupo(){
+     
+      var data = $("#formAddGrupo").serialize();
+
+      data = data + "&id_grupo=" + $("#id_grupo").val();
+
+      if (  !validateInput("nome_grupo"))
+         return true;
+      
+
+      $.ajax({
+         type: "post",
+         url: "/auth/editgrupo",
+         data: data,
+         success: function (response) {
+            console.log(response)
+            window.location = "/grupos";
+           
+
+         },
+         error: function (err){
+            console.log(err)
+         }
+      });
+   }
+
+    function filePicked() {
+      // Get The File From The Input
+      try {
+         var files = document.getElementById('my_file_input').files
+
+         if (files.length == 0){
+            alert("Escolha um arquivo do excel para enviar...");
+            return true;
+         }
+         $("#importar").text("Carregando...")
+         
+         var i,f;
+         for (i = 0, f = files[i]; i != files.length; ++i) {
+            var reader = new FileReader();
+            var name = f.name;
+            reader.onload = async function(e) {
+               var data = e.target.result;
+               var result;
+               var workbook = XLSX.read(data, {type: 'binary'});
+
+               /* DO SOMETHING WITH workbook HERE */
+
+               const wsname = workbook.SheetNames[0];
+               const ws = workbook.Sheets[wsname];
+               const data2 = XLSX.utils.sheet_to_json(ws, { header: "A", defval: "" });
+
+               
+               
+               console.log(data2)
+               for (let index = 1; index < data2.length; index++) {
+                  var nome = data2[index].A;
+                  var celular = data2[index].B;
+                  var email = (data2[index].C) ? data2[index].C : "";
+                  var id_usuario = {{user.id}};
+                  var id_grupo = $( "#id_grupo option:selected" ).val();
+
+                  if (!id_grupo){
+                     alert("Necessário associar a um grupo!")
+                     return true;
+                  }
+
+                  //celular = celular.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+
+                  var res_body = "nome="+nome+"&celular="+celular+"&email="+email+"&usuario_id="+id_usuario+"&id_grupo="+id_grupo;
+                  console.log(res_body)
+                  
+                  await $.ajax({
+                        type: "post",
+                        url: "/auth/addcontato",
+                        data: res_body,
+                        success: function (response) {
+                           console.log(response)
+                           if (index == (data2.length -1)){
+                              reloadPage();
+                           }
+
+                        },
+                        error: function (err){
+                           console.log(err)
+                        }
+                     });
+                  
+               
+
+               
+
+                  
+               }
+            
+            
+               
+            };
+            reader.readAsBinaryString(f);
+            
+         }
+      }catch (e) {
+         alert("Ocorreu um erro ao inserir o contato da lista!")
+         reloadPage();
+
+      }
+
+       
+     
+
+     
+   }
+
+   function reloadPage(){
+      setTimeout(() => {
+         window.location = "/contatos";
+      }, 2000);
+   }
+</script>
+<script>
+   $('[data-toggle="tooltip"]').tooltip()
+   var upload = new FileUploadWithPreview('file_upload', {
+         showDeleteButtonOnImages: true,
+         text: {
+            chooseFile: 'Selecionar...',
+            browse: 'Arquivo...',
+            selectedCount: 'Custom Files Selected Copy',
+         },
+         
+         
+   })
+
+   function getFileNameWithExt2(event,number) {
+
+      const media_file = event.target.files[0] // event is from the <input> event
+      const filename = media_file.name
+
+      let last_dot = filename.lastIndexOf('.')
+      let ext = filename.slice(last_dot + 1)
+      let name = filename.slice(0, last_dot)
+
+      image = ['jpg','jpeg', 'gif', 'png', 'svg', 'webp' ];
+      video = ['mp4', 'webm', 'ogg', '3gp', 'avi', 'mpeg', 'mpg'];
+
+      if (image.includes(ext)){
+         $("#tipo"+number).val("imagem")
+         return true;tipo
+      }
+      if (video.includes(ext)){
+         $("#tipo"+number).val("video")
+         return true;
+      }
+      console.log("documento")
+      $("#tipo"+number).val("documento")
+   }
+
+   function getFileNameWithExt(event) {
+
+      const media_file = event.target.files[0] // event is from the <input> event
+      const filename = media_file.name
+
+      let last_dot = filename.lastIndexOf('.')
+      let ext = filename.slice(last_dot + 1)
+      let name = filename.slice(0, last_dot)
+
+      image = ['jpg','jpeg', 'gif', 'png', 'svg', 'webp' ];
+      video = ['mp4', 'webm', 'ogg', '3gp', 'avi', 'mpeg', 'mpg'];
+
+      if (image.includes(ext)){
+         $("#tipo").val("imagem")
+         return true;
+      }
+      if (video.includes(ext)){
+         $("#tipo").val("video")
+         return true;
+      }
+      console.log("documento")
+      $("#tipo").val("documento")
+   }
+
+     $(".tag").click(function (e) { 
+   
+         var id = "{{user.id}}{{user.maskeid}}"
+         $(".load").show();
+         
+         $("#qrcode").fadeOut(400);
+         var timer;
+
+         
+         timer =   setTimeout(() => {
+               $("#qrcode").html("<img style='width: 250px;' src='/{{user.id}}{{user.maskeid}}.png' >")            
+               $("#qrcode").fadeIn(1000);
+               $(".load").hide();
+         }, 10000);
+         
+         $.ajax({
+            type: "get",
+            url: "/getqr",
+            success: function (response) {
+               clearTimeout(timer);
+               console.log(response)   
+               var result = JSON.parse(response)
+               result = result[0];
+               if (result.nome){
+                  $("#qrcode").html('<img class="img_perfil" src="'+result.image+'" > <div> '+result.numero+' </div><div> '+result.nome +'<div>')
+                  $("#qrcode").fadeIn(1000);
+                  $(".load").hide();
+                  
+               }
+               
+            },
+            
+         });           
+
+         
+      
+   })
+ 
+   
+   $('#setores').select2({
+      multiple: true,
+      allowClear: true,
+      
+      
+        
+      
+   });
+   $('.select2').css('width', '100%');
+
+   
+   function copiarLink(){
+      
+      
+      
+
+      
+      $(".copiar_link").popover("show" )
+
+      $('.copiar_link').on('shown.bs.popover', function () {
+         
+         $('body').on('click', function (e) {
+            //did not click a popover toggle or popover
+            if ($(e.target).data('toggle') !== 'popover'
+               && $(e.target).parents('.popover.in').length === 0) { 
+               $('[data-toggle="popover"]').popover('hide');
+            }
+         });
+      })
+       
+
+      var text =  $(".link_atendente").text();
+      copyToClipboard(text);
+   }
+
+   function copyToClipboard(text) {
+      var dummy = document.createElement("textarea");
+      // to avoid breaking orgain page when copying more words
+      // cant copy when adding below this code
+      // dummy.style.display = 'none'
+      document.body.appendChild(dummy);
+      //Be careful if you use texarea. setAttribute('value', value), which works with "input" does not work with "textarea". – Eduard
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      
+   }
+
+   $(document).ready(function() {
+     
+   });
+
+   function checkfile(sender) {
+      var validExts = new Array(".xlsx", ".xls", ".csv", ".ods");
+      var fileExt = sender.value;
+      fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
+      if (validExts.indexOf(fileExt) < 0) {
+         alert("Arquivo inválido, somente arquivos " +
+                  validExts.toString() + " (excel).");
+
+         input = document.getElementById("my_file_input")
+         input.value = ''
+
+         if(!/safari/i.test(navigator.userAgent)){
+            input.type = ''
+            input.type = 'file'
+         }
+         return false;
+         
+        
+      }
+      else return true;
+   }
+
+   
+</script>
+
+<script>
+
+    setTimeout(() => {
+        $('.select12').fadeIn();
+       $('.select12').select2({
+            allowClear: true,
+            placeholder: "Selecione um grupo de contatos",
+            
+       });
+       
+
+       $('.select12').on('change', function (evt) {
+            
+                console.log($(".select12").val())
+                
+                var value = $(".select12").val();
+                jsonObj.find((o, i) => {
+                    if (o.id_grupo === parseInt($(".select12").val())) {
+                        //console.log(o)
+                     
+                        $('#table').append('<tr><td>'+o.nome+'</td><td id="'+o.id+'">'+o.celular+'</td><td id="status'+o.id+'">Pendente</td></tr>');
+                     
+                        
+                        
+                        
+                    }
+                });
+
+                if (value){
+                    $('.select12').val('').trigger("change")
+                    var time = setTimeout(() => {
+                        $(".select12 option[value='"+value+"']").remove();
+                         $('.select12').val('').trigger("change")
+                         clearTimeout(time)
+                    }, 1000);      
+                   
+                }
+          
+            
+              
+
+          
+        
+        });
+        $('.select12').val('').trigger("change")
+        var data = [];
+        var html = '';
+         {{#each campanhas}}
+            {{#ifeq this.tipo "imagem"}}
+            html = "<img style='width: 100px;' src='uploads/{{this.anexo}}' />"
+            {{/ifeq}} 
+            {{#ifeq this.tipo ""}}
+            html = "<img style='width: 80px;' src='img/none.png' />"
+            {{/ifeq}}
+            {{#ifeq this.tipo "video"}}
+            html = "<video style='width: 100px;' src='uploads/{{this.anexo}}'></video>"
+            {{/ifeq}}
+            {{#ifeq this.tipo "documento"}}
+            html = '<img style="width: 100px;height:60px" src="/img/documento.jpg" />'
+            {{/ifeq}}
+            mensagem = "{{breaklines this.mensagem~}}";
+            
+            data.push({
+                id: {{this.id}}, 
+                text: "{{this.campanha}}",  
+                html: '<div>'+html+'<div style="display: inline-block;margin-left:10px;">{{@index}} - {{this.campanha}}<br><div class="cut-text"><small>'+mensagem+'</small></div></div></div>', 
+                title: "{{this.campanha}}"
+            })
+         {{/each}}
+         console.log(data);
+
+        $('.select1').fadeIn();
+        $('.select1').select2({
+            allowClear: true,
+            placeholder: "Selecione uma Campanha",
+            data: data,
+            escapeMarkup: function(markup) {
+                return markup;
+            },
+            templateResult: function(data) {
+                return data.html;
+            },
+            templateSelection: function(data) {
+                return data.text;
+            }
+            
+        });
+        $(".select1").val('').trigger('change') ;
+    }, 1000);    
+    var decodedJson = decodeURIComponent("{{{encodedJson}}}");
+    var jsonObj = JSON.parse(decodedJson);
+    console.log(jsonObj)
+
+</script>
+
+</body>
+
+</html>

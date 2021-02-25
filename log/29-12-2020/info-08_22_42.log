@@ -1,0 +1,216 @@
+[29-12-2020 20:22:43] INFO	 (374723 on ubuntu): Startou porta 80
+[29-12-2020 20:22:43] INFO	 (374723 on ubuntu): MySQL connected!
+[29-12-2020 20:22:45] INFO	 (374723 on ubuntu):
+    jwt_usuario: {
+      "id": 3,
+      "iat": 1609269351,
+      "exp": 1617045351
+    }
+[29-12-2020 20:22:45] INFO	 (374723 on ubuntu):
+    login_usuario: {
+      "id": 3,
+      "created_at": "2020-09-10T22:32:24.000Z",
+      "updated_at": "2020-11-06T16:45:48.000Z",
+      "nome": "Bruno Lima",
+      "senha": "$2a$08$ZKYx.L.kPI1d3w/jNwgeCOqZanom0OsWKVm.ffQJNU.g.694uPFMu",
+      "email": "bruno@bruno.com",
+      "maskeid": "96vkP8",
+      "admin": 1
+    }
+[29-12-2020 20:22:46] INFO	 (374723 on ubuntu): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"c513-cAF56EmqKjK7GAHLWz7c0fT1j7M\""
+      }
+    }
+    responseTime: 231
+    req: {
+      "id": 1,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "cache-control": "max-age=0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/whats",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7,es;q=0.6",
+        "cookie": "_ga=GA1.3.199040947.1591923695; jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjA5MjY5MzUxLCJleHAiOjE2MTcwNDUzNTF9.cKSndgQ9ImxgGGI_CsNjeUY24bRn4Nzp0XJ2u-vC5Eg",
+        "if-none-match": "W/\"c513-cAF56EmqKjK7GAHLWz7c0fT1j7M\""
+      },
+      "remoteAddress": "::ffff:201.17.159.113",
+      "remotePort": 6589
+    }
+[29-12-2020 20:22:51] INFO	 (374723 on ubuntu):
+    jwt_usuario: {
+      "id": 27,
+      "iat": 1609270142,
+      "exp": 1617046142
+    }
+[29-12-2020 20:22:51] INFO	 (374723 on ubuntu):
+    login_usuario: {
+      "id": 27,
+      "created_at": "2020-12-29T19:29:02.000Z",
+      "updated_at": null,
+      "nome": "admin",
+      "senha": "$2a$08$qKZe3k3YN4lOUqGKxCZjYODl8awCQuuXjnp3vdsKn35BqsxWsZ2Uy",
+      "email": "admin@admin.com",
+      "maskeid": "P6dS9C",
+      "admin": 0
+    }
+[29-12-2020 20:22:51] INFO	 (374723 on ubuntu): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"c45b-f9ddC2yNsR4IPU8usDEHKPj7GMU\""
+      }
+    }
+    responseTime: 90
+    req: {
+      "id": 3,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/whats",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6,es;q=0.5",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImlhdCI6MTYwOTI3MDE0MiwiZXhwIjoxNjE3MDQ2MTQyfQ.ygSqLH3-iPuHf7KuhZMNGQSWIqboqjW853CtIHvAR7I",
+        "if-none-match": "W/\"c45b-f9ddC2yNsR4IPU8usDEHKPj7GMU\""
+      },
+      "remoteAddress": "::ffff:179.155.253.30",
+      "remotePort": 50032
+    }
+[29-12-2020 20:22:53] INFO	 (374723 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 150
+      }
+    }
+    responseTime: 20
+    req: {
+      "id": 5,
+      "method": "GET",
+      "url": "/favicon.ico",
+      "headers": {
+        "host": "159.203.190.53",
+        "accept": "*/*",
+        "accept-encoding": "gzip, deflate",
+        "connection": "keep-alive",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11"
+      },
+      "remoteAddress": "::ffff:171.34.177.236",
+      "remotePort": 56922
+    }
+[29-12-2020 20:22:54] INFO	 (374723 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 150
+      }
+    }
+    responseTime: 5
+    req: {
+      "id": 6,
+      "method": "GET",
+      "url": "/favicon.ico",
+      "headers": {
+        "host": "159.203.190.53",
+        "accept": "*/*",
+        "accept-encoding": "gzip, deflate",
+        "connection": "keep-alive",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11"
+      },
+      "remoteAddress": "::ffff:223.166.75.220",
+      "remotePort": 57608
+    }
+[29-12-2020 20:22:55] INFO	 (374723 on ubuntu): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-security-policy": "default-src 'none'",
+        "x-content-type-options": "nosniff",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": 150
+      }
+    }
+    responseTime: 3
+    req: {
+      "id": 7,
+      "method": "GET",
+      "url": "/favicon.ico",
+      "headers": {
+        "host": "159.203.190.53",
+        "accept": "*/*",
+        "accept-encoding": "gzip, deflate",
+        "connection": "keep-alive",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11"
+      },
+      "remoteAddress": "::ffff:112.66.101.111",
+      "remotePort": 58298
+    }
+[29-12-2020 20:23:34] INFO	 (374723 on ubuntu):
+    jwt_usuario: {
+      "id": 27,
+      "iat": 1609270142,
+      "exp": 1617046142
+    }
+[29-12-2020 20:23:34] INFO	 (374723 on ubuntu):
+    login_usuario: {
+      "id": 27,
+      "created_at": "2020-12-29T19:29:02.000Z",
+      "updated_at": null,
+      "nome": "admin",
+      "senha": "$2a$08$qKZe3k3YN4lOUqGKxCZjYODl8awCQuuXjnp3vdsKn35BqsxWsZ2Uy",
+      "email": "admin@admin.com",
+      "maskeid": "P6dS9C",
+      "admin": 0
+    }
+[29-12-2020 20:23:34] INFO	 (374723 on ubuntu): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"c45b-f9ddC2yNsR4IPU8usDEHKPj7GMU\""
+      }
+    }
+    responseTime: 198
+    req: {
+      "id": 8,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "bot.zapatendimento.com.br",
+        "connection": "keep-alive",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "referer": "http://bot.zapatendimento.com.br/whats",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6,es;q=0.5",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImlhdCI6MTYwOTI3MDE0MiwiZXhwIjoxNjE3MDQ2MTQyfQ.ygSqLH3-iPuHf7KuhZMNGQSWIqboqjW853CtIHvAR7I",
+        "if-none-match": "W/\"c45b-f9ddC2yNsR4IPU8usDEHKPj7GMU\""
+      },
+      "remoteAddress": "::ffff:179.155.253.30",
+      "remotePort": 50070
+    }

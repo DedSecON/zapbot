@@ -1,0 +1,83 @@
+<div class="container-fluid">
+
+    <div class="d-sm-flex   mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Autentificação</h1>
+        <!--<a href="#" class="ml-3  btn btn-sm btn-success shadow-sm" onclick="openModalGrupo()">
+          <i class="fas fa-plus fa-sm text-white-50"></i> Add Grupo</a> -->
+
+    </div>
+    {{#if message }}
+    <div class="alert alert-danger">
+        <strong>Aviso!</strong> {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    <div class="card mt-3 pl-2 tab-card align-items-center">
+        <p>
+            <h2 class="info">Para usar o  Whats<sup>bot</sup></h2>
+            <ol>
+                <li class="info">
+                    Abra o WhatsApp em seu celular
+                </li>
+                <li class="info">
+                    Toque em <b>Menu</b> <i class="fas fa-ellipsis-v"></i> ou <b>Configurações </b> <i
+                        class="fas fa-cog"></i> e selecione <b>WhatsApp Web</b>
+                </li>
+                <li class="info">
+                    Aponte o seu celular para essa tela para capturar o código
+                </li>
+
+            </ol>
+            <img class="load" src="loading.gif" >
+            <div id="qrcode" style="">
+
+                <div class="tag">
+                    <i class="fas fa-redo-alt"></i>
+                    <div style="margin-bottom: -4px;">
+                        Gerar
+                    </div>
+                    <div>
+                        QrCode
+                    </div>
+                </div>
+                <img style="width: 150px; opacity:0.2" src="/qrcode.png" alt="">
+            </div>
+            <div class="text-center">
+                <span class="info">Se tiver algum problema ao autenticar, exclua o token</span><br>
+                <button onclick="deletarWhats()" class="btn btn-danger">Excluir token</button>
+            </div>
+        </p>
+    </div>
+</div>
+<script>
+
+    function deletarWhats(){
+       
+      var maskeid = "{{user.id}}{{user.maskeid}}";
+      
+      $.ajax({
+         type: "post",
+         url: "/auth/deletarwhats",
+         data: "maskeid="+maskeid,
+         success: function (response) {
+            console.log(response);
+            if (response != "Erro"){
+                alert("Token excluido, por favor autentique o whatsapp")
+                window.location = "/whats";
+            }else{
+                alert("Erro token nao encontrado!")
+                window.location = "/whats";
+            }
+
+         },
+         error: function (err){
+            console.log(err)
+            alert("Erro token nao encontrado!")
+         }
+      });
+    }
+</script>
+
