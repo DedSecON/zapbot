@@ -1,2 +1,0 @@
-[21-12-2020 15:17:30] ERROR	 (2750 on ubuntu): ENOENT: no such file or directory, open '/root/whatsbot/public/uploads/1608563850265'
-    Error: ENOENT: no such file or directory, open '/root/whatsbot/public/uploads/1608563850265'

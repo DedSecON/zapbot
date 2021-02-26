@@ -1,0 +1,53 @@
+[26-02-2021 12:51:38] INFO	 (16576 on DESKTOP-N80S0E1): Startou porta 80
+[26-02-2021 12:51:39] INFO	 (16576 on DESKTOP-N80S0E1): MySQL connected!
+[26-02-2021 12:51:44] INFO	 (16576 on DESKTOP-N80S0E1):
+    jwt_usuario: {
+      "id": 39,
+      "iat": 1614343617,
+      "exp": 1622119617
+    }
+[26-02-2021 12:51:44] INFO	 (16576 on DESKTOP-N80S0E1):
+    login_usuario: {
+      "id": 39,
+      "created_at": "2021-02-25T19:58:55.000Z",
+      "updated_at": null,
+      "nome": "Rafael",
+      "senha": "$2a$08$qzyLLmkzvdtRGJRjkh.AXeIs0wDWl.AOhmhIx1XW1oV5UNDXYEaki",
+      "email": "rafael@rafael.com",
+      "maskeid": "FXPaIj",
+      "admin": 0
+    }
+[26-02-2021 12:51:45] INFO	 (16576 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      }
+    }
+    responseTime: 901
+    req: {
+      "id": 1,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "cache-control": "max-age=0",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "none",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 50830
+    }

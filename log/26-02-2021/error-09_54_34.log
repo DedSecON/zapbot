@@ -1,0 +1,12 @@
+[26-02-2021 12:56:33] ERROR	 (8160 on DESKTOP-N80S0E1): Cannot read property 'mensagem' of undefined
+    TypeError: Cannot read property 'mensagem' of undefined
+        at Query.<anonymous> (C:\Rafael\Freelancer\zapbot\controllers\auth.js:1118:45)
+        at Query.<anonymous> (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\Connection.js:526:10)
+        at Query._callback (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\Connection.js:488:16)
+        at Query.Sequence.end (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+        at Query._handleFinalResultPacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Query.js:149:8)
+        at Query.EofPacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Query.js:133:8)
+        at Protocol._parsePacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+        at Parser._parsePacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Parser.js:433:10)
+        at Parser.write (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Parser.js:43:10)
+        at Protocol.write (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Protocol.js:38:16)

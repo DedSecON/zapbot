@@ -1,0 +1,573 @@
+[26-02-2021 12:57:08] INFO	 (17212 on DESKTOP-N80S0E1): Startou porta 80
+[26-02-2021 12:57:09] INFO	 (17212 on DESKTOP-N80S0E1): MySQL connected!
+[26-02-2021 12:57:13] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": "51859",
+        "etag": "W/\"ca93-7TVbEKHo1KtcbEutYrjYgw7diQg\""
+      }
+    }
+    responseTime: 828
+    req: {
+      "id": 1,
+      "method": "GET",
+      "url": "/bot",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "cache-control": "max-age=0",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "none",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"e0cd-4xemZ0KwSjURh4/N9idXPbivPdE\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 50978
+    }
+[26-02-2021 12:57:16] INFO	 (17212 on DESKTOP-N80S0E1):
+    jwt_usuario: {
+      "id": 39,
+      "iat": 1614343617,
+      "exp": 1622119617
+    }
+[26-02-2021 12:57:17] INFO	 (17212 on DESKTOP-N80S0E1):
+    login_usuario: {
+      "id": 39,
+      "created_at": "2021-02-25T19:58:55.000Z",
+      "updated_at": null,
+      "nome": "Rafael",
+      "senha": "$2a$08$qzyLLmkzvdtRGJRjkh.AXeIs0wDWl.AOhmhIx1XW1oV5UNDXYEaki",
+      "email": "rafael@rafael.com",
+      "maskeid": "FXPaIj",
+      "admin": 0
+    }
+[26-02-2021 12:57:17] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      }
+    }
+    responseTime: 808
+    req: {
+      "id": 2,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "referer": "http://localhost/bot",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 50986
+    }
+[26-02-2021 12:57:34] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express"
+      }
+    }
+    responseTime: 5095
+    req: {
+      "id": 3,
+      "method": "GET",
+      "url": "/getqr",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 50995
+    }
+[26-02-2021 12:57:36] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": "57549",
+        "etag": "W/\"e0cd-4xemZ0KwSjURh4/N9idXPbivPdE\""
+      }
+    }
+    responseTime: 324
+    req: {
+      "id": 4,
+      "method": "GET",
+      "url": "/bot",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"ca93-7TVbEKHo1KtcbEutYrjYgw7diQg\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 50995
+    }
+[26-02-2021 12:57:39] INFO	 (17212 on DESKTOP-N80S0E1):
+    jwt_usuario: {
+      "id": 39,
+      "iat": 1614343617,
+      "exp": 1622119617
+    }
+[26-02-2021 12:57:39] INFO	 (17212 on DESKTOP-N80S0E1):
+    login_usuario: {
+      "id": 39,
+      "created_at": "2021-02-25T19:58:55.000Z",
+      "updated_at": null,
+      "nome": "Rafael",
+      "senha": "$2a$08$qzyLLmkzvdtRGJRjkh.AXeIs0wDWl.AOhmhIx1XW1oV5UNDXYEaki",
+      "email": "rafael@rafael.com",
+      "maskeid": "FXPaIj",
+      "admin": 0
+    }
+[26-02-2021 12:57:40] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      }
+    }
+    responseTime: 773
+    req: {
+      "id": 5,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "referer": "http://localhost/bot",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51016
+    }
+[26-02-2021 12:57:42] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express"
+      }
+    }
+    responseTime: 433
+    req: {
+      "id": 6,
+      "method": "GET",
+      "url": "/getqr",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51017
+    }
+[26-02-2021 12:57:44] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express"
+      }
+    }
+    responseTime: 5
+    req: {
+      "id": 7,
+      "method": "POST",
+      "url": "/auth/deletarwhats",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "content-length": "16",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "http://localhost",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51017
+    }
+[26-02-2021 12:57:45] INFO	 (17212 on DESKTOP-N80S0E1):
+    jwt_usuario: {
+      "id": 39,
+      "iat": 1614343617,
+      "exp": 1622119617
+    }
+[26-02-2021 12:57:45] INFO	 (17212 on DESKTOP-N80S0E1):
+    login_usuario: {
+      "id": 39,
+      "created_at": "2021-02-25T19:58:55.000Z",
+      "updated_at": null,
+      "nome": "Rafael",
+      "senha": "$2a$08$qzyLLmkzvdtRGJRjkh.AXeIs0wDWl.AOhmhIx1XW1oV5UNDXYEaki",
+      "email": "rafael@rafael.com",
+      "maskeid": "FXPaIj",
+      "admin": 0
+    }
+[26-02-2021 12:57:46] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      }
+    }
+    responseTime: 772
+    req: {
+      "id": 8,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51017
+    }
+[26-02-2021 12:58:02] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express"
+      }
+    }
+    responseTime: 15467
+    req: {
+      "id": 9,
+      "method": "GET",
+      "url": "/getqr",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51017
+    }
+[26-02-2021 12:58:06] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express"
+      }
+    }
+    responseTime: 6
+    req: {
+      "id": 10,
+      "method": "POST",
+      "url": "/auth/deletarwhats",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "content-length": "16",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "http://localhost",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51017
+    }
+[26-02-2021 12:58:07] INFO	 (17212 on DESKTOP-N80S0E1):
+    jwt_usuario: {
+      "id": 39,
+      "iat": 1614343617,
+      "exp": 1622119617
+    }
+[26-02-2021 12:58:07] INFO	 (17212 on DESKTOP-N80S0E1):
+    login_usuario: {
+      "id": 39,
+      "created_at": "2021-02-25T19:58:55.000Z",
+      "updated_at": null,
+      "nome": "Rafael",
+      "senha": "$2a$08$qzyLLmkzvdtRGJRjkh.AXeIs0wDWl.AOhmhIx1XW1oV5UNDXYEaki",
+      "email": "rafael@rafael.com",
+      "maskeid": "FXPaIj",
+      "admin": 0
+    }
+[26-02-2021 12:58:08] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      }
+    }
+    responseTime: 803
+    req: {
+      "id": 11,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51017
+    }
+[26-02-2021 12:58:33] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express"
+      }
+    }
+    responseTime: 13641
+    req: {
+      "id": 12,
+      "method": "GET",
+      "url": "/getqr",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51057
+    }
+[26-02-2021 12:58:41] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"e0cd-4xemZ0KwSjURh4/N9idXPbivPdE\""
+      }
+    }
+    responseTime: 307
+    req: {
+      "id": 13,
+      "method": "GET",
+      "url": "/bot",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"e0cd-4xemZ0KwSjURh4/N9idXPbivPdE\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51066
+    }
+[26-02-2021 12:58:44] INFO	 (17212 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express"
+      }
+    }
+    responseTime: 145
+    req: {
+      "id": 14,
+      "method": "POST",
+      "url": "/auth/iniciarbot",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "content-length": "0",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "origin": "http://localhost",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "http://localhost/bot",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51073
+    }
+[26-02-2021 12:59:01] ERROR	 (17212 on DESKTOP-N80S0E1): Cannot read property 'mensagem' of undefined
+    TypeError: Cannot read property 'mensagem' of undefined
+        at Query.<anonymous> (C:\Rafael\Freelancer\zapbot\controllers\auth.js:1118:45)
+        at Query.<anonymous> (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\Connection.js:526:10)
+        at Query._callback (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\Connection.js:488:16)
+        at Query.Sequence.end (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+        at Query._handleFinalResultPacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Query.js:149:8)
+        at Query.EofPacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Query.js:133:8)
+        at Protocol._parsePacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+        at Parser._parsePacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Parser.js:433:10)
+        at Parser.write (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Parser.js:43:10)
+        at Protocol.write (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+[26-02-2021 13:01:22] ERROR	 (17212 on DESKTOP-N80S0E1): Cannot read property 'mensagem' of undefined
+    TypeError: Cannot read property 'mensagem' of undefined
+        at Query.<anonymous> (C:\Rafael\Freelancer\zapbot\controllers\auth.js:1118:45)
+        at Query.<anonymous> (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\Connection.js:526:10)
+        at Query._callback (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\Connection.js:488:16)
+        at Query.Sequence.end (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+        at Query._handleFinalResultPacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Query.js:149:8)
+        at Query.EofPacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Query.js:133:8)
+        at Protocol._parsePacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+        at Parser._parsePacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Parser.js:433:10)
+        at Parser.write (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Parser.js:43:10)
+        at Protocol.write (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+[26-02-2021 13:02:39] ERROR	 (17212 on DESKTOP-N80S0E1): Cannot read property 'mensagem' of undefined
+    TypeError: Cannot read property 'mensagem' of undefined
+        at Query.<anonymous> (C:\Rafael\Freelancer\zapbot\controllers\auth.js:1118:45)
+        at Query.<anonymous> (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\Connection.js:526:10)
+        at Query._callback (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\Connection.js:488:16)
+        at Query.Sequence.end (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+        at Query._handleFinalResultPacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Query.js:149:8)
+        at Query.EofPacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\sequences\Query.js:133:8)
+        at Protocol._parsePacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+        at Parser._parsePacket (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Parser.js:433:10)
+        at Parser.write (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Parser.js:43:10)
+        at Protocol.write (C:\Rafael\Freelancer\zapbot\node_modules\mysql\lib\protocol\Protocol.js:38:16)

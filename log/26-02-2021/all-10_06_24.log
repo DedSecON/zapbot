@@ -1,0 +1,221 @@
+[26-02-2021 13:06:25] INFO	 (5268 on DESKTOP-N80S0E1): Startou porta 80
+[26-02-2021 13:06:26] INFO	 (5268 on DESKTOP-N80S0E1): MySQL connected!
+[26-02-2021 13:06:32] INFO	 (5268 on DESKTOP-N80S0E1):
+    jwt_usuario: {
+      "id": 39,
+      "iat": 1614343617,
+      "exp": 1622119617
+    }
+[26-02-2021 13:06:32] INFO	 (5268 on DESKTOP-N80S0E1):
+    login_usuario: {
+      "id": 39,
+      "created_at": "2021-02-25T19:58:55.000Z",
+      "updated_at": null,
+      "nome": "Rafael",
+      "senha": "$2a$08$qzyLLmkzvdtRGJRjkh.AXeIs0wDWl.AOhmhIx1XW1oV5UNDXYEaki",
+      "email": "rafael@rafael.com",
+      "maskeid": "FXPaIj",
+      "admin": 0
+    }
+[26-02-2021 13:06:33] INFO	 (5268 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      }
+    }
+    responseTime: 840
+    req: {
+      "id": 1,
+      "method": "GET",
+      "url": "/whats",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "referer": "http://localhost/bot",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"d3e9-e8PNTWsMR8w9Xfw3Md/8k32laaM\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51150
+    }
+[26-02-2021 13:06:40] INFO	 (5268 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express"
+      }
+    }
+    responseTime: 3473
+    req: {
+      "id": 2,
+      "method": "GET",
+      "url": "/getqr",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51150
+    }
+[26-02-2021 13:06:43] INFO	 (5268 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 304,
+      "headers": {
+        "x-powered-by": "Express",
+        "etag": "W/\"e0cd-4xemZ0KwSjURh4/N9idXPbivPdE\""
+      }
+    }
+    responseTime: 315
+    req: {
+      "id": 3,
+      "method": "GET",
+      "url": "/bot",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "referer": "http://localhost/whats",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"e0cd-4xemZ0KwSjURh4/N9idXPbivPdE\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51150
+    }
+[26-02-2021 13:06:53] INFO	 (5268 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express"
+      }
+    }
+    responseTime: 10
+    req: {
+      "id": 4,
+      "method": "POST",
+      "url": "/auth/addbot",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "content-length": "266",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "http://localhost",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "http://localhost/bot",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51186
+    }
+[26-02-2021 13:06:55] INFO	 (5268 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express",
+        "content-type": "text/html; charset=utf-8",
+        "content-length": "61125",
+        "etag": "W/\"eec5-uSeA5dEYLEUtSFQw+iddHNjqgiM\""
+      }
+    }
+    responseTime: 363
+    req: {
+      "id": 5,
+      "method": "GET",
+      "url": "/bot",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?0",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "referer": "http://localhost/bot",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI",
+        "if-none-match": "W/\"e0cd-4xemZ0KwSjURh4/N9idXPbivPdE\""
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51186
+    }
+[26-02-2021 13:06:58] INFO	 (5268 on DESKTOP-N80S0E1): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express"
+      }
+    }
+    responseTime: 139
+    req: {
+      "id": 6,
+      "method": "POST",
+      "url": "/auth/iniciarbot",
+      "headers": {
+        "host": "localhost",
+        "connection": "keep-alive",
+        "content-length": "0",
+        "sec-ch-ua": "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not A Brand\";v=\"99\"",
+        "accept": "*/*",
+        "x-requested-with": "XMLHttpRequest",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "origin": "http://localhost",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "http://localhost/bot",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9,pt;q=0.8",
+        "cookie": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzksImlhdCI6MTYxNDM0MzYxNywiZXhwIjoxNjIyMTE5NjE3fQ.RvCRuSapBk0BmB3bJ1BgnZx0Np-ZKBxc2IqedQQZ5FI"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 51194
+    }

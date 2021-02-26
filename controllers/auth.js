@@ -25,16 +25,22 @@ app.use(express.json())
 app.use(cookieParser())
 
 
-
+console.log({
+   host: process.env.DATABASE_HOST,
+   user: process.env.DATABASE_USER,
+   password: process.env.DATABASE_PASS,
+   database: process.env.DATABASE,
+   charset : 'utf8mb4',
+   port: 3306
+})
 
 
 const db = mysql.createConnection({
-   host: process.env.DATATABASE_HOST,
+   host: process.env.DATABASE_HOST,
    user: process.env.DATABASE_USER,
    password: process.env.DATABASE_PASS,
    database: process.env.DATABASE,
    charset : 'utf8mb4'
-
 });
 
 setInterval(function () {
@@ -44,7 +50,7 @@ setInterval(function () {
 }, 5000);
 
 const pool = mysql.createPool({
-   host: process.env.DATATABASE_HOST,
+   host: process.env.DATABASE_HOST,
    user: process.env.DATABASE_USER,
    password: process.env.DATABASE_PASS,
    database: process.env.DATABASE,
@@ -1046,7 +1052,7 @@ exports.getqr = async (req, res, next) => {
                   stage[id] = 5;
                }
                
-               
+               console.log(user_id)
 
                db.query('SELECT * FROM bot WHERE id_usuario = ? AND stage = ?', [user_id, stage[id]], async (error, result) => {
                   console.log("aqu1");
@@ -1108,7 +1114,7 @@ exports.getqr = async (req, res, next) => {
 
                         
                         console.log("aqu2");
-                  
+                        console.log(result)
                         var msg = result[0].mensagem;
 
                         console.log(msg);

@@ -27,11 +27,12 @@ dotenv.config({path: './.env'})
 var hbs = require('hbs');
 
 const db = mysql.createConnection({
-   host: process.env.DATATABASE_HOST,
+   host: process.env.DATABASE_HOST,
    user: process.env.DATABASE_USER,
    password: process.env.DATABASE_PASS,
    database: process.env.DATABASE,
-   charset : 'utf8mb4'
+   charset : 'utf8mb4',
+   port: 3306
 
 })
 
